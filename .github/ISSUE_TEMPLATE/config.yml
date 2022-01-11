@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Authok Community
+    url: https://community.authok.com/c/sdks/5
+    about: Discuss this SDK in the Authok Community forums
+  - name: Library Documentation
+    url: https://authok.com/docs/libraries/lock/v11
+    about: Read the library docs on Authok.com

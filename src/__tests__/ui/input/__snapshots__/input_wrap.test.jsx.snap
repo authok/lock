@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputWrap renders correctly with the \`after\` prop 1`] = `
+<div
+  className="authok-lock-input-block authok-lock-input-name"
+>
+  <div
+    className="authok-lock-input-wrap"
+  >
+    <span>
+      after
+    </span>
+  </div>
+</div>
+`;

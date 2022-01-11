@@ -1,0 +1,409 @@
+import { Simulate } from 'react-dom/test-utils';
+import Immutable, { Map } from 'immutable';
+import { stub } from 'sinon';
+import AuthokLock from '../../src/index';
+import webApi from '../../src/core/web_api';
+import * as gravatarProvider from '../../src/avatar/gravatar_provider';
+import * as ClientSettings from '../../src/core/client/settings';
+import clientSettings from './client_settings';
+import * as SSOData from '../../src/core/sso/data';
+import ssoData from './sso_data';
+import enDictionary from '../../src/i18n/en';
+import * as i18n from '../../src/i18n';
+import { dataFns } from '../../src/utils/data_utils';
+
+const { set } = dataFns(['i18n']);
+
+// stub, mock and spy
+
+export const stubWebApis = () => {
+  stub(webApi, 'logIn').returns(undefined);
+  stub(webApi, 'signUp').returns(undefined);
+
+  stub(gravatarProvider, 'displayName', (email, cb) => {
+    cb(null, 'someone');
+  });
+  stub(gravatarProvider, 'url', (email, cb) => {
+    cb(null, 'https://www.gravatar.com/avatar/35b47dce0e2c9ced8b500dca20e1a657.png?size=160');
+  });
+  stub(ClientSettings, 'fetchClientSettings', (...args) => {
+    args[args.length - 1](null, clientSettings);
+  });
+  stub(SSOData, 'fetchSSOData', (id, adInfo, cb) => {
+    cb(null, ssoData);
+  });
+  stubGetChallenge();
+  stubI18n();
+};
+
+export const stubI18n = () => {
+  stub(i18n, 'initI18n', m => {
+    return set(m, 'strings', Immutable.fromJS(enDictionary));
+  });
+};
+
+export const stubWebApisForKerberos = () => {
+  SSOData.fetchSSOData.restore();
+  stub(SSOData, 'fetchSSOData', (id, adInfo, cb) => {
+    cb(null, ssoData);
+  });
+};
+export const unStubWebApisForKerberos = () => {
+  SSOData.fetchSSOData.restore();
+  stub(SSOData, 'fetchSSOData', (id, adInfo, cb) => {
+    cb(null, ssoData);
+  });
+};
+
+export const unstubI18n = () => {
+  i18n.initI18n.restore();
+};
+
+export const assertAuthorizeRedirection = cb => {
+  if (webApi.logIn.restore) {
+    webApi.logIn.restore();
+  }
+  stub(webApi, 'logIn', cb);
+};
+
+export const assertSignUp = cb => {
+  if (webApi.signUp.restore) {
+    webApi.signUp.restore();
+  }
+  stub(webApi, 'signUp', cb);
+};
+
+export const restoreWebApis = () => {
+  webApi.logIn.restore();
+  if (webApi.signUp.restore) {
+    webApi.signUp.restore();
+  }
+  webApi.getChallenge.restore();
+  gravatarProvider.displayName.restore();
+  gravatarProvider.url.restore();
+  ClientSettings.fetchClientSettings.restore();
+  SSOData.fetchSSOData.restore();
+  unstubI18n();
+};
+
+// api call checks
+
+export const wasLoginAttemptedWith = params => {
+  const lastCall = webApi.logIn.lastCall;
+  if (!lastCall) return false;
+  const paramsFromLastCall = lastCall.args[1];
+
+  return Map(params).reduce((r, v, k) => r && paramsFromLastCall[k] === v, true);
+};
+
+export const wasSignUpAttemptedWith = params => {
+  const lastCall = webApi.signUp.lastCall;
+  if (!lastCall) return false;
+  const paramsFromLastCall = lastCall.args[1];
+
+  return Map(params).reduce((r, v, k) => r && paramsFromLastCall[k] === v, true);
+};
+
+// rendering
+
+export const displayLock = (name, opts = {}, done = () => {}, show_ops = {}) => {
+  switch (name) {
+    case 'enterprise and corporate':
+      opts.allowedConnections = ['authok.com', 'rolodato.com'];
+      break;
+    case 'single database':
+      opts.allowedConnections = ['db'];
+      break;
+    case 'single enterprise':
+      opts.allowedConnections = ['authok.com'];
+      break;
+    case 'multiple enterprise':
+      opts.allowedConnections = ['authok.com', 'auth10.com'];
+      break;
+    case 'single corporate':
+      opts.allowedConnections = ['rolodato.com'];
+      break;
+    case 'multiple corporate, one without domain':
+      opts.allowedConnections = ['rolodato.com', 'corporate-no-domain'];
+      break;
+    case 'multiple social':
+      opts.allowedConnections = ['facebook', 'twitter', 'github'];
+      break;
+    case 'kerberos':
+      opts.allowedConnections = ['rolodato.com'];
+      break;
+  }
+
+  const lock = new AuthokLock('cid', 'domain', opts);
+  setTimeout(() => lock.show(show_ops), 175);
+  setTimeout(done, 200);
+  return lock;
+};
+
+// queries
+
+export const q = (lock, query, all = false) => {
+  query = `#authok-lock-container-${lock.id} ${query}`;
+  const method = all ? 'querySelectorAll' : 'querySelector';
+  return window.document[method](query);
+};
+
+const qView = (lock, query, all = false) => {
+  // NOTE: When an animation is running, two views will be in the
+  // DOM. Both are siblings, and the one that is entering (that is,
+  // the one that will remain visible) is always the first sibling.
+  const view = q(lock, '.authok-lock-view-content');
+  const method = all ? 'querySelectorAll' : 'querySelector';
+  return view ? view[method](query) : null;
+};
+
+export function qInput(lock, name, ensure = false) {
+  const input = qView(lock, `.authok-lock-input-${name} input`);
+  if (ensure && !input) {
+    throw new Error(`Unable to query the '${name}' input value: can't find the input`);
+  }
+  return input;
+}
+
+const hasFn = query => lock => !!q(lock, query);
+const hasInputFn = (name, str) => lock => {
+  const input = qInput(lock, name);
+  return str ? input.value === str : !!input;
+};
+const hasViewFn = query => lock => !!qView(lock, query);
+const hasOneViewFn = query => lock => qView(lock, query, true).length == 1;
+
+const isTabCurrent = (lock, regexp) => {
+  // TODO: this won't work with translations, we need another
+  // mechanism.
+  const currentTabs = qView(lock, '.authok-lock-tabs-current', true);
+  return currentTabs.length === 1 && currentTabs[0].innerText.match(regexp);
+};
+
+export const hasAlternativeLink = hasViewFn('.authok-lock-alternative-link');
+export const hasBackButton = hasFn('.authok-lock-back-button');
+export const hasEmailInput = hasInputFn('email');
+export const hasLoginSignUpTabs = hasViewFn('.authok-lock-tabs');
+export const hasNoQuickAuthButton = lock => {
+  return !qView(lock, '.authok-lock-socia-button');
+};
+
+const hasFlashMessage = (query, lock, message) => {
+  const message_ele = q(lock, query);
+
+  if (!message_ele) {
+    return false;
+  }
+
+  const span = message_ele.querySelector('span');
+
+  if (!span) {
+    return false;
+  }
+
+  return span.innerText.toLowerCase() === message.toLowerCase();
+};
+export const hasErrorMessage = (lock, message) => {
+  return hasFlashMessage('.authok-global-message-error', lock, message);
+};
+export const hasSuccessMessage = (lock, message) => {
+  return hasFlashMessage('.authok-global-message-success', lock, message);
+};
+export const hasInfoMessage = (lock, message) => {
+  return hasFlashMessage('.authok-global-message-info', lock, message);
+};
+
+export const hasOneSocialButton = hasOneViewFn('.authok-lock-social-button');
+export const hasOneSocialBigButton = hasOneViewFn(
+  '.authok-lock-social-button.authok-lock-social-big-button'
+);
+export const hasPasswordInput = hasInputFn('password');
+export const hasHiddenPasswordInput = lock =>
+  hasFn('.authok-lock-input-block.authok-lock-input-show-password.authok-lock-hidden')(lock) &&
+  hasPasswordInput(lock);
+export const hasTermsCheckbox = hasFn(
+  ".authok-lock-sign-up-terms-agreement label input[type='checkbox']"
+);
+export const hasQuickAuthButton = (lock, icon, domain) => {
+  // TODO: we should actually check that there's just a single button
+  const xs = qView(lock, `.authok-lock-social-button[data-provider^="${icon}"]`, true);
+  return xs.length === 1 && xs[0].innerText.toLowerCase().indexOf(domain) !== -1;
+};
+export const hasSocialButtons = hasViewFn('.authok-lock-social-button');
+export const hasSSONotice = hasViewFn('.authok-sso-notice-container');
+export const hasSubmitButton = hasFn('button.authok-lock-submit[name=submit]');
+export const hasSubmitButtonVisible = lock =>
+  q(lock, 'button.authok-lock-submit[name=submit]', false).style.display === 'block';
+export const hasUsernameInput = hasInputFn('username');
+export const isLoginTabCurrent = lock => isTabCurrent(lock, /log in/i);
+export const isSignUpTabCurrent = lock => isTabCurrent(lock, /sign up/i);
+export const isSubmitButtonDisabled = hasFn('button.authok-lock-submit[disabled]');
+export const haveShownError = (lock, msg) => {
+  const errorElement = q(lock, '.authok-global-message-error span');
+
+  return errorElement.innerText.toLowerCase() === msg.toLowerCase();
+};
+// interactions
+
+const check = (lock, query) => {
+  Simulate.change(q(lock, query), {});
+};
+const click = (lock, query) => {
+  Simulate.click(q(lock, query));
+};
+const checkFn = query => lock => check(lock, query);
+const clickFn = (lock, query) => click(lock, query);
+export const clickTermsCheckbox = checkFn(
+  ".authok-lock-sign-up-terms-agreement label input[type='checkbox']"
+);
+
+export const clickRefreshCaptchaButton = (lock, connection) =>
+  clickFn(lock, `.authok-lock-captcha-refresh`);
+
+export const clickSocialConnectionButton = (lock, connection) =>
+  clickFn(lock, `.authok-lock-social-button[data-provider='${connection}']`);
+const fillInput = (lock, name, str) => {
+  Simulate.change(qInput(lock, name, true), { target: { value: str } });
+};
+const fillInputFn = name => (lock, str) => fillInput(lock, name, str);
+
+export const fillEmailInput = fillInputFn('email');
+export const fillPasswordInput = fillInputFn('password');
+export const fillComplexPassword = lock => fillInputFn('password')(lock, generateComplexPassword());
+export const fillCaptchaInput = fillInputFn('captcha');
+export const fillUsernameInput = fillInputFn('username');
+export const fillMFACodeInput = fillInputFn('mfa_code');
+
+export const submit = lock => {
+  // reset web apis
+  restoreWebApis();
+  stubWebApis();
+
+  submitForm(lock);
+};
+
+export const submitForm = lock => {
+  const form = q(lock, '.authok-lock-widget');
+  if (!form || form.tagName.toUpperCase() !== 'FORM') {
+    throw new Error("Unable to submit form: can't find the element");
+  }
+
+  Simulate.submit(form, {});
+};
+
+export const waitUntilExists = (lock, selector, cb, timeout = 1000) => {
+  const startedAt = Date.now();
+
+  const interval = setInterval(() => {
+    if (Date.now() - startedAt >= timeout) {
+      clearInterval(interval);
+      throw new Error(`Timeout waiting for ${selector} to become available`);
+    }
+
+    const el = q(lock, selector);
+
+    if (el) {
+      clearInterval(interval);
+      cb(null, el);
+    }
+  }, 10);
+};
+
+export const waitUntilInputExists = (lock, name, cb, timeout) =>
+  waitUntilExists(lock, `.authok-lock-input-${name} input`, cb, timeout);
+
+export const waitUntilErrorExists = (lock, cb, timeout) =>
+  waitUntilExists(lock, '.authok-global-message-error span', cb, timeout);
+
+// login
+
+export const waitForEmailAndPasswordInput = (lock, cb, timeout) => {
+  waitUntilInputExists(
+    lock,
+    'email',
+    () => {
+      waitUntilInputExists(lock, 'password', cb, timeout);
+    },
+    timeout
+  );
+};
+
+const loginWaitFn = fn => (lock, cb) => {
+  if (cb) {
+    waitForEmailAndPasswordInput(lock, () => {
+      fn(lock);
+      cb();
+    });
+  } else {
+    fn(lock);
+  }
+};
+
+export const logInWithEmailAndPassword = loginWaitFn(lock => {
+  fillEmailInput(lock, 'someone@example.com');
+  fillPasswordInput(lock, 'mypass');
+  submit(lock);
+});
+
+export const logInWithEmailPasswordAndCaptcha = loginWaitFn(lock => {
+  fillEmailInput(lock, 'someone@example.com');
+  fillPasswordInput(lock, 'mypass');
+  fillCaptchaInput(lock, 'captchaValue');
+  submit(lock);
+});
+
+/**
+ * The mocked connection has password policy "fair". So I need an strong password
+ */
+function generateComplexPassword() {
+  var result = '';
+  var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+-*/=?>~><';
+  var charactersLength = characters.length;
+  for (var i = 0; i < 50; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+}
+
+export const signUpWithEmailAndPassword = loginWaitFn(lock => {
+  fillEmailInput(lock, 'someone@example.com');
+  fillPasswordInput(lock, generateComplexPassword());
+  submit(lock);
+});
+
+export const signUpWithEmailPasswordAndCaptcha = loginWaitFn(lock => {
+  fillEmailInput(lock, 'someone@example.com');
+  fillPasswordInput(lock, generateComplexPassword());
+  fillCaptchaInput(lock, 'captchaValue');
+  submit(lock);
+});
+
+export const logInWithUsernameAndPassword = lock => {
+  fillUsernameInput(lock, 'someone');
+  fillPasswordInput(lock, 'mypass');
+  submit(lock);
+};
+
+// Helps to keep the context of what happened on a test that
+// was executed as part of an async flow, the normal use
+// case is to pass mocha done as the done param.
+export const testAsync = (fn, done) => {
+  try {
+    fn();
+    done();
+  } catch (e) {
+    done(e);
+  }
+};
+
+export const stubGetChallenge = (result = { required: false }) => {
+  if (typeof webApi.getChallenge.restore === 'function') {
+    webApi.getChallenge.restore();
+  }
+  return stub(webApi, 'getChallenge', (lockID, callback) => {
+    if (Array.isArray(result)) {
+      return callback(null, result.shift());
+    }
+    callback(null, result);
+  });
+};
