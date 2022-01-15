@@ -6,7 +6,7 @@ import sync from './sync';
 import * as l from './core/index';
 import { dataFns } from './utils/data_utils';
 const { get, set } = dataFns(['i18n']);
-import enDictionary from './i18n/en';
+import zhDictionary from './i18n/zh';
 import { load, preload } from './utils/cdn_utils';
 
 export function str(m, keyPath, ...args) {
@@ -29,7 +29,7 @@ export function group(m, keyPath) {
 export function initI18n(m) {
   const language = l.ui.language(m);
   const overrides = l.ui.dict(m);
-  const defaultDictionary = Immutable.fromJS(enDictionary);
+  const defaultDictionary = Immutable.fromJS(zhDictionary);
 
   let base = languageDictionaries[language] || Map({});
 
@@ -42,7 +42,7 @@ export function initI18n(m) {
 
         const overrided = Immutable.fromJS(result).mergeDeep(overrides);
 
-        assertLanguage(m, overrided.toJS(), enDictionary);
+        assertLanguage(m, overrided.toJS(), zhDictionary);
 
         return set(m, 'strings', defaultDictionary.mergeDeep(overrided));
       },
@@ -52,7 +52,7 @@ export function initI18n(m) {
       }
     });
   } else {
-    assertLanguage(m, base.toJS(), enDictionary);
+    assertLanguage(m, base.toJS(), zhDictionary);
   }
 
   base = defaultDictionary.mergeDeep(base).mergeDeep(overrides);

@@ -27,7 +27,7 @@ describe('load i18n configuration', () => {
 
     // We need to initialize the state
     var m = Immutable.fromJS({
-      languageBaseUrl: 'https://cdn.authok.com',
+      languageBaseUrl: 'https://cdn.authok.cn',
       ui: {
         disableWarnings: true,
         language: 'es'

@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@authok/authok-js@^9.18.3":
-  version "9.18.3"
-  resolved "https://registry.yarnpkg.com/@authok/authok-js/-/authok-js-9.18.3.tgz#16323f661865ebdbc8995e3bb8a28b01eb995ba2"
-  integrity sha512-0fAPSdij2DFpjw6YSKKPvsnGYCjFIV4b8A9+p0MglGsBSWT36GcZf2i1Tx6NYHUT4EoAtvZSmALGNi6gCZRibg==
+"@authok/authok-js@^9.18.4":
+  version "9.18.4"
+  resolved "https://registry.yarnpkg.com/@authok/authok-js/-/authok-js-9.18.4.tgz#56bcecc30561f521d2a6e49a6c8e23aeb89067fc"
+  integrity sha512-eZtWf0TBAbcmlGeEycQGD/bBq1GIOtBsVwhouiUlhJ+qYzLAFLVMNeduRKPZq68mOVbvlbGLCso50v+bPW0oEg==
   dependencies:
     base64-js "^1.5.1"
     idtoken-verifier "^2.2.2"

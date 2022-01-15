@@ -171,6 +171,7 @@ export function hooks(m) {
 }
 
 function extractUIOptions(id, options) {
+  console.log('extractUIOptionsxx: ', options.language);
   const closable = options.container
     ? false
     : undefined === options.closable
@@ -395,7 +396,7 @@ function extractLanguageBaseUrlOption(opts, domain) {
     return opts.assetsUrl;
   }
 
-  return 'https://cdn.authok.com';
+  return 'https://cdn.authok.cn';
 }
 
 export function render(m) {

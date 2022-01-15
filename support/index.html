@@ -115,6 +115,21 @@
             printLogs();
           });
         });
+
+        instance.on('authenticated', function (authResult) {
+          instance.getUserInfo(authResult.accessToken, function (error, profileResult) {
+            if (error) {
+              // Handle error
+              return;
+            }
+
+            accessToken = authResult.accessToken;
+            profile = profileResult;
+
+            console.log('profile: ', profile, accessToken);
+            // Update DOM
+          });
+        });
       }
       $('#btn-clear-log').on('click', clearLogs);
       $(function () {
@@ -122,17 +137,20 @@
       });
     </script>
     <script>
-      var clientId = '_f8riekVm23IjMsIsqEFjdhKH6i7tilr';
+      var clientId = 'B2b8F5A5yGqkAgSM8i2yotsGeSnurxDJ';
       var domain = 'wsz.cn.authok.cn';
       var defaultOptions = {
+        // language: 'zh',
+        // languageBaseUrl: 'https://localhost:3000',
         mustAcceptTerms: true,
         initialScreen: 'login',
         allowShowPassword: true,
         usernameStyle: 'email',
         signUpFieldsStrictValidation: true,
-        defaultDatabaseConnection: 'acme',
+        defaultDatabaseConnection: 'c1',
         prefill: {
-          email: '1@126.com'
+          email: '12@126.com',
+          password: '123456',
         },
         passwordlessMethod: 'code',
         auth: {
@@ -160,12 +178,12 @@
         hooks: {
           loggingIn: function (context, done) {
             // Currently, context is always null but might be used in the future.
-            console.log('Hello from submitting hook');
+            console.log('hook: 登录成功');
             done();
           },
           signingUp: function (context, done) {
             // Currently, context is always null but might be used in the future.
-            console.log('Hello from signingUp hook');
+            console.log('hook: 注册成功');
             done();
           }
         } /*,
