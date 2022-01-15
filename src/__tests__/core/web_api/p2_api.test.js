@@ -5,7 +5,7 @@ jest.mock('@authok/authok-js');
 const getClient = (options = {}) => {
   const lockId = 'lockId';
   const clientId = 'cid';
-  const domain = 'me.authok.com';
+  const domain = 'me.authok.cn';
   const AuthokAPIClient = require('core/web_api/p2_api').default;
   const client = new AuthokAPIClient(lockId, clientId, domain, options);
   client.client.popup = {
@@ -41,7 +41,7 @@ describe('AuthokAPIClient', () => {
     describe('with overrides', () => {
       it('always uses telemetry set in the `authokClient` query param and inside the ULP', () => {
         const telemetryIn = { name: 'test-sdk', version: '1.0.0', env: { envOverride: true } };
-        setURL(`https://me.authok.com/authorize?authokClient=${btoa(JSON.stringify(telemetryIn))}`);
+        setURL(`https://me.authok.cn/authorize?authokClient=${btoa(JSON.stringify(telemetryIn))}`);
         const options = {
           audience: 'foo',
           redirectUrl: '//localhost:8080/login/callback',
@@ -94,7 +94,7 @@ describe('AuthokAPIClient', () => {
         expect(mock.WebAuth.mock.calls[0][0]._telemetryInfo.env['authok.js']).toBe('a0js.version');
       });
       it('uses different telemetry key when inside the ULP', () => {
-        setURL('https://me.authok.com/');
+        setURL('https://me.authok.cn/');
         getClient();
         const mock = getAuthokClientMock();
         expect(mock.WebAuth.mock.calls[0][0]._telemetryInfo.name).toEqual('lock.js-ulp');
@@ -162,7 +162,7 @@ describe('AuthokAPIClient', () => {
 
     describe('should set authOpt according options', () => {
       it('should set sso:true when inside the universal login page', () => {
-        setURL('https://me.authok.com/');
+        setURL('https://me.authok.cn/');
         const options = {
           sso: true
         };
@@ -170,7 +170,7 @@ describe('AuthokAPIClient', () => {
         expect(client.authOpt.sso).toBe(true);
       });
       it('should set sso:false when inside the universal login page', () => {
-        setURL('https://me.authok.com/');
+        setURL('https://me.authok.cn/');
         const options = {
           sso: false
         };
@@ -178,7 +178,7 @@ describe('AuthokAPIClient', () => {
         expect(client.authOpt.sso).toBe(false);
       });
       it('should set sso:undefined when outside the universal login page', () => {
-        setURL('https://other-url.authok.com/');
+        setURL('https://other-url.authok.cn/');
         const options = {};
         const client = getClient(options);
         expect(client.authOpt.sso).toBe(undefined);

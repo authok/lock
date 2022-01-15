@@ -27,7 +27,7 @@ describe('LastLoginScreen', () => {
 
     jest.mock('core/index', () => ({
       id: () => 'id',
-      domain: () => 'me.authok.com'
+      domain: () => 'me.authok.cn'
     }));
 
     jest.mock('core/sso/index', () => ({
@@ -119,7 +119,7 @@ describe('LastLoginScreen', () => {
     });
   });
   it('calls checkSession in the buttonClickHandler when outside of the universal login page', () => {
-    setURL('https://other-url.authok.com');
+    setURL('https://other-url.authok.cn');
     const Component = getComponent();
     const wrapper = mount(<Component {...defaultProps} />);
     const props = extractPropsFromWrapper(wrapper);
@@ -131,7 +131,7 @@ describe('LastLoginScreen', () => {
     expect(mock.calls[0][2]).toBe('lastUsedUsername');
   });
   it('calls logIn in the buttonClickHandler when inside of the universal login page', () => {
-    setURL('https://me.authok.com');
+    setURL('https://me.authok.cn');
     const Component = getComponent();
     const wrapper = mount(<Component {...defaultProps} />);
     const props = extractPropsFromWrapper(wrapper);

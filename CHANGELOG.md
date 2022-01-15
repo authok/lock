@@ -42,7 +42,7 @@ Please see [the diff](https://github.com/authok/lock/compare/v11.30.5...v11.30.6
 
 **Changed**
 
-[SDK-2708] Use `domain` value for client assets download instead of `cdn.*.authok.com` [\#2029](https://github.com/authok/lock/pull/2029) ([stevehobbsdev](https://github.com/stevehobbsdev))
+[SDK-2708] Use `domain` value for client assets download instead of `cdn.*.authok.cn` [\#2029](https://github.com/authok/lock/pull/2029) ([stevehobbsdev](https://github.com/stevehobbsdev))
 
 **Fixed**
 
@@ -947,7 +947,7 @@ _From this release on, the option to display social connections in small styled 
 
 Lock v11 is designed for embedded login scenarios and **is not supported in centralized login scenarios** (i.e. Hosted Login Pages). You need to keep using Lock v10 in the Hosted Login Page.
 
-We wrote a [Migration Guide](https://authok.com/docs/libraries/lock/v11/migration-guide) to make upgrading your app easy.
+We wrote a [Migration Guide](https://authok.cn/docs/libraries/lock/v11/migration-guide) to make upgrading your app easy.
 
 **Breaking change**
 `lock.getProfile` now expects an access_token as the first parameter. You'll need to update your code to change the parameter sent (v10 expected an id_token).
@@ -1585,7 +1585,7 @@ In lock v10.9 we introduced an issue in authok.js that changed the casing of the
 **Closed issues:**
 
 - v10: KerberosScreen failing on internal Network [\#590](https://github.com/authok/lock/issues/590)
-- Languages not available on cdn.eu.authok.com [\#576](https://github.com/authok/lock/issues/576)
+- Languages not available on cdn.eu.authok.cn [\#576](https://github.com/authok/lock/issues/576)
 - The lock v10 with ionic2 page can not scroll. [\#532](https://github.com/authok/lock/issues/532)
 - Signup terms checkbox overlays password field on small devices. [\#525](https://github.com/authok/lock/issues/525)
 - Lock + Meteor breaks when trying to require & use blueimp-md5 [\#466](https://github.com/authok/lock/issues/466)
@@ -1617,8 +1617,8 @@ In lock v10.9 we introduced an issue in authok.js that changed the casing of the
 
 This version introduces `languageBaseUrl` and `clientBaseUrl` in replacement of `assetsUrl`.
 
-- The application will be fetched from `${clientBaseUrl}/${clientID}.js` and will default to the CDN url including the region (e.g. `https://cdn.eu.authok.com/client`). The region is inferred from the `domain`.
-- The language will be fetched from `${languageBaseUrl}/${lang}.js` and will default to the CDN without the region (e.g. `https://cdn.authok.com/js/lock/${lockVersion}/`).
+- The application will be fetched from `${clientBaseUrl}/${clientID}.js` and will default to the CDN url including the region (e.g. `https://cdn.eu.authok.cn/client`). The region is inferred from the `domain`.
+- The language will be fetched from `${languageBaseUrl}/${lang}.js` and will default to the CDN without the region (e.g. `https://cdn.authok.cn/js/lock/${lockVersion}/`).
 - The new options have priority over `assetsUrl`.
 - If `assetsUrl` is provided, keep the current behavior: fetch application from `${assetsUrl}/client/${clientID}.js` and languages from `{assetsUrl}/js/lock/${lockVersion}/${language}.js`.
 
@@ -1837,4 +1837,4 @@ This version introduces `languageBaseUrl` and `clientBaseUrl` in replacement of 
 
 ## [v10.0.0-beta.1](https://github.com/authok/lock/tree/v10.0.0-beta.1) (2016-03-23)
 
-First preview release, see [https://authok.com/docs/libraries/lock/v10](https://authok.com/docs/libraries/lock/v10) for details.
+First preview release, see [https://authok.cn/docs/libraries/lock/v10](https://authok.cn/docs/libraries/lock/v10) for details.

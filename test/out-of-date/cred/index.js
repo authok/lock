@@ -201,7 +201,7 @@ describe('accessing a human readable full phone number', function() {
 });
 
 const invalidEmail = 'abc';
-const email = 'someone@authok.com';
+const email = 'someone@authok.cn';
 
 describe('setting an email', function() {
   let entity;
@@ -269,7 +269,7 @@ describe('validating an email', function() {
   let entity;
 
   it('success when it contains all of its parts', function() {
-    entity = c.setEmail(emptyEntity, 'someone@authok.com');
+    entity = c.setEmail(emptyEntity, 'someone@authok.cn');
     expect(c.validEmail(entity)).to.be(true);
   });
 
@@ -284,7 +284,7 @@ describe('validating an email', function() {
   });
 
   it('fails when the local part is missing', function() {
-    entity = c.setEmail(emptyEntity, '@authok.com');
+    entity = c.setEmail(emptyEntity, '@authok.cn');
     expect(c.validEmail(entity)).to.be(false);
   });
 

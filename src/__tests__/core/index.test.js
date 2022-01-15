@@ -72,7 +72,7 @@ describe('setup', () => {
       setup(
         'id',
         'clientID',
-        'my-tenant.us.authok.com',
+        'my-tenant.us.authok.cn',
         {},
         'hookRunner',
         'emitEventFn',
@@ -82,7 +82,7 @@ describe('setup', () => {
       expect(mock.calls.length).toBe(1);
 
       const model = mock.calls[0][1].toJS();
-      expect(model.clientBaseUrl).toBe('https://my-tenant.us.authok.com');
+      expect(model.clientBaseUrl).toBe('https://my-tenant.us.authok.cn');
     });
 
     it('should use the clientBaseUrl option if given', () => {
@@ -91,7 +91,7 @@ describe('setup', () => {
       setup(
         'id',
         'clientID',
-        'my-tenant.us.authok.com',
+        'my-tenant.us.authok.cn',
         {
           clientBaseUrl: 'https://client-base-url.example.com',
           configurationBaseUrl: 'https://config-base-url.example.com',
@@ -114,7 +114,7 @@ describe('setup', () => {
       setup(
         'id',
         'clientID',
-        'my-tenant.us.authok.com',
+        'my-tenant.us.authok.cn',
         {
           configurationBaseUrl: 'https://config-base-url.example.com',
           assetsUrl: 'https://assets-url.example.com'
@@ -136,7 +136,7 @@ describe('setup', () => {
       setup(
         'id',
         'clientID',
-        'my-tenant.us.authok.com',
+        'my-tenant.us.authok.cn',
         {
           assetsUrl: 'https://assets-url.example.com'
         },
@@ -153,13 +153,13 @@ describe('setup', () => {
   });
 
   describe('tenantBaseUrl', () => {
-    it('should default to domain URL when using authok.com', () => {
+    it('should default to domain URL when using authok.cn', () => {
       const { mock } = mockInit;
 
       setup(
         'id',
         'clientID',
-        'my-tenant.us.authok.com',
+        'my-tenant.us.authok.cn',
         {
           __useTenantInfo: true
         },
@@ -171,7 +171,7 @@ describe('setup', () => {
       expect(mock.calls.length).toBe(1);
 
       const model = mock.calls[0][1].toJS();
-      expect(model.tenantBaseUrl).toBe('https://my-tenant.us.authok.com/tenants/v1/my-tenant.js');
+      expect(model.tenantBaseUrl).toBe('https://my-tenant.us.authok.cn/tenants/v1/my-tenant.js');
     });
 
     it('should default to domain URL when using a custom domain', () => {

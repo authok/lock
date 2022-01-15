@@ -171,7 +171,6 @@ export function hooks(m) {
 }
 
 function extractUIOptions(id, options) {
-  console.log('extractUIOptionsxx: ', options.language);
   const closable = options.container
     ? false
     : undefined === options.closable
@@ -374,7 +373,7 @@ export function extractTenantBaseUrlOption(opts, domain) {
 
   const domainUrl = 'https://' + domain;
   const hostname = getLocationFromUrl(domainUrl).hostname;
-  const DOT_AUTHOK_DOT_COM = '.authok.com';
+  const DOT_AUTHOK_DOT_COM = '.authok.cn';
 
   // prettier-ignore
   if (endsWith(hostname, DOT_AUTHOK_DOT_COM)) { // lgtm [js/incomplete-url-substring-sanitization]

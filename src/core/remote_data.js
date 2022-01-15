@@ -41,7 +41,7 @@ export function syncRemoteData(m) {
           origin += ':' + location.port;
         }
 
-        const appSettingsUrl = `https://manage.authok.com/#/applications/${l.clientID(m)}/settings`;
+        const appSettingsUrl = `https://manage.authok.cn/#/applications/${l.clientID(m)}/settings`;
 
         l.warn(
           m,

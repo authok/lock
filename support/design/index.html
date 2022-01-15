@@ -332,7 +332,7 @@ body {
  var terms = "By signing up, you agree to our <a href='/terms' target='_new'>terms of service</a> and <a href='/privacy' target='_new'>privacy policy</a>.";
 
  new AuthokLock(cid, domain, {
-   allowedConnections: ["Username-Password-Authentication", "facebook", "twitter", "github", "authok.com", "rolodato"],
+   allowedConnections: ["Username-Password-Authentication", "facebook", "twitter", "github", "authok.cn", "rolodato"],
    auth: { redirect: false, sso: false },
    container: "classic-container",
    languageDictionary: {
@@ -343,7 +343,7 @@ body {
  }).show();
 
  new AuthokLock(cid, domain, {
-   allowedConnections: ["Username-Password-Authentication", "facebook", "twitter", "github", "authok.com", "rolodato"],
+   allowedConnections: ["Username-Password-Authentication", "facebook", "twitter", "github", "authok.cn", "rolodato"],
    auth: { redirect: false, sso: false },
    container: "classic-sign-up-container",
    initialScreen: "signUp",
@@ -354,7 +354,7 @@ body {
  }).show();
 
  new AuthokLock(cid, domain, {
-   allowedConnections: ["Username-Password-Authentication", "facebook", "twitter", "github", "authok.com", "rolodato"],
+   allowedConnections: ["Username-Password-Authentication", "facebook", "twitter", "github", "authok.cn", "rolodato"],
    auth: { redirect: false, sso: false },
    container: "classic-forgot-password-container",
    initialScreen: "forgotPassword",
@@ -366,7 +366,7 @@ body {
 
  new AuthokLock(cid, domain, {
    allowSignUp: false,
-   allowedConnections: ["Username-Password-Authentication", "facebook", "twitter", "github", "authok.com", "rolodato"],
+   allowedConnections: ["Username-Password-Authentication", "facebook", "twitter", "github", "authok.cn", "rolodato"],
    auth: { redirect: false, sso: false },
    container: "classic-no-sign-up-container",
    languageDictionary: {
@@ -377,7 +377,7 @@ body {
 
  new AuthokLock(cid, domain, {
    allowForgotPassword: false,
-   allowedConnections: ["Username-Password-Authentication", "facebook", "twitter", "github", "authok.com", "rolodato"],
+   allowedConnections: ["Username-Password-Authentication", "facebook", "twitter", "github", "authok.cn", "rolodato"],
    auth: { redirect: false, sso: false },
    container: "classic-no-forgot-password-container",
    languageDictionary: {
@@ -389,7 +389,7 @@ body {
  new AuthokLock(cid, domain, {
    allowForgotPassword: false,
    allowSignUp: false,
-   allowedConnections: ["Username-Password-Authentication", "facebook", "twitter", "github", "authok.com", "rolodato"],
+   allowedConnections: ["Username-Password-Authentication", "facebook", "twitter", "github", "authok.cn", "rolodato"],
    auth: { redirect: false, sso: false },
    container: "classic-only-log-in-container",
    languageDictionary: {
@@ -401,7 +401,7 @@ body {
  new AuthokLock(cid, domain, {
    allowForgotPassword: false,
    allowSignUp: false,
-   allowedConnections: ["Username-Password-Authentication", "facebook", "twitter", "github", "fitbit", "authok.com", "rolodato"],
+   allowedConnections: ["Username-Password-Authentication", "facebook", "twitter", "github", "fitbit", "authok.cn", "rolodato"],
    auth: { redirect: false, sso: false },
    container: "classic-small-buttons-container",
    languageDictionary: {
@@ -413,7 +413,7 @@ body {
  new AuthokLock(cid, domain, {
    allowForgotPassword: false,
    allowSignUp: false,
-   allowedConnections: ["Username-Password-Authentication", "facebook", "twitter", "github", "fitbit", "thirtysevensignals", "windowslive", "wordpress", "authok.com", "rolodato"],
+   allowedConnections: ["Username-Password-Authentication", "facebook", "twitter", "github", "fitbit", "thirtysevensignals", "windowslive", "wordpress", "authok.cn", "rolodato"],
    auth: { redirect: false, sso: false },
    container: "classic-two-rows-small-buttons-container",
    languageDictionary: {
@@ -435,7 +435,7 @@ body {
  }).show();
 
  new AuthokLock(cid, domain, {
-   allowedConnections: ["authok.com"],
+   allowedConnections: ["authok.cn"],
    auth: { redirect: false, sso: false },
    container: "single-enterprise-google-container"
  }).show();
@@ -453,7 +453,7 @@ body {
  }).show();
 
  new AuthokLock(cid, domain, {
-   allowedConnections: ["authok.com", "auth10.com"],
+   allowedConnections: ["authok.cn", "auth10.com"],
    auth: { redirect: false, sso: false },
    container: "multiple-enterprise-container"
  }).show();
@@ -560,7 +560,7 @@ body {
  // }).show();
 
  new AuthokLock(cid, domain, {
-       allowedConnections: ["Username-Password-Authentication", "authok.com", "rolodato"],
+       allowedConnections: ["Username-Password-Authentication", "authok.cn", "rolodato"],
      auth: { redirect: true, sso: false },
      container: "custom-sign-up-container",
      initialScreen: "signUp",

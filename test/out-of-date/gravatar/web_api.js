@@ -3,7 +3,7 @@ import { spy, stub } from 'sinon';
 import * as api from '../../src/gravatar/web_api';
 import jsonp from '../../src/utils/jsonp_utils';
 
-const email = 'someone@authok.com';
+const email = 'someone@authok.cn';
 const emailMD5 = 'b91fa14e9ce922cc2fdedb2f84dba3a5';
 const invalidEmail = 'invalidEmail';
 let fail, success;
@@ -88,7 +88,7 @@ describe('fetching image', function() {
 });
 
 describe('fetching profile', function() {
-  const email = 'someone@authok.com';
+  const email = 'someone@authok.cn';
   const emailMD5 = 'b91fa14e9ce922cc2fdedb2f84dba3a5';
   const invalidEmail = 'invalidEmail';
 

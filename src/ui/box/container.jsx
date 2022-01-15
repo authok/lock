@@ -7,15 +7,14 @@ import * as c from '../../field/index';
 import { swap, updateEntity } from '../../store/index';
 
 const badgeSvg = (
-  <svg focusable="false" width="58px" height="21px" viewBox="0 0 462 168">
+  <svg focusable="false" width="21px" height="21px" viewBox="0 0 32 32">
     <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
       <g id="logo-grey-horizontal">
         <g id="Group">
           <g id="LogoBadge" fillOpacity="0.4" fill="#FFFFFF">
-            <path
-              d="M119.555,135.861 L102.705,83.997 L146.813,51.952 L92.291,51.952 L75.44,0.09 L75.435,0.076 L129.965,0.076 L146.82,51.947 L146.821,51.946 L146.835,51.938 C156.623,82.03 146.542,116.256 119.555,135.861 L119.555,135.861 Z M31.321,135.861 L31.307,135.871 L75.426,167.924 L119.555,135.862 L75.44,103.808 L31.321,135.861 L31.321,135.861 Z M4.052,51.939 L4.052,51.939 C-6.252,83.66 5.709,117.272 31.312,135.867 L31.316,135.851 L48.168,83.99 L4.07,51.951 L58.579,51.951 L75.431,0.089 L75.435,0.075 L20.902,0.075 L4.052,51.939 L4.052,51.939 Z"
-              id="Shape"
-            />
+            <path fill="#07C160" d="M16,0,3.86,2.55l-1.44,14a9.39,9.39,0,0,0,3.84,8.58l9.22,6.68a.87.87,0,0,0,1,0l9.22-6.68a9.39,9.39,0,0,0,3.84-8.58l-1.44-14Z"/>
+            <polygon fill="#9CE6BF" points="4.14 2.49 16 24.24 16 11.83 10.65 1.12 4.14 2.49"/>
+            <polygon fill="#FFFFFF" points="21.36 1.12 16 11.83 16 24.24 27.87 2.49 21.36 1.12"/>
           </g>
         </g>
       </g>
@@ -26,7 +25,7 @@ const badgeSvg = (
 const BottomBadge = ({ link }) => (
   <span className="authok-lock-badge-bottom">
     <a href={link} target="_blank" className="authok-lock-badge" rel="noopener noreferrer">
-      Protected with {badgeSvg}
+      {badgeSvg}<b>Authok提供技术支持</b>
     </a>
   </span>
 );
@@ -293,7 +292,7 @@ const isFileProtocol =
 
 export const defaultProps = (Container.defaultProps = {
   autofocus: false,
-  badgeLink: 'https://authok.com/',
+  badgeLink: 'https://authok.cn/',
   contentProps: {},
   disableSubmitButton: false,
   isMobile: false,
@@ -302,7 +301,7 @@ export const defaultProps = (Container.defaultProps = {
   logo: `${
     isFileProtocol ? 'https:' : ''
   }//cdn.auth0.com/styleguide/components/1.0.8/media/logos/img/badge.png`,
-  primaryColor: '#ea5323',
+  primaryColor: 'rgb(82, 196, 26)',
   showBadge: true,
   scrollGlobalMessagesIntoView: true
 });

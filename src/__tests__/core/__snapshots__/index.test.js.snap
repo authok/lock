@@ -55,7 +55,7 @@ Object {
   "hashCleanup": true,
   "hookRunner": "hookRunner",
   "hooks": Object {},
-  "languageBaseUrl": "https://cdn.authok.com",
+  "languageBaseUrl": "https://cdn.authok.cn",
   "prefill": Object {},
   "tenantBaseUrl": "https://domain/info-v1.js",
   "ui": Object {

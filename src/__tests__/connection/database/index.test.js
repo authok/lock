@@ -35,15 +35,15 @@ describe('database/index.js', () => {
     });
 
     describe('for database connection without username required', () => {
-      const model = getModel('user@authok.com', null, false);
+      const model = getModel('user@authok.cn', null, false);
 
       it('should get the email', () => {
-        expect(databaseUsernameValue(model)).toEqual('user@authok.com');
+        expect(databaseUsernameValue(model)).toEqual('user@authok.cn');
       });
     });
 
     describe('for database connection with username required', () => {
-      const model = getModel('user@authok.com', 'user', true);
+      const model = getModel('user@authok.cn', 'user', true);
 
       it('should get the username when `emailFirst` is not set', () => {
         expect(databaseUsernameValue(model)).toEqual('user');
@@ -52,14 +52,14 @@ describe('database/index.js', () => {
         expect(databaseUsernameValue(model, { emailFirst: false })).toEqual('user');
       });
       it('should get the email when `emailFirst` is true', () => {
-        expect(databaseUsernameValue(model, { emailFirst: true })).toEqual('user@authok.com');
+        expect(databaseUsernameValue(model, { emailFirst: true })).toEqual('user@authok.cn');
       });
 
       describe('and only email address is filled in', () => {
-        const model = getModel('user@authok.com', null, true);
+        const model = getModel('user@authok.cn', null, true);
 
         it('should get the email address', () => {
-          expect(databaseUsernameValue(model)).toEqual('user@authok.com');
+          expect(databaseUsernameValue(model)).toEqual('user@authok.cn');
         });
       });
     });

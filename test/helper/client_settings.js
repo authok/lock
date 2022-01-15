@@ -93,9 +93,9 @@ export default {
     {
       connections: [
         {
-          name: 'authok.com',
-          domain: 'authok.com',
-          domain_aliases: ['authok.com'],
+          name: 'authok.cn',
+          domain: 'authok.cn',
+          domain_aliases: ['authok.cn'],
           scope: ['email', 'profile']
         },
         {

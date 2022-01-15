@@ -75,7 +75,7 @@ describe('.magiclink acceptance', function() {
 
       describe('when fixing the email', function() {
         before(function() {
-          u.fillInput(this.lock, 'email', 'someone@authok.com');
+          u.fillInput(this.lock, 'email', 'someone@authok.cn');
         });
 
         it('clears the input error', function() {
@@ -99,7 +99,7 @@ describe('.magiclink acceptance', function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, 'magiclink');
-      u.fillInput(this.lock, 'email', 'someone@authok.com');
+      u.fillInput(this.lock, 'email', 'someone@authok.cn');
       u.submit(this.lock);
     });
 
@@ -115,7 +115,7 @@ describe('.magiclink acceptance', function() {
       const params = {
         authParams: {},
         callbackURL: undefined,
-        email: 'someone@authok.com',
+        email: 'someone@authok.cn',
         forceJSONP: undefined,
         responseType: 'token',
         send: 'link',
@@ -143,7 +143,7 @@ describe('.magiclink acceptance', function() {
 
       it('invokes the provided callback with the entered email', function() {
         expect(this.cb.calledOnce).to.be.ok();
-        expect(this.cb.calledWithExactly(null, 'someone@authok.com')).to.be.ok();
+        expect(this.cb.calledWithExactly(null, 'someone@authok.cn')).to.be.ok();
       });
     });
   });
@@ -152,7 +152,7 @@ describe('.magiclink acceptance', function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, 'magiclink');
-      u.fillInput(this.lock, 'email', 'someone@authok.com');
+      u.fillInput(this.lock, 'email', 'someone@authok.cn');
       u.submit(this.lock);
     });
 
@@ -168,7 +168,7 @@ describe('.magiclink acceptance', function() {
       const params = {
         authParams: {},
         callbackURL: undefined,
-        email: 'someone@authok.com',
+        email: 'someone@authok.cn',
         forceJSONP: undefined,
         responseType: 'token',
         send: 'link',
@@ -212,7 +212,7 @@ describe('.magiclink acceptance', function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, 'magiclink');
-      u.fillInput(this.lock, 'email', 'someone@authok.com');
+      u.fillInput(this.lock, 'email', 'someone@authok.cn');
       u.submit(this.lock);
       u.simulateStartPasswordlessResponse();
       this.cb.reset();
@@ -230,7 +230,7 @@ describe('.magiclink acceptance', function() {
     it('starts the passwordless flow', function() {
       const params = {
         authParams: {},
-        email: 'someone@authok.com',
+        email: 'someone@authok.cn',
         send: 'link',
         responseType: 'token',
         callbackURL: undefined,
@@ -255,7 +255,7 @@ describe('.magiclink acceptance', function() {
 
       it('invokes the provided callback with the entered email', function() {
         expect(this.cb.calledOnce).to.be.ok();
-        expect(this.cb.calledWithExactly(null, 'someone@authok.com')).to.be.ok();
+        expect(this.cb.calledWithExactly(null, 'someone@authok.cn')).to.be.ok();
       });
     });
   });
@@ -264,7 +264,7 @@ describe('.magiclink acceptance', function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, 'magiclink');
-      u.fillInput(this.lock, 'email', 'someone@authok.com');
+      u.fillInput(this.lock, 'email', 'someone@authok.cn');
       u.submit(this.lock);
       u.simulateStartPasswordlessResponse();
       this.cb.reset();
@@ -282,7 +282,7 @@ describe('.magiclink acceptance', function() {
     it('starts the passwordless flow', function() {
       const params = {
         authParams: {},
-        email: 'someone@authok.com',
+        email: 'someone@authok.cn',
         send: 'link',
         responseType: 'token',
         callbackURL: undefined,
@@ -321,7 +321,7 @@ describe('.magiclink acceptance', function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, 'magiclink');
-      u.fillInput(this.lock, 'email', 'someone@authok.com');
+      u.fillInput(this.lock, 'email', 'someone@authok.cn');
       u.submit(this.lock);
       u.simulateStartPasswordlessResponse();
       u.clickResendLink(this.lock);
@@ -341,7 +341,7 @@ describe('.magiclink acceptance', function() {
     it('starts the passwordless flow', function() {
       const params = {
         authParams: {},
-        email: 'someone@authok.com',
+        email: 'someone@authok.cn',
         send: 'link',
         responseType: 'token',
         callbackURL: undefined,
@@ -366,7 +366,7 @@ describe('.magiclink acceptance', function() {
 
       it('invokes the provided callback with the entered email', function() {
         expect(this.cb.calledOnce).to.be.ok();
-        expect(this.cb.calledWithExactly(null, 'someone@authok.com')).to.be.ok();
+        expect(this.cb.calledWithExactly(null, 'someone@authok.cn')).to.be.ok();
       });
     });
   });
@@ -375,7 +375,7 @@ describe('.magiclink acceptance', function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, 'magiclink');
-      u.fillInput(this.lock, 'email', 'someone@authok.com');
+      u.fillInput(this.lock, 'email', 'someone@authok.cn');
       u.submit(this.lock);
       u.simulateStartPasswordlessResponse();
       u.clickResendLink(this.lock);
@@ -395,7 +395,7 @@ describe('.magiclink acceptance', function() {
     it('starts the passwordless flow', function() {
       const params = {
         authParams: {},
-        email: 'someone@authok.com',
+        email: 'someone@authok.cn',
         send: 'link',
         responseType: 'token',
         callbackURL: undefined,

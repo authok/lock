@@ -50,7 +50,7 @@ WebAPI.prototype.getSSOData = function(lockID, withAD, cb) {
       name: "Username-Password-Authentication"
     },
     lastUsedUserID: "authok|5676890e2a64397e7e0d773c",
-    lastUsedUsername: "someone@authok.com",
+    lastUsedUsername: "someone@authok.cn",
     lastUsedClientID: "L9kBZOpEbLizzCGv6N8n9wNfQhbvREw0",
     sessionClients: [
       "L9kBZOpEbLizzCGv6N8n9wNfQhbvREw0"
@@ -146,10 +146,10 @@ ClientSettings.fetchClientSettings = function(clientID, clientBaseUrl, cb) {
       {
         connections: [
           {
-            name: "authok.com",
-            domain: "authok.com",
+            name: "authok.cn",
+            domain: "authok.cn",
             domain_aliases: [
-              "authok.com"
+              "authok.cn"
             ],
             scope: [
               "email",

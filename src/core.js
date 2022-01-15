@@ -118,7 +118,7 @@ export default class Base extends EventEmitter {
           auxiliaryPane: screen.renderAuxiliaryPane(m),
           autofocus: l.ui.autofocus(m),
           backHandler: partialApplyId(screen, 'backHandler'),
-          badgeLink: 'https://authok.com/?utm_source=lock&utm_campaign=badge&utm_medium=widget',
+          badgeLink: 'https://authok.cn/?utm_source=lock&utm_campaign=badge&utm_medium=widget',
           closeHandler: l.ui.closable(m) ? (...args) => closeLock(l.id(m), ...args) : undefined,
           contentComponent: screen.render(),
           contentProps: { i18n: i18nProp, model: m },

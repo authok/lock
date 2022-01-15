@@ -7,9 +7,9 @@ assignees: ''
 ---
 
 <!--
-**Please do not report security vulnerabilities here**. The Responsible Disclosure Program (https://authok.com/whitehat) details the procedure for disclosing security issues.
+**Please do not report security vulnerabilities here**. The Responsible Disclosure Program (https://authok.cn/whitehat) details the procedure for disclosing security issues.
 
-Thank you in advance for helping us to improve this library! Please read through the template below and answer all relevant questions. Your additional work here is greatly appreciated and will help us respond as quickly as possible. For general support or usage questions, use the Authok Community (https://community.authok.com/) or Authok Support (https://support.authok.com/). Finally, to avoid duplicates, please search existing Issues before submitting one here.
+Thank you in advance for helping us to improve this library! Please read through the template below and answer all relevant questions. Your additional work here is greatly appreciated and will help us respond as quickly as possible. For general support or usage questions, use the Authok Community (https://community.authok.cn/) or Authok Support (https://support.authok.cn/). Finally, to avoid duplicates, please search existing Issues before submitting one here.
 
 By submitting an Issue to this repository, you agree to the terms within the Authok Code of Conduct (https://github.com/authok/open-source-template/blob/master/CODE-OF-CONDUCT.md).
 -->

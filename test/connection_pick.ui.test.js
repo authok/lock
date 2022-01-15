@@ -92,7 +92,7 @@ describe('connection pick', function() {
   describe('with enterprise and database connection', function() {
     beforeEach(function(done) {
       const opts = {
-        allowedConnections: ['db', 'authok.com'],
+        allowedConnections: ['db', 'authok.cn'],
         rememberLastLogin: false
       };
 
@@ -106,7 +106,7 @@ describe('connection pick', function() {
     describe('when the email matches the enterprise connection', function() {
       beforeEach(function(done) {
         h.waitForEmailAndPasswordInput(this.lock, () => {
-          h.fillEmailInput(this.lock, 'someone@authok.com');
+          h.fillEmailInput(this.lock, 'someone@authok.cn');
           done();
         });
       });
@@ -114,7 +114,7 @@ describe('connection pick', function() {
       it('logins with the enterprise connection', function() {
         expect(h.hasSSONotice(this.lock)).to.be.ok();
         h.submit(this.lock);
-        expect(h.wasLoginAttemptedWith({ connection: 'authok.com' })).to.be.ok();
+        expect(h.wasLoginAttemptedWith({ connection: 'authok.cn' })).to.be.ok();
       });
     });
 
@@ -133,7 +133,7 @@ describe('connection pick', function() {
   describe('with an enterprise and a corporate connection', function() {
     beforeEach(function(done) {
       const opts = {
-        allowedConnections: ['authok.com', 'rolodato.com'],
+        allowedConnections: ['authok.cn', 'rolodato.com'],
         rememberLastLogin: false
       };
 
@@ -146,13 +146,13 @@ describe('connection pick', function() {
 
     describe('when the email matches the enterprise connection', function() {
       beforeEach(function() {
-        h.fillEmailInput(this.lock, 'someone@authok.com');
+        h.fillEmailInput(this.lock, 'someone@authok.cn');
       });
 
       it('logs in with the enterprise connection', function() {
         expect(h.hasSSONotice(this.lock)).to.be.ok();
         h.submit(this.lock);
-        expect(h.wasLoginAttemptedWith({ connection: 'authok.com' })).to.be.ok();
+        expect(h.wasLoginAttemptedWith({ connection: 'authok.cn' })).to.be.ok();
       });
     });
 

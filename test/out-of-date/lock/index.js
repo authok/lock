@@ -6,7 +6,7 @@ let lock;
 
 const clientID = 'someClientID';
 const lockID = 'someLockID';
-const domain = 'tenant.authok.com';
+const domain = 'tenant.authok.cn';
 
 describe('initializing a lock', function() {
   beforeEach(function() {

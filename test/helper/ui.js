@@ -109,16 +109,16 @@ export const wasSignUpAttemptedWith = params => {
 export const displayLock = (name, opts = {}, done = () => {}, show_ops = {}) => {
   switch (name) {
     case 'enterprise and corporate':
-      opts.allowedConnections = ['authok.com', 'rolodato.com'];
+      opts.allowedConnections = ['authok.cn', 'rolodato.com'];
       break;
     case 'single database':
       opts.allowedConnections = ['db'];
       break;
     case 'single enterprise':
-      opts.allowedConnections = ['authok.com'];
+      opts.allowedConnections = ['authok.cn'];
       break;
     case 'multiple enterprise':
-      opts.allowedConnections = ['authok.com', 'auth10.com'];
+      opts.allowedConnections = ['authok.cn', 'auth10.com'];
       break;
     case 'single corporate':
       opts.allowedConnections = ['rolodato.com'];

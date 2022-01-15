@@ -47,7 +47,7 @@ Object {
   },
   "audience": "foo",
   "clientID": "cid",
-  "domain": "me.authok.com",
+  "domain": "me.authok.cn",
   "leeway": 30,
   "nonce": "nonce",
   "overrides": Object {
@@ -80,7 +80,7 @@ Object {
   },
   "audience": "foo",
   "clientID": "cid",
-  "domain": "me.authok.com",
+  "domain": "me.authok.cn",
   "leeway": 60,
   "nonce": "nonce",
   "overrides": Object {

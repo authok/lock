@@ -360,7 +360,7 @@ export default class Chrome extends React.Component {
               </TransitionGroup>
               <div style={{ position: 'relative' }} ref="screen">
                 <MultisizeSlide
-                  delay={550}
+                  delay={250}
                   onDidAppear={::this.onDidAppear}
                   onDidSlide={::this.onDidSlide}
                   onWillSlide={::this.onWillSlide}

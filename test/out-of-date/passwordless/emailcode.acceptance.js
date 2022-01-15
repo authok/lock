@@ -75,7 +75,7 @@ describe('.emailcode acceptance', function() {
 
       describe('when fixing the email', function() {
         before(function() {
-          u.fillInput(this.lock, 'email', 'someone@authok.com');
+          u.fillInput(this.lock, 'email', 'someone@authok.cn');
         });
 
         it('clears the input error', function() {
@@ -99,7 +99,7 @@ describe('.emailcode acceptance', function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, 'emailcode');
-      u.fillInput(this.lock, 'email', 'someone@authok.com');
+      u.fillInput(this.lock, 'email', 'someone@authok.cn');
       u.submit(this.lock);
     });
 
@@ -115,7 +115,7 @@ describe('.emailcode acceptance', function() {
       const params = {
         authParams: {},
         callbackURL: undefined,
-        email: 'someone@authok.com',
+        email: 'someone@authok.cn',
         forceJSONP: undefined,
         responseType: 'token',
         send: 'code',
@@ -156,7 +156,7 @@ describe('.emailcode acceptance', function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, 'emailcode');
-      u.fillInput(this.lock, 'email', 'someone@authok.com');
+      u.fillInput(this.lock, 'email', 'someone@authok.cn');
       u.submit(this.lock);
     });
 
@@ -172,7 +172,7 @@ describe('.emailcode acceptance', function() {
       const params = {
         authParams: {},
         callbackURL: undefined,
-        email: 'someone@authok.com',
+        email: 'someone@authok.cn',
         forceJSONP: undefined,
         responseType: 'token',
         send: 'code',
@@ -214,7 +214,7 @@ describe('.emailcode acceptance', function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, 'emailcode');
-      u.fillInput(this.lock, 'email', 'someone@authok.com');
+      u.fillInput(this.lock, 'email', 'someone@authok.cn');
       u.submit(this.lock);
       u.simulateStartPasswordlessResponse();
       u.submit(this.lock);
@@ -263,7 +263,7 @@ describe('.emailcode acceptance', function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, 'emailcode');
-      u.fillInput(this.lock, 'email', 'someone@authok.com');
+      u.fillInput(this.lock, 'email', 'someone@authok.cn');
       u.submit(this.lock);
       u.simulateStartPasswordlessResponse();
     });
@@ -287,7 +287,7 @@ describe('.emailcode acceptance', function() {
     });
 
     it('attempts to sign in with the entered cred', function() {
-      expect(u.hasSignedInWith({ email: 'someone@authok.com', passcode: '1234' })).to.be.ok();
+      expect(u.hasSignedInWith({ email: 'someone@authok.cn', passcode: '1234' })).to.be.ok();
     });
 
     describe('when response arrives', function() {
@@ -316,7 +316,7 @@ describe('.emailcode acceptance', function() {
     before(function() {
       this.lock = u.constructLock();
       this.cb = u.openLock(this.lock, 'emailcode');
-      u.fillInput(this.lock, 'email', 'someone@authok.com');
+      u.fillInput(this.lock, 'email', 'someone@authok.cn');
       u.submit(this.lock);
       u.simulateStartPasswordlessResponse();
     });
@@ -340,7 +340,7 @@ describe('.emailcode acceptance', function() {
     });
 
     it('attempts to sign in with the entered cred', function() {
-      expect(u.hasSignedInWith({ email: 'someone@authok.com', passcode: '1234' })).to.be.ok();
+      expect(u.hasSignedInWith({ email: 'someone@authok.cn', passcode: '1234' })).to.be.ok();
     });
 
     describe('when response arrives', function() {

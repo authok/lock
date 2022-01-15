@@ -7,7 +7,7 @@
 
 # Lock
 
-[Authok](https://authok.com) is an authentication broker 同时支持 社交和企业身份提供者, 包含 活动目录(Active Directory), LDAP, Google Apps, 和 Salesforce.
+[Authok](https://authok.cn) is an authentication broker 同时支持 社交和企业身份提供者, 包含 活动目录(Active Directory), LDAP, Google Apps, 和 Salesforce.
 
 ## Table of Contents
 
@@ -56,7 +56,7 @@ If you are targeting mobile audiences, we recommended that you add:
 
 ## 跨域认证(Cross-Origin Authentication)
 
-Lock 采用 **Cross-Origin Authentication**, make sure you understand the considerations you need to take into account by reading the [Cross-Origin Authentication documentation](https://authok.com/docs/cross-origin-authentication).
+Lock 采用 **Cross-Origin Authentication**, make sure you understand the considerations you need to take into account by reading the [Cross-Origin Authentication documentation](https://authok.cn/docs/cross-origin-authentication).
 
 ## API
 
@@ -72,7 +72,7 @@ Lock 采用 **Cross-Origin Authentication**, make sure you understand the consid
 
 ```js
 var clientId = 'YOUR_AUTHOK_APP_CLIENTID';
-var domain = 'YOUR_DOMAIN_AT.authok.com';
+var domain = 'YOUR_DOMAIN_AT.authok.cn';
 var lock = new AuthokLock(clientId, domain);
 var accessToken = null;
 var profile = null;
@@ -94,23 +94,23 @@ lock.on('authenticated', function (authResult) {
 
 ### new AuthokLockPasswordless(clientID, domain, options)
 
-Initializes a new instance of `AuthokLockPasswordless` configured with your application `clientID` and your account's `domain` at [Authok](https://manage.authok.com/). You can find this information in your [application settings](https://manage.authok.com/#/applications).
+Initializes a new instance of `AuthokLockPasswordless` configured with your application `clientID` and your account's `domain` at [Authok](https://manage.authok.cn/). You can find this information in your [application settings](https://manage.authok.cn/#/applications).
 
 - **clientId {String}**: Your application _clientId_ in Authok.
 - **domain {String}**: Your Authok _domain_. Usually _your-account.authok.com_.
 - **options {Object}**: Allows you to customize the dialog's appearance and behavior. See [below](#customization) for the details.
 
-If both SMS and email passwordless connections are enabled [in the dashboard](https://manage.authok.com/#/connections/passwordless), Lock will pick email by default. If you want to conditionally pick email or SMS, use the [`allowedConnections`](#ui-options) option, for example: `allowedConnections: ['sms']`.
+If both SMS and email passwordless connections are enabled [in the dashboard](https://manage.authok.cn/#/connections/passwordless), Lock will pick email by default. If you want to conditionally pick email or SMS, use the [`allowedConnections`](#ui-options) option, for example: `allowedConnections: ['sms']`.
 
 If using an [additional passwordless connection](#additional-passwordless-connections) that has been created through the Management API, you must specify the connection in `allowedConnections` and also enable the `useCustomPasswordlessConnection` flag in the options.
 
-For more information, read our [passwordless docs](https://authok.com/docs/connections/passwordless).
+For more information, read our [passwordless docs](https://authok.cn/docs/connections/passwordless).
 
 #### Example
 
 ```js
 var clientId = 'YOUR_AUTHOK_APP_CLIENTID';
-var domain = 'YOUR_DOMAIN_AT.authok.com';
+var domain = 'YOUR_DOMAIN_AT.authok.cn';
 var lock = new AuthokLockPasswordless(clientId, domain);
 var accessToken = null;
 var profile = null;
@@ -208,7 +208,7 @@ lock.resumeAuth(hash, function (error, authResult) {
 
 Logs out the user.
 
-- **options {Object}**: This is optional and follows the same rules as [this](https://authok.com/docs/libraries/authok-js#logout).
+- **options {Object}**: This is optional and follows the same rules as [this](https://authok.cn/docs/libraries/authok-js#logout).
 
 #### Example
 
@@ -218,7 +218,7 @@ lock.logout({ returnTo: 'https://myapp.com/bye-bye' });
 
 ### checkSession(params, callback)
 
-The checkSession method allows you to acquire a new token from Authok for a user who is already authenticated against the universal login page for your domain. The method accepts any valid OAuth2 parameters that would normally be sent to authorize. In order to use this method, you have to enable Web Origins for your application. For more information, see [Using checkSession to acquire new tokens](https://authok.com/docs/libraries/authok-js#using-checksession-to-acquire-new-tokens).
+The checkSession method allows you to acquire a new token from Authok for a user who is already authenticated against the universal login page for your domain. The method accepts any valid OAuth2 parameters that would normally be sent to authorize. In order to use this method, you have to enable Web Origins for your application. For more information, see [Using checkSession to acquire new tokens](https://authok.cn/docs/libraries/authok-js#using-checksession-to-acquire-new-tokens).
 
 - **params {Object}**: OAuth2 params object to send to Authok's servers.
 - **callback {Function}**: Will be invoked after the response from the server is returned. Has an error (if any) as the first argument and the authentication result as the second one.
@@ -350,7 +350,7 @@ var options = {
 - **forgotPasswordLink {String}**: URL for a page that allows the user to reset her password. When set to a non-empty string, the user will be linked to the provided URL when clicking the _"Don't remember your password?"_ link in the _login screen_.
 - **showTerms {Boolean}**: When set to `true` displays the `languageDictionary.signUpTerms` string. Defaults to `true`.
 - **mustAcceptTerms {Boolean}**: When set to `true` displays a checkbox input along with the terms and conditions that must be checked before signing up. The terms and conditions can be specified via the `languageDictionary` option, see the example below. Defaults to `false`.
-- **prefill {Object}**: Allows you to set the initial value for the _email_ and/or _username_ inputs, e.g. `{prefill: {email: "someone@authok.com", username: "someone"}}`. When omitted no initial value will be provided.
+- **prefill {Object}**: Allows you to set the initial value for the _email_ and/or _username_ inputs, e.g. `{prefill: {email: "someone@authok.cn", username: "someone"}}`. When omitted no initial value will be provided.
 - **signUpLink {String}**: URL for a page that allows the user to sign up. When set to a non-empty string, the user will be linked to the provided URL when clicking the _sign up_ tab in the _login screen_.
 - **usernameStyle {String}**: Determines what will be used to identify the user for a Database connection that has the `requires_username` flag set, otherwise it will be ignored. Possible values are `"username"` and `"email"` and by default both `username` and `email` are allowed.
 - **signUpHideUsernameField {Boolean}**: When set to `true` hides the _username_ input during sign up for a Database connection that has the `requires_username` flag set. Defaults to `false`.
@@ -377,7 +377,7 @@ var options = {
 
 #### Passwordless options
 
-- **passwordlessMethod {String}**: When using `AuthokLockPasswordless` with an email connection, you can use this option to pick between sending a [code](https://authok.com/docs/connections/passwordless/spa-email-code) or a [magic link](https://authok.com/docs/connections/passwordless/spa-email-link) to authenticate the user. Available values for email connections are `code` and `link`. Defaults to `code`. SMS passwordless connections will always use `code`.
+- **passwordlessMethod {String}**: When using `AuthokLockPasswordless` with an email connection, you can use this option to pick between sending a [code](https://authok.cn/docs/connections/passwordless/spa-email-code) or a [magic link](https://authok.cn/docs/connections/passwordless/spa-email-link) to authenticate the user. Available values for email connections are `code` and `link`. Defaults to `code`. SMS passwordless connections will always use `code`.
 - **useCustomPasswordlessConnection {Boolean}**: Enables the use of a custom passwordless connection (see below).
 
 #### Additional passwordless connections
@@ -387,7 +387,7 @@ By default, only two passwordless connections are available: `email` and `sms`. 
 1. Specify the custom connection in the `allowedConnections` option, and
 2. Enable the `useCustomPasswordlessConnection` flag in the options
 
-Users logging in using this connection should then be associated with the correct passwordless connection and this can be verified in [the logs](https://manage.authok.com/#/logs).
+Users logging in using this connection should then be associated with the correct passwordless connection and this can be verified in [the logs](https://manage.authok.cn/#/logs).
 
 **Note:** If you specify more than one connection in `allowedConnections`, the first one will always be used.
 
@@ -449,8 +449,8 @@ new AuthokLock('client ID', 'domain', {
 
 #### Other options
 
-- **configurationBaseUrl {String}**: Overrides application settings base URL. By default it uses Authok's CDN URL when the `domain` has the format `*.authok.com`. Otherwise, it uses the provided `domain`.
-- **languageBaseUrl {String}**: Overrides the language source URL for Authok's provided translations. By default it uses to Authok's CDN URL `https://cdn.authok.com`.
+- **configurationBaseUrl {String}**: Overrides application settings base URL. By default it uses Authok's CDN URL when the `domain` has the format `*.authok.cn`. Otherwise, it uses the provided `domain`.
+- **languageBaseUrl {String}**: Overrides the language source URL for Authok's provided translations. By default it uses to Authok's CDN URL `https://cdn.authok.cn`.
 - **hashCleanup {Boolean}**: When enabled, it will remove the hash part of the callback URL after the user authentication. Defaults to `true`.
 - **connectionResolver {Function}**: When in use, provides an extensibility point to make it possible to choose which connection to use based on the username information. Has `username`, `context`, and `callback` as parameters. The callback expects an object like: `{type: 'database', name: 'connection name'}`. **This only works for database connections.** Keep in mind that this resolver will run in the form's `onSubmit` event, so keep it simple and fast. **This is a beta feature. If you find a bug, please open a GitHub [issue](https://github.com/authok/lock/issues/new).**
 
@@ -459,8 +459,8 @@ var options = {
   connectionResolver: function (username, context, cb) {
     var domain = username.includes('@') && username.split('@')[1];
     if (domain) {
-      // If the username is test@authok.com, the connection used will be the `authok.com` connection.
-      // Make sure you have a database connection with the name `authok.com`.
+      // If the username is test@authok.cn, the connection used will be the `authok.cn` connection.
+      // Make sure you have a database connection with the name `authok.cn`.
       cb({ type: 'database', name: domain });
     } else {
       // Use the default approach to figure it out the connection
@@ -530,7 +530,7 @@ var options = {
 };
 ```
 
-If you want to save the value of the attribute in the root of your profile, use `storage: 'root'`. Only a subset of values can be stored this way. The list of attributes that can be added to your root profile is [here](https://authok.com/docs/api/management/v2#!/Users/patch_users_by_id). By default, every additional sign up field is stored inside the `user_metadata` object.
+If you want to save the value of the attribute in the root of your profile, use `storage: 'root'`. Only a subset of values can be stored this way. The list of attributes that can be added to your root profile is [here](https://authok.cn/docs/api/management/v2#!/Users/patch_users_by_id). By default, every additional sign up field is stored inside the `user_metadata` object.
 
 ```js
 var options = {
@@ -663,7 +663,7 @@ If you decide to use popup mode you can activate it by passing the option `auth:
 
 ```js
 var clientId = 'YOUR_AUTHOK_APP_CLIENTID';
-var domain = 'YOUR_DOMAIN_AT.authok.com';
+var domain = 'YOUR_DOMAIN_AT.authok.cn';
 var options = {
   auth: {
     redirect: false
@@ -674,7 +674,7 @@ var lock = new AuthokLock(clientId, domain, options);
 lock.show();
 ```
 
-More information can be found in [Authok's documentation](https://authok.com/docs/libraries/lock/v11/authentication-modes#popup-mode).
+More information can be found in [Authok's documentation](https://authok.cn/docs/libraries/lock/v11/authentication-modes#popup-mode).
 
 ## Browser Compatibility
 
@@ -682,11 +682,11 @@ We ensure browser compatibility in Chrome, Safari, Firefox and IE >= 10. We curr
 
 ## Issue Reporting
 
-If you have found a bug or if you have a feature request, please report them at this repository issues section. Please do not report security vulnerabilities on the public GitHub issue tracker. The [Responsible Disclosure Program](https://authok.com/whitehat) details the procedure for disclosing security issues.
+If you have found a bug or if you have a feature request, please report them at this repository issues section. Please do not report security vulnerabilities on the public GitHub issue tracker. The [Responsible Disclosure Program](https://authok.cn/whitehat) details the procedure for disclosing security issues.
 
 ## 作者
 
-[Authok](https://authok.com)
+[Authok](https://authok.cn)
 
 ## License
 
