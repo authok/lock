@@ -33,7 +33,7 @@ export default class EmailInput extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    const { invalidHint, isValid, value, disabled, onChange } = this.props;
+    const { invalidHint, placeholder, isValid, value, disabled, onChange } = this.props;
     const { focused } = this.state;
 
     return (
@@ -46,7 +46,7 @@ export default class EmailInput extends React.Component {
   }
 
   render() {
-    const { lockId, invalidHint, isValid, autoComplete, ...props } = this.props;
+    const { lockId, invalidHint, placeholder = 'yours@example.com', isValid, autoComplete, ...props } = this.props;
     const { focused } = this.state;
 
     return (
@@ -64,7 +64,7 @@ export default class EmailInput extends React.Component {
           inputMode="email"
           name="email"
           className="authok-lock-input"
-          placeholder="yours@example.com"
+          placeholder={placeholder}
           autoComplete={autoComplete ? 'on' : 'off'}
           autoCapitalize="off"
           onChange={::this.handleOnChange}

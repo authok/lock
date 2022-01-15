@@ -1,7 +1,7 @@
 import React from 'react';
 import Screen from '../../core/screen';
 import SocialButtonsPane from '../../field/social/social_buttons_pane';
-import LoginPane from '../../connection/database/login_pane';
+import SmsLoginPane from '../../connection/passwordless/sms/sms_login_pane';
 import PaneSeparator from '../../core/pane_separator';
 import {
   databaseConnection,
@@ -33,7 +33,7 @@ function shouldRenderTabs(m) {
     return hasScreen(m, 'signUp');
 }
 
-const LoginComponent = ({ i18n, model }) => {
+const LoginWithSmsComponent = ({ i18n, model }) => {
   const sso = isSSOEnabled(model);
   const onlySocial = hasOnlyClassicConnections(model, 'social');
 
@@ -77,8 +77,8 @@ const LoginComponent = ({ i18n, model }) => {
   const login = (sso ||
     l.hasSomeConnections(model, 'database') ||
     l.hasSomeConnections(model, 'enterprise')) && (
-    <LoginPane
-      emailInputPlaceholder={i18n.str('emailInputPlaceholder')}
+    <SmsLoginPane
+      phoneInputPlaceholder={i18n.str('phoneInputPlaceholder')}
       forgotPasswordAction={i18n.str('forgotPasswordAction')}
       signupAction={i18n.str('signupAction')}
       i18n={i18n}
@@ -87,8 +87,6 @@ const LoginComponent = ({ i18n, model }) => {
       passwordInputPlaceholder={i18n.str('passwordInputPlaceholder')}
       showForgotPasswordLink={showForgotPasswordLink}
       showPassword={showPassword}
-      usernameInputPlaceholder={i18n.str(usernameInputPlaceholderKey)}
-      usernameStyle={usernameStyle}
     />
   );
 
@@ -109,9 +107,9 @@ const LoginComponent = ({ i18n, model }) => {
   );
 };
 
-export default class Login extends Screen {
+export default class LoginWithSms extends Screen {
   constructor() {
-    super('main.login');
+    super('main.login_with_sms');
   }
 
   renderAuxiliaryPane(lock) {
@@ -155,6 +153,6 @@ export default class Login extends Screen {
   }
 
   render() {
-    return LoginComponent;
+    return LoginWithSmsComponent;
   }
 }

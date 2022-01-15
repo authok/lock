@@ -42,6 +42,8 @@ import LastLoginScreen from '../core/sso/last_login_screen';
 import { hasError, isDone, isSuccess } from '../sync';
 import { getFieldValue } from '../field/index';
 import { swap, updateEntity } from '../store/index';
+import { showLoginWithSmsActivity } from '../connection/database/actions';
+import LoginWithSms from './classic/login_with_sms';
 
 export function isSSOEnabled(m, options) {
   return matchesEnterpriseConnection(m, databaseUsernameValue(m, options));
@@ -127,6 +129,7 @@ function createErrorScreen(m, stopError) {
 class Classic {
   static SCREENS = {
     login: Login,
+    loginWithSms: LoginWithSms,
     forgotPassword: ResetPassword,
     signUp: SignUp,
     mfaLogin: MFALoginScreen

@@ -29,7 +29,6 @@ export default class EmailPane extends React.Component {
   render() {
     const { i18n, lock, placeholder, forceInvalidVisibility = false } = this.props;
     const allowAutocomplete = l.ui.allowAutocomplete(lock);
-
     const field = c.getField(lock, 'email');
     const value = field.get('value', '');
     const valid = field.get('valid', true);

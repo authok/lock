@@ -275,12 +275,13 @@ function processScreenOptions(
   opts,
   defaults = {
     allowLogin: true,
+    allowLoginWithSms: true,
     allowSignUp: true,
     allowForgotPassword: true,
     initialScreen: undefined
   }
 ) {
-  let { allowForgotPassword, allowLogin, allowSignUp, initialScreen } = opts;
+  let { allowForgotPassword, allowLogin, allowLoginWithSms, allowSignUp, initialScreen } = opts;
 
   const screens = [];
 
@@ -290,6 +291,14 @@ function processScreenOptions(
     (allowLogin === undefined && defaults.allowLogin)
   ) {
     screens.push('login');
+  }
+
+  if (
+    allowLoginWithSms === true ||
+    (!assertMaybeBoolean(opts, 'allowLoginWithSms') && defaults.allowLoginWithSms) ||
+    (allowLoginWithSms === undefined && defaults.allowLoginWithSms)
+  ) {
+    screens.push('loginWithSms');
   }
 
   if (
@@ -324,6 +333,7 @@ function processScreenOptions(
 export function overrideDatabaseOptions(m, opts) {
   const { initialScreen, screens } = processScreenOptions(opts, {
     allowLogin: availableScreens(m).contains('login'),
+    allowLoginWithSms: availableScreens(m).contains('loginWithSms'),
     allowSignUp: availableScreens(m).contains('signUp'),
     allowForgotPassword: availableScreens(m).contains('forgotPassword'),
     initialScreen: get(m, 'initialScreen')
@@ -378,7 +388,7 @@ export function setScreen(m, name, fields = []) {
 export function getScreen(m) {
   const screen = tget(m, 'screen');
   const initialScreen = getInitialScreen(m);
-  const screens = [screen, initialScreen, 'login', 'signUp', 'forgotPassword', 'mfaLogin'];
+  const screens = [screen, initialScreen, 'login', 'loginWithSms', 'signUp', 'forgotPassword', 'mfaLogin'];
   const availableScreens = screens.filter(x => hasScreen(m, x));
   return availableScreens[0];
 }
