@@ -48,7 +48,7 @@ export default class PhoneNumberPane extends React.Component {
     const header = headerText && <p>{headerText}</p>;
 
     return (
-      <div>
+      <React.Fragment>
         {header}
         <SelectInput
           icon={IconSvg}
@@ -66,7 +66,7 @@ export default class PhoneNumberPane extends React.Component {
           placeholder={placeholder}
           disabled={l.submitting(lock)}
         />
-      </div>
+      </React.Fragment>
     );
   }
 }

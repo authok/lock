@@ -11,53 +11,49 @@ import { databaseUsernameValue } from '../../connection/database/index';
 import { isSSOEnabled } from '../classic';
 import PhoneNumberPane from '../../field/phone-number/phone_number_pane';
 
-export default class SignUpWithSmsPane extends React.Component {
-  render() {
-    const {
-      i18n,
-      model,
-    } = this.props;
+const SignUpWithSmsPane = (props) => {
+  const { i18n, model } = props;
 
-    const sso = isSSOEnabled(model);
+  const sso = isSSOEnabled(model);
     
-    const phonePane = l.hasSomeConnections(model, 'passwordless', 'sms') ? (
-      <PhoneNumberPane
-        instructions={i18n.html('passwordlessSMSInstructions')}
-        lock={model}
-        placeholder={i18n.str('phoneNumberInputPlaceholder')}
-        invalidHint={i18n.str('phoneNumberInputInvalidHint')}
+  const phonePane = l.hasSomeConnections(model, 'passwordless', 'sms') ? (
+    <PhoneNumberPane
+      lock={model}
+      placeholder={i18n.str('phoneNumberInputPlaceholder')}
+      invalidHint={i18n.str('phoneNumberInputInvalidHint')}
+    />
+  ) : null;
+
+  const fields = additionalSignUpFields(model).map(x => (
+      <CustomInput
+        iconUrl={x.get('icon')}
+        key={x.get('name')}
+        model={model}
+        name={x.get('name')}
+        ariaLabel={x.get('ariaLabel')}
+        options={x.get('options')}
+        placeholder={x.get('placeholder')}
+        placeholderHTML={x.get('placeholderHTML')}
+        type={x.get('type')}
+        validator={x.get('validator')}
+        value={x.get('value')}
       />
-    ) : null;;
+    ));
 
-    const fields = additionalSignUpFields(model).map(x => (
-        <CustomInput
-          iconUrl={x.get('icon')}
-          key={x.get('name')}
-          model={model}
-          name={x.get('name')}
-          ariaLabel={x.get('ariaLabel')}
-          options={x.get('options')}
-          placeholder={x.get('placeholder')}
-          placeholderHTML={x.get('placeholderHTML')}
-          type={x.get('type')}
-          validator={x.get('validator')}
-          value={x.get('value')}
-        />
-      ));
+  const captchaPane =
+    l.captcha(model) &&
+    l.captcha(model).get('required') &&
+    (isHRDDomain(model, databaseUsernameValue(model)) || !sso) ? (
+      <CaptchaPane i18n={i18n} lock={model} onReload={() => swapCaptcha(l.id(model), false)} />
+    ) : null;
 
-    const captchaPane =
-      l.captcha(model) &&
-      l.captcha(model).get('required') &&
-      (isHRDDomain(model, databaseUsernameValue(model)) || !sso) ? (
-        <CaptchaPane i18n={i18n} lock={model} onReload={() => swapCaptcha(l.id(model), false)} />
-      ) : null;
-
-    return (
-      <div>
-        {phonePane}
-        {captchaPane}
-        {fields}
-      </div>
-    );
-  }
+  return (
+    <div>
+      {phonePane}
+      {captchaPane}
+      {fields}
+    </div>
+  );
 }
+
+export default SignUpWithSmsPane;
