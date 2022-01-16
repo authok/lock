@@ -14,7 +14,7 @@ import {
 } from '../../connection/database/index';
 import { logIn as databaseLogIn } from '../../connection/database/actions';
 import { renderSignedInConfirmation } from '../../core/signed_in_confirmation';
-import LoginSignUpTabs from '../../connection/database/login_sign_up_tabs';
+import LoginTabs from '../../connection/database/login_tabs';
 import * as l from '../../core/index';
 import { logIn as enterpriseLogIn, startHRD } from '../../connection/enterprise/actions';
 import {
@@ -28,9 +28,9 @@ import * as i18n from '../../i18n';
 
 function shouldRenderTabs(m) {
   if (isSSOEnabled(m)) return false;
-  if (l.hasSomeConnections(m, 'database')) return hasScreen(m, 'signUp');
-  if (l.hasSomeConnections(m, 'social') && hasInitialScreen(m, 'signUp'))
-    return hasScreen(m, 'signUp');
+  if (l.hasSomeConnections(m, 'database')) return hasScreen(m, 'signUpWithEmail') || hasScreen(m, 'signUpWithSms');
+  if (l.hasSomeConnections(m, 'social') && hasInitialScreen(m, 'signUpWithEmail'))
+    return hasScreen(m, 'signUpWithEmail') || hasScreen(m, 'signUpWithSms');
 }
 
 const LoginComponent = ({ i18n, model }) => {
@@ -38,11 +38,11 @@ const LoginComponent = ({ i18n, model }) => {
   const onlySocial = hasOnlyClassicConnections(model, 'social');
 
   const tabs = shouldRenderTabs(model) && (
-    <LoginSignUpTabs
-      key="loginsignup"
+    <LoginTabs
+      key="login"
       lock={model}
       loginLabel={i18n.str('loginLabel')}
-      loginWithSmsLabel={i18n.str('loginWithLabel', i18n.str('phone'))}
+      loginWithSmsLabel={i18n.str('loginWithLabel', i18n.str('phoneNumber'))}
       signUpLink={signUpLink(model)}
       signUpLabel={i18n.str('signUpLabel')}
     />

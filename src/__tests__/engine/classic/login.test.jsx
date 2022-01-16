@@ -5,7 +5,7 @@ import { expectComponent, mockComponent } from 'testUtils';
 jest.mock('core/pane_separator', () => mockComponent('pane_separator'));
 jest.mock('field/social/social_buttons_pane', () => mockComponent('social_buttons_pane'));
 jest.mock('connection/database/login_pane', () => mockComponent('login_pane'));
-jest.mock('connection/database/login_sign_up_tabs', () => mockComponent('login_sign_up_tabs'));
+jest.mock('connection/database/login_tabs', () => mockComponent('login_tabs'));
 jest.mock('connection/enterprise/single_sign_on_notice', () =>
   mockComponent('single_sign_on_notice')
 );
@@ -83,10 +83,10 @@ describe('LoginScreen', () => {
 
     expectComponent(<Component {...defaultProps} />).toMatchSnapshot();
   });
-  describe('renders LoginSignUpTabs', () => {
+  describe('renders LoginTabs', () => {
     it('when database connection is enabled and has screen signUp', () => {
       require('core/index').hasSomeConnections = (m, connection) => connection === 'database';
-      require('connection/database/index').hasScreen = (m, screenName) => screenName === 'signUp';
+      require('connection/database/index').hasScreen = (m, screenName) => screenName === 'signUpWithEmail';
       const Component = getComponent();
 
       expectComponent(<Component {...defaultProps} />).toMatchSnapshot();
@@ -94,7 +94,7 @@ describe('LoginScreen', () => {
     it('when social connection is enabled and has initial screen signUp and has screen signUp', () => {
       require('core/index').hasSomeConnections = (m, connection) => connection === 'database';
       require('connection/database/index').hasInitialScreen = (m, screenName) =>
-        screenName === 'signUp';
+        screenName === 'signUpWithEmail';
       const Component = getComponent();
 
       expectComponent(<Component {...defaultProps} />).toMatchSnapshot();

@@ -5,7 +5,7 @@ import en from '../src/i18n/en';
 const lockOpts = {
   allowedConnections: ['db'],
   rememberLastLogin: false,
-  initialScreen: 'signUp'
+  initialScreen: 'signUpWithEmail'
 };
 
 const svgCaptchaRequiredResponse1 = {

@@ -206,8 +206,8 @@ export function signUpError(id, error) {
     (error.code === 'invalid_password' && invalidPasswordKeys[error.name]) || error.code;
 
   let errorMessage =
-    i18n.html(m, ['error', 'signUp', errorKey]) ||
-    i18n.html(m, ['error', 'signUp', 'lock.fallback']);
+    i18n.html(m, ['error', 'signUpWithEmail', errorKey]) ||
+    i18n.html(m, ['error', 'signUpWithEmail', 'lock.fallback']);
 
   if (error.code === 'hook_error') {
     swap(updateEntity, 'lock', id, l.setSubmitting, false, error.description || errorMessage);
@@ -294,8 +294,12 @@ export function showLoginWithSmsActivity(id, fields = ['password']) {
   swap(updateEntity, 'lock', id, setScreen, 'loginWithSms', fields);
 }
 
-export function showSignUpActivity(id, fields = ['password']) {
-  swap(updateEntity, 'lock', id, setScreen, 'signUp', fields);
+export function showSignUpWithEmailActivity(id, fields = ['password']) {
+  swap(updateEntity, 'lock', id, setScreen, 'signUpWithEmail', fields);
+}
+
+export function showSignUpWithSmsActivity(id, fields = ['phoneNumber']) {
+  swap(updateEntity, 'lock', id, setScreen, 'signUpWithSms', fields);
 }
 
 export function showResetPasswordActivity(id, fields = ['password']) {
@@ -303,6 +307,10 @@ export function showResetPasswordActivity(id, fields = ['password']) {
 }
 
 export function cancelResetPassword(id) {
+  return showLoginActivity(id);
+}
+
+export function cancelSignUp(id) {
   return showLoginActivity(id);
 }
 
@@ -316,4 +324,75 @@ export function toggleTermsAcceptance(id) {
 
 export function showLoginMFAActivity(id, fields = ['mfa_code']) {
   swap(updateEntity, 'lock', id, setScreen, 'mfaLogin', fields);
+}
+
+export function signUpWithSms(id) {
+  const m = read(getEntity, 'lock', id);
+  const fields = ['phoneNumber', 'vcode'];
+
+  additionalSignUpFields(m).forEach(x => fields.push(x.get('name')));
+
+  validateAndSubmit(id, fields, m => {
+    const params = {
+      connection: databaseConnectionName(m),
+      phoneNumber: c.getFieldValue(m, 'phoneNumber'),
+      password: c.getFieldValue(m, 'password'),
+      autoLogin: shouldAutoLogin(m)
+    };
+
+    const isCaptchaValid = setCaptchaParams(m, params, fields);
+    if (!isCaptchaValid) {
+      return showMissingCaptcha(m, id);
+    }
+
+    if (!additionalSignUpFields(m).isEmpty()) {
+      params.user_metadata = {};
+      additionalSignUpFields(m).forEach(x => {
+        const storage = x.get('storage');
+        const fieldName = x.get('name');
+        const fieldValue = c.getFieldValue(m, x.get('name'));
+        switch (storage) {
+          case 'root':
+            params[fieldName] = fieldValue;
+            break;
+          default:
+            if (!params.user_metadata) {
+              params.user_metadata = {};
+            }
+            params.user_metadata[fieldName] = fieldValue;
+            break;
+        }
+      });
+    }
+
+    const errorHandler = (error, popupHandler) => {
+      if (!!popupHandler) {
+        popupHandler._current_popup.kill();
+      }
+
+      const wasInvalidCaptcha = error && error.code === 'invalid_captcha';
+
+      swapCaptcha(id, wasInvalidCaptcha, () => {
+        setTimeout(() => signUpError(id, error), 250);
+      });
+    };
+
+    try {
+      // For now, always pass 'null' for the context as we don't need it yet.
+      // If we need it later, it'll save a breaking change in hooks already in use.
+      const context = null;
+
+      l.runHook(m, 'signingUp', context, () => {
+        webApi.signUp(id, params, (error, result, popupHandler, ...args) => {
+          if (error) {
+            errorHandler(error, popupHandler);
+          } else {
+            signUpSuccess(id, result, popupHandler, ...args);
+          }
+        });
+      });
+    } catch (e) {
+      errorHandler(e);
+    }
+  });
 }

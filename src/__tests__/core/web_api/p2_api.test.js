@@ -388,7 +388,7 @@ describe('AuthokAPIClient', () => {
       });
     });
   });
-  describe('signUp', () => {
+  describe('signUpWithEmail', () => {
     describe('should trim spaces in', () => {
       let client;
       let callback;

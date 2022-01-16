@@ -24,7 +24,7 @@ describe('layout', function() {
         'button.authok-lock-submit',
         () => {
           expect(h.hasBackButton(this.lock)).to.not.be.ok();
-          expect(h.hasLoginSignUpTabs(this.lock)).to.be.ok();
+          expect(h.hasLoginTabs(this.lock)).to.be.ok();
           expect(h.isLoginTabCurrent(this.lock)).to.be.ok();
           expect(h.hasSocialButtons(this.lock)).to.be.ok();
           expect(h.hasEmailInput(this.lock)).to.be.ok();
@@ -42,7 +42,7 @@ describe('layout', function() {
   describe('with all connection types, starting on sign up', function() {
     beforeEach(function(done) {
       const opts = {
-        initialScreen: 'signUp',
+        initialScreen: 'signUpWithEmail',
         rememberLastLogin: false
       };
 
@@ -56,7 +56,7 @@ describe('layout', function() {
     it('renders the sign up screen with the right controls', function() {
       h.waitUntilExists(this.lock, 'button.authok-lock-submit', () => {
         expect(h.hasBackButton(this.lock)).to.not.be.ok();
-        expect(h.hasLoginSignUpTabs(this.lock)).to.be.ok();
+        expect(h.hasLoginTabs(this.lock)).to.be.ok();
         expect(h.isSignUpTabCurrent(this.lock)).to.be.ok();
         expect(h.hasSocialButtons(this.lock)).to.be.ok();
         expect(h.hasEmailInput(this.lock)).to.be.ok();
@@ -84,7 +84,7 @@ describe('layout', function() {
     it('renders the forgot password screen with the right controls', function() {
       h.waitUntilExists(this.lock, 'button.authok-lock-submit', () => {
         expect(h.hasBackButton(this.lock)).to.be.ok();
-        expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
+        expect(h.hasLoginTabs(this.lock)).to.not.be.ok();
         expect(h.hasSocialButtons(this.lock)).to.not.be.ok();
         expect(h.hasEmailInput(this.lock)).to.be.ok();
         expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
@@ -112,7 +112,7 @@ describe('layout', function() {
     it('renders the login screen with the right contols', function() {
       h.waitUntilExists(this.lock, 'button.authok-lock-submit', () => {
         expect(h.hasBackButton(this.lock)).to.not.be.ok();
-        expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
+        expect(h.hasLoginTabs(this.lock)).to.not.be.ok();
         expect(h.hasSocialButtons(this.lock)).to.be.ok();
         expect(h.hasEmailInput(this.lock)).to.be.ok();
         expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
@@ -140,7 +140,7 @@ describe('layout', function() {
     it('renders the login screen with the right contols', function() {
       h.waitUntilExists(this.lock, 'button.authok-lock-submit', () => {
         expect(h.hasBackButton(this.lock)).to.not.be.ok();
-        expect(h.hasLoginSignUpTabs(this.lock)).to.be.ok();
+        expect(h.hasLoginTabs(this.lock)).to.be.ok();
         expect(h.isLoginTabCurrent(this.lock)).to.be.ok();
         expect(h.hasSocialButtons(this.lock)).to.be.ok();
         expect(h.hasEmailInput(this.lock)).to.be.ok();
@@ -170,7 +170,7 @@ describe('layout', function() {
     it('renders the login screen with the right contols', function() {
       h.waitUntilExists(this.lock, 'button.authok-lock-submit', () => {
         expect(h.hasBackButton(this.lock)).to.not.be.ok();
-        expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
+        expect(h.hasLoginTabs(this.lock)).to.not.be.ok();
         expect(h.hasSocialButtons(this.lock)).to.be.ok();
         expect(h.hasEmailInput(this.lock)).to.be.ok();
         expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
@@ -197,7 +197,7 @@ describe('layout', function() {
     it('renders the login screen with the right contols', function() {
       h.waitUntilExists(this.lock, 'button.authok-lock-submit', () => {
         expect(h.hasBackButton(this.lock)).to.not.be.ok();
-        expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
+        expect(h.hasLoginTabs(this.lock)).to.not.be.ok();
         expect(h.hasOneSocialBigButton(this.lock)).to.be.ok();
         expect(h.hasEmailInput(this.lock)).to.not.be.ok();
         expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
@@ -225,7 +225,7 @@ describe('layout', function() {
     it('renders the login screen with the right contols', function() {
       h.waitUntilExists(this.lock, 'button.authok-lock-submit', () => {
         expect(h.hasBackButton(this.lock)).to.not.be.ok();
-        expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
+        expect(h.hasLoginTabs(this.lock)).to.not.be.ok();
         expect(h.hasSocialButtons(this.lock)).to.not.be.ok();
         expect(h.hasEmailInput(this.lock)).to.be.ok();
         expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
@@ -252,7 +252,7 @@ describe('layout', function() {
     it('renders the login screen with the right contols', function() {
       h.waitUntilExists(this.lock, 'button.authok-lock-submit', () => {
         expect(h.hasBackButton(this.lock)).to.not.be.ok();
-        expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
+        expect(h.hasLoginTabs(this.lock)).to.not.be.ok();
         expect(h.hasSocialButtons(this.lock)).to.not.be.ok();
         expect(h.hasEmailInput(this.lock)).to.be.ok();
         expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
@@ -279,7 +279,7 @@ describe('layout', function() {
     it('renders the quick auth screen with the right contols', function() {
       h.waitUntilExists(this.lock, 'button.authok-lock-submit', () => {
         expect(h.hasBackButton(this.lock)).to.not.be.ok();
-        expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
+        expect(h.hasLoginTabs(this.lock)).to.not.be.ok();
         expect(h.hasOneSocialBigButton(this.lock)).to.not.be.ok();
         expect(h.hasEmailInput(this.lock)).to.not.be.ok();
         expect(h.hasUsernameInput(this.lock)).to.be.ok();
@@ -306,7 +306,7 @@ describe('layout', function() {
     it('renders the login screen with the right contols', function() {
       h.waitUntilExists(this.lock, 'button.authok-lock-submit', () => {
         expect(h.hasBackButton(this.lock)).to.not.be.ok();
-        expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
+        expect(h.hasLoginTabs(this.lock)).to.not.be.ok();
         expect(h.hasOneSocialBigButton(this.lock)).to.not.be.ok();
         expect(h.hasEmailInput(this.lock)).to.not.be.ok();
         expect(h.hasUsernameInput(this.lock)).to.be.ok();
@@ -333,7 +333,7 @@ describe('layout', function() {
     it('renders the login screen with the right contols', function() {
       h.waitUntilExists(this.lock, 'button.authok-lock-submit', () => {
         expect(h.hasBackButton(this.lock)).to.not.be.ok();
-        expect(h.hasLoginSignUpTabs(this.lock)).to.be.ok();
+        expect(h.hasLoginTabs(this.lock)).to.be.ok();
         expect(h.isLoginTabCurrent(this.lock)).to.be.ok();
         expect(h.hasSocialButtons(this.lock)).to.not.be.ok();
         expect(h.hasEmailInput(this.lock)).to.be.ok();
@@ -348,7 +348,7 @@ describe('layout', function() {
   describe('with a single database connection, starting on sign up', function() {
     beforeEach(function(done) {
       const opts = {
-        initialScreen: 'signUp',
+        initialScreen: 'signUpWithEmail',
         rememberLastLogin: false
       };
 
@@ -362,7 +362,7 @@ describe('layout', function() {
     it('renders the sign up screen with the right controls', function() {
       h.waitUntilExists(this.lock, 'button.authok-lock-submit', () => {
         expect(h.hasBackButton(this.lock)).to.not.be.ok();
-        expect(h.hasLoginSignUpTabs(this.lock)).to.be.ok();
+        expect(h.hasLoginTabs(this.lock)).to.be.ok();
         expect(h.isSignUpTabCurrent(this.lock)).to.be.ok();
         expect(h.hasSocialButtons(this.lock)).to.not.be.ok();
         expect(h.hasEmailInput(this.lock)).to.be.ok();
@@ -390,7 +390,7 @@ describe('layout', function() {
     it('renders the forgot password screen with the right controls', function() {
       h.waitUntilExists(this.lock, 'button.authok-lock-submit', () => {
         expect(h.hasBackButton(this.lock)).to.be.ok();
-        expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
+        expect(h.hasLoginTabs(this.lock)).to.not.be.ok();
         expect(h.hasSocialButtons(this.lock)).to.not.be.ok();
         expect(h.hasEmailInput(this.lock)).to.be.ok();
         expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
@@ -418,7 +418,7 @@ describe('layout', function() {
     it('renders the login screen with the right contols', function() {
       h.waitUntilExists(this.lock, 'button.authok-lock-submit', () => {
         expect(h.hasBackButton(this.lock)).to.not.be.ok();
-        expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
+        expect(h.hasLoginTabs(this.lock)).to.not.be.ok();
         expect(h.hasSocialButtons(this.lock)).to.not.be.ok();
         expect(h.hasEmailInput(this.lock)).to.be.ok();
         expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
@@ -446,7 +446,7 @@ describe('layout', function() {
     it('renders the login screen with the right contols', function() {
       h.waitUntilExists(this.lock, 'button.authok-lock-submit', () => {
         expect(h.hasBackButton(this.lock)).to.not.be.ok();
-        expect(h.hasLoginSignUpTabs(this.lock)).to.be.ok();
+        expect(h.hasLoginTabs(this.lock)).to.be.ok();
         expect(h.isLoginTabCurrent(this.lock)).to.be.ok();
         expect(h.hasSocialButtons(this.lock)).to.not.be.ok();
         expect(h.hasEmailInput(this.lock)).to.be.ok();
@@ -476,7 +476,7 @@ describe('layout', function() {
     it('renders the login screen with the right contols', function() {
       h.waitUntilExists(this.lock, 'button.authok-lock-submit', () => {
         expect(h.hasBackButton(this.lock)).to.not.be.ok();
-        expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
+        expect(h.hasLoginTabs(this.lock)).to.not.be.ok();
         expect(h.hasSocialButtons(this.lock)).to.not.be.ok();
         expect(h.hasEmailInput(this.lock)).to.be.ok();
         expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
@@ -501,7 +501,7 @@ describe('layout', function() {
     it('renders the quick auth screen with the right contols', function() {
       h.waitUntilExists(this.lock, 'button.authok-lock-submit', () => {
         expect(h.hasBackButton(this.lock)).to.not.be.ok();
-        expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
+        expect(h.hasLoginTabs(this.lock)).to.not.be.ok();
         expect(h.hasOneSocialBigButton(this.lock)).to.be.ok();
         expect(h.hasEmailInput(this.lock)).to.not.be.ok();
         expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
@@ -531,7 +531,7 @@ describe('layout', function() {
     it('renders the quick auth screen with the right contols', function() {
       h.waitUntilExists(this.lock, 'button.authok-lock-submit', () => {
         expect(h.hasBackButton(this.lock)).to.not.be.ok();
-        expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
+        expect(h.hasLoginTabs(this.lock)).to.not.be.ok();
         expect(h.hasOneSocialBigButton(this.lock)).to.not.be.ok();
         expect(h.hasEmailInput(this.lock)).to.not.be.ok();
         expect(h.hasUsernameInput(this.lock)).to.be.ok();
@@ -560,7 +560,7 @@ describe('layout', function() {
     it('renders the login screen with the right contols', function() {
       h.waitUntilExists(this.lock, 'button.authok-lock-submit', () => {
         expect(h.hasBackButton(this.lock)).to.not.be.ok();
-        expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
+        expect(h.hasLoginTabs(this.lock)).to.not.be.ok();
         expect(h.hasSocialButtons(this.lock)).to.be.ok();
         expect(h.hasEmailInput(this.lock)).to.not.be.ok();
         expect(h.hasUsernameInput(this.lock)).to.not.be.ok();

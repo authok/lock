@@ -1,6 +1,6 @@
 import Base from '../index';
 import Login from './classic/login';
-import SignUp from './classic/sign_up_screen';
+import SignUpEmail from './classic/sign_up_email_screen';
 import MFALoginScreen from './classic/mfa_login_screen';
 import ResetPassword from '../connection/database/reset_password';
 import { renderSSOScreens } from '../core/sso/index';
@@ -30,6 +30,7 @@ import {
 import { defaultDirectory, defaultDirectoryName } from '../core/tenant';
 import { setEmail } from '../field/email';
 import { setUsername } from '../field/username';
+import { setPhoneNumber } from '../field/phone_number';
 import * as l from '../core/index';
 import KerberosScreen from '../connection/enterprise/kerberos_screen';
 import HRDScreen from '../connection/enterprise/hrd_screen';
@@ -44,6 +45,11 @@ import { getFieldValue } from '../field/index';
 import { swap, updateEntity } from '../store/index';
 import { showLoginWithSmsActivity } from '../connection/database/actions';
 import LoginWithSms from './classic/login_with_sms';
+import {
+  initPasswordless,
+} from '../connection/passwordless/index';
+import SignUpSms from './classic/sign_up_sms_screen';
+
 
 export function isSSOEnabled(m, options) {
   return matchesEnterpriseConnection(m, databaseUsernameValue(m, options));
@@ -78,7 +84,7 @@ function validateAllowedConnections(m) {
     );
     error.code = 'unavailable_initial_screen';
     m = l.stop(m, error);
-  } else if (!anyDBConnection && !anySocialConnection && hasInitialScreen(m, 'signUp')) {
+  } else if (!anyDBConnection && !anySocialConnection && hasInitialScreen(m, 'signUpWithEmail')) {
     const error = new Error(
       'The `initialScreen` option was set to "signUp" but no database or social connection is available.'
     );
@@ -115,6 +121,7 @@ const setPrefill = m => {
   const { email, username } = l.prefill(m).toJS();
   if (typeof email === 'string') m = setEmail(m, email);
   if (typeof username === 'string') m = setUsername(m, username, 'username', false);
+  if (typeof phoneNumber === 'string') m = setPhoneNumber(m, phoneNumber);
   return m;
 };
 
@@ -131,13 +138,15 @@ class Classic {
     login: Login,
     loginWithSms: LoginWithSms,
     forgotPassword: ResetPassword,
-    signUp: SignUp,
+    signUpWithEmail: SignUpEmail,
+    signUpWithSms: SignUpSms,
     mfaLogin: MFALoginScreen
   };
 
   didInitialize(model, options) {
     model = initDatabase(model, options);
     model = initEnterprise(model, options);
+    model = initPasswordless(model, options);
 
     return model;
   }
@@ -198,7 +207,11 @@ class Classic {
       }
     }
 
-    if (!hasScreen(m, 'login') && !hasScreen(m, 'signUp') && !hasScreen(m, 'forgotPassword')) {
+    if (!hasScreen(m, 'login') 
+      && !hasScreen(m, 'loginWithSms')
+      && !hasScreen(m, 'signUpWithEmail') 
+      && !hasScreen(m, 'signUpSms')
+      && !hasScreen(m, 'forgotPassword')) {
       const errorMessage =
         'No available Screen. You have to allow at least one of those screens: `login`, `signUp`or `forgotPassword`.';
       const noAvailableScreenError = new Error(errorMessage);

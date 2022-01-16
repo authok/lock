@@ -183,7 +183,7 @@ const isTabCurrent = (lock, regexp) => {
 export const hasAlternativeLink = hasViewFn('.authok-lock-alternative-link');
 export const hasBackButton = hasFn('.authok-lock-back-button');
 export const hasEmailInput = hasInputFn('email');
-export const hasLoginSignUpTabs = hasViewFn('.authok-lock-tabs');
+export const hasLoginTabs = hasViewFn('.authok-lock-tabs');
 export const hasNoQuickAuthButton = lock => {
   return !qView(lock, '.authok-lock-socia-button');
 };

@@ -54,7 +54,8 @@ export default {
     magicLink: '已向您发送链接<br/>到 %s 登录',
     signUp: '感谢您的注册。'
   },
-  phone: '手机',
+  
+  phoneNumber: '手机号',
   blankErrorHint: '',
   blankPasswordErrorHint: '不能为空',
   blankEmailErrorHint: '不能为空',
@@ -111,6 +112,8 @@ export default {
   signUpLabel: '注册',
   signUpSubmitLabel: '注册',
   signUpTerms: '注册即表示您同意我们的服务条款和隐私政策。',
+  signUpWithSms: '手机号',
+  signUpWithEmail: '邮箱',
   signUpWithLabel: '通过 %s 注册',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',

@@ -79,7 +79,7 @@ describe('executing public hooks', () => {
       it('should run the signingUp hook', function(done) {
         const options = {
           rememberLastLogin: false,
-          initialScreen: 'signUp',
+          initialScreen: 'signUpWithEmail',
           hooks: {
             signingUp: function() {
               done();
@@ -98,7 +98,7 @@ describe('executing public hooks', () => {
       it('should display the custom error on exception', function(done) {
         const options = {
           rememberLastLogin: false,
-          initialScreen: 'signUp',
+          initialScreen: 'signUpWithEmail',
           hooks: {
             signingUp: function() {
               throw { code: 'hook_error', description: 'This is a custom error' };
@@ -124,7 +124,7 @@ describe('executing public hooks', () => {
       it('should display the fallback error on exception', function(done) {
         const options = {
           rememberLastLogin: false,
-          initialScreen: 'signUp',
+          initialScreen: 'signUpWithEmail',
           hooks: {
             signingUp: function() {
               throw 'Should not run this';

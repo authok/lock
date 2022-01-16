@@ -8,7 +8,7 @@ describe('sign up terms agreement', function() {
   describe('without a mustAcceptTerms opt', function() {
     beforeEach(function(done) {
       const opts = {
-        initialScreen: 'signUp',
+        initialScreen: 'signUpWithEmail',
         rememberLastLogin: false
       };
 
@@ -29,7 +29,7 @@ describe('sign up terms agreement', function() {
   describe('with a mustAcceptTerms opt', function() {
     beforeEach(function(done) {
       const opts = {
-        initialScreen: 'signUp',
+        initialScreen: 'signUpWithEmail',
         mustAcceptTerms: true,
         rememberLastLogin: false
       };

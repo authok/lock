@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import EmailPane from '../../../field/email/email_pane';
 import PasswordPane from '../../../field/password/password_pane';
-import { showResetPasswordActivity, showSignUpActivity } from '../actions';
+import { showResetPasswordActivity, showSignUpWithSmsActivity } from '../../database/actions';
 import { swapCaptcha } from '../../captcha';
 import { hasScreen, forgotPasswordLink, signUpLink } from '../../database/index';
 import * as l from '../../../core/index';
@@ -19,7 +19,7 @@ export default class SmsLoginPane extends React.Component {
 
   handleSignupClick = e => {
     e.preventDefault();
-    showSignUpActivity(l.id(this.props.lock));
+    showSignUpWithSmsActivity(l.id(this.props.lock));
   };
 
   render() {

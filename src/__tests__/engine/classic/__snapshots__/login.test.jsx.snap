@@ -80,10 +80,10 @@ exports[`LoginScreen renders LoginPane when has enterprise connection 1`] = `
 </div>
 `;
 
-exports[`LoginScreen renders LoginSignUpTabs when database connection is enabled and has screen signUp 1`] = `
+exports[`LoginScreen renders LoginTabs when database connection is enabled and has screen signUp 1`] = `
 <div>
   <div
-    data-__type="login_sign_up_tabs"
+    data-__type="login_tabs"
     data-lock="model"
     data-loginLabel="loginLabel"
     data-signUpLabel="signUpLabel"
@@ -112,7 +112,7 @@ exports[`LoginScreen renders LoginSignUpTabs when database connection is enabled
 </div>
 `;
 
-exports[`LoginScreen renders LoginSignUpTabs when social connection is enabled and has initial screen signUp and has screen signUp 1`] = `
+exports[`LoginScreen renders LoginTabs when social connection is enabled and has initial screen signUp and has screen signUp 1`] = `
 <div>
   <div>
     <div

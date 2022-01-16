@@ -18,7 +18,7 @@ export default class SignedUpConfirmation extends React.Component {
 
     return (
       <SuccessPane lock={lock} closeHandler={closeHandler}>
-        <p>{i18n.html(lock, ['success', 'signUp'])}</p>
+        <p>{i18n.html(lock, ['success', 'signUpWithEmail'])}</p>
       </SuccessPane>
     );
   }
@@ -34,5 +34,5 @@ export function renderSignedUpConfirmation(m, props = {}) {
   props.key = 'auxiliarypane';
   props.lock = m;
 
-  return m.get('signedUp') && !shouldAutoLogin(m) ? <SignedUpConfirmation {...props} /> : null;
+  return m.get('signedUpWithEmail') && !shouldAutoLogin(m) ? <SignedUpConfirmation {...props} /> : null;
 }

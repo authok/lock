@@ -149,7 +149,7 @@ describe('mfa ro', function() {
     describe('when mfa enrollment is required', function() {
       beforeEach(function(done) {
         const opts = {
-          initialScreen: 'signUp',
+          initialScreen: 'signUpWithEmail',
           rememberLastLogin: false
         };
 
@@ -158,7 +158,7 @@ describe('mfa ro', function() {
 
         webApi.logIn.yields(error);
         webApi.signUp.restore();
-        stub(webApi, 'signUp').yields();
+        stub(webApi, 'signUpWithEmail').yields();
 
         this.lock = h.displayLock('single database', opts, done);
       });

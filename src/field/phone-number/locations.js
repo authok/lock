@@ -43,7 +43,7 @@ export default [
   ['Central African Republic', 'CF', '+236'],
   ['Chad', 'TD', '+235'],
   ['Chile', 'CL', '+56'],
-  ['China', 'CN', '+86'],
+  ['中国', 'CN', '+86'],
   ['Christmas Island', 'CX', '+61'],
   ['Cocos (Keeling) Islands', 'CC', '+61'],
   ['Colombia', 'CO', '+57'],

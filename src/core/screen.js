@@ -26,7 +26,7 @@ export default class Screen {
 
     // if signup and login is enabled, both are the first screen in this scenario and
     // neither of them should show the title
-    if (currentScreenName === 'signUp' && hasScreen(m, 'login')) {
+    if (currentScreenName === 'signUpWithEmail' && hasScreen(m, 'login')) {
       return true;
     }
 

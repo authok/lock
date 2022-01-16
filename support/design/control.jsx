@@ -101,7 +101,7 @@ export default class Control extends React.Component {
   }
 
   handleSignUpResponseChange(value) {
-    store.swap(state => state.setIn(['signUp', 'response'], value));
+    store.swap(state => state.setIn(['signUpWithEmail', 'response'], value));
   }
 
   handleLatencyChange(e) {

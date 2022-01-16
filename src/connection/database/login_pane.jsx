@@ -3,7 +3,7 @@ import React from 'react';
 import EmailPane from '../../field/email/email_pane';
 import UsernamePane from '../../field/username/username_pane';
 import PasswordPane from '../../field/password/password_pane';
-import { showResetPasswordActivity, showSignUpActivity } from './actions';
+import { showResetPasswordActivity, showSignUpWithSmsActivity } from './actions';
 import { swapCaptcha } from '../captcha';
 import { hasScreen, forgotPasswordLink, signUpLink } from './index';
 import * as l from '../../core/index';
@@ -20,7 +20,7 @@ export default class LoginPane extends React.Component {
 
   handleSignupClick = e => {
     e.preventDefault();
-    showSignUpActivity(l.id(this.props.lock));
+    showSignUpWithSmsActivity(l.id(this.props.lock));
   };
 
   render() {

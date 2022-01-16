@@ -7,7 +7,7 @@ jest.mock('engine/classic/sign_up_pane', () => mockComponent('sign_up_pane'));
 jest.mock('core/pane_separator', () => mockComponent('pane_separator'));
 jest.mock('connection/database/sign_up_terms', () => mockComponent('sign_up_terms'));
 jest.mock('field/social/social_buttons_pane', () => mockComponent('social_buttons_pane'));
-jest.mock('connection/database/login_sign_up_tabs', () => mockComponent('login_sign_up_tabs'));
+jest.mock('connection/database/login_tabs', () => mockComponent('login_tabs'));
 jest.mock('connection/enterprise/single_sign_on_notice', () =>
   mockComponent('single_sign_on_notice')
 );
@@ -107,7 +107,7 @@ describe('SignUpScreen', () => {
 
     expectComponent(<Component {...defaultProps} />).toMatchSnapshot();
   });
-  it('renders LoginSignUpTabs SSO is disabled and has screen login', () => {
+  it('renders LoginTabs SSO is disabled and has screen login', () => {
     require('connection/database/index').hasScreen = (m, screenName) => screenName === 'login';
     const Component = getComponent();
 

@@ -9,12 +9,11 @@ import {
   databaseUsernameValue,
   defaultDatabaseConnection,
   hasInitialScreen,
-  hasScreen,
   signUpLink
 } from '../../connection/database/index';
 import { logIn as databaseLogIn } from '../../connection/database/actions';
 import { renderSignedInConfirmation } from '../../core/signed_in_confirmation';
-import LoginSignUpTabs from '../../connection/database/login_sign_up_tabs';
+import LoginTabs from '../../connection/database/login_tabs';
 import * as l from '../../core/index';
 import { logIn as enterpriseLogIn, startHRD } from '../../connection/enterprise/actions';
 import {
@@ -28,9 +27,9 @@ import * as i18n from '../../i18n';
 
 function shouldRenderTabs(m) {
   if (isSSOEnabled(m)) return false;
-  if (l.hasSomeConnections(m, 'database')) return hasScreen(m, 'signUp');
-  if (l.hasSomeConnections(m, 'social') && hasInitialScreen(m, 'signUp'))
-    return hasScreen(m, 'signUp');
+  if (l.hasSomeConnections(m, 'database')) return true;
+  if (l.hasSomeConnections(m, 'social') && hasInitialScreen(m, 'signUpWithEmail'))
+    return true;
 }
 
 const LoginWithSmsComponent = ({ i18n, model }) => {
@@ -38,11 +37,11 @@ const LoginWithSmsComponent = ({ i18n, model }) => {
   const onlySocial = hasOnlyClassicConnections(model, 'social');
 
   const tabs = shouldRenderTabs(model) && (
-    <LoginSignUpTabs
+    <LoginTabs
       key="loginsignup"
       lock={model}
       loginLabel={i18n.str('loginLabel')}
-      loginWithSmsLabel={i18n.str('loginWithLabel', i18n.str('phone'))}
+      loginWithSmsLabel={i18n.str('loginWithLabel', i18n.str('phoneNumber'))}
       signUpLink={signUpLink(model)}
       signUpLabel={i18n.str('signUpLabel')}
     />
@@ -66,13 +65,6 @@ const LoginWithSmsComponent = ({ i18n, model }) => {
   const loginInstructionsKey = social
     ? 'databaseEnterpriseAlternativeLoginInstructions'
     : 'databaseEnterpriseLoginInstructions';
-
-  const usernameInputPlaceholderKey =
-    databaseUsernameStyle(model) === 'any' || l.countConnections(model, 'enterprise') > 1
-      ? 'usernameOrEmailInputPlaceholder'
-      : 'usernameInputPlaceholder';
-
-  const usernameStyle = databaseUsernameStyle(model);
 
   const login = (sso ||
     l.hasSomeConnections(model, 'database') ||
