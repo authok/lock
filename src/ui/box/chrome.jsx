@@ -104,7 +104,6 @@ class SubmitButton extends React.Component {
     const content = label ? (
       <span className="authok-label-submit">
         {label}
-        <SubmitTextSvg />
       </span>
     ) : (
       <SubmitSvg />
@@ -113,7 +112,7 @@ class SubmitButton extends React.Component {
     return (
       <button
         id={`${l.id(model)}-submit`}
-        className="authok-lock-submit"
+        className="btn btn-primary"
         disabled={disabled}
         style={{ backgroundColor: color, display }}
         onClick={::this.handleSubmit}
@@ -256,6 +255,8 @@ export default class Chrome extends React.Component {
       backHandler,
       contentComponent,
       contentProps,
+      extraComponent,
+      extraProps,
       disableSubmitButton,
       error,
       info,
@@ -322,6 +323,8 @@ export default class Chrome extends React.Component {
 
     const Content = contentComponent;
     const isQuiet = !moving && !delayingShowSubmitButton;
+
+    const Extra = extraComponent;
 
     const className = classnames('authok-lock-cred-pane', {
       'authok-lock-quiet': isQuiet,
@@ -392,16 +395,17 @@ export default class Chrome extends React.Component {
             causing the page to send a POST request to `window.location.href`
             with all the form data.
          */}
-
-          <SubmitButton
-            color={primaryColor}
-            disabled={disableSubmitButton}
-            screenName={screenName}
-            contentProps={contentProps}
-            label={submitButtonLabel}
-            ref={el => (this.submitButton = el)}
-            display={shouldShowSubmitButton ? 'block' : 'none'}
-          />
+          <div className="authok-lock-submit-wrapper">
+            <SubmitButton
+              color={primaryColor}
+              disabled={disableSubmitButton}
+              screenName={screenName}
+              contentProps={contentProps}
+              label={submitButtonLabel}
+              ref={el => (this.submitButton = el)}
+              display={shouldShowSubmitButton ? 'block' : 'none'}
+           />
+          </div>
           {auxiliaryPane && (
             <TransitionGroup>
               <CSSTransition
@@ -413,6 +417,9 @@ export default class Chrome extends React.Component {
               </CSSTransition>
             </TransitionGroup>
           )}
+          <div className="authok-lock-extra">
+            { Extra && <Extra {...extraProps} /> }
+          </div>
         </div>
       </div>
     );
@@ -438,6 +445,8 @@ Chrome.propTypes = {
   backHandler: PropTypes.func,
   contentComponent: PropTypes.func.isRequired, // TODO: it also can be a class component
   contentProps: PropTypes.object.isRequired,
+  extraComponent: PropTypes.func,
+  extraProps: PropTypes.object,
   disableSubmitButton: PropTypes.bool.isRequired,
   error: PropTypes.node,
   info: PropTypes.node,

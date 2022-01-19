@@ -7,9 +7,9 @@
 
 # Lock
 
-[Authok](https://authok.cn) is an authentication broker 同时支持 社交和企业身份提供者, 包含 活动目录(Active Directory), LDAP, Google Apps, 和 Salesforce.
+[Authok](https://authok.cn) 是一个身份验证代理, 同时支持 社交和企业身份提供者, 包含 活动目录(Active Directory), LDAP, Google Apps, 和 Salesforce.
 
-## Table of Contents
+## 目录
 
 1. [安装](#install)
 2. [跨域认证](#cross-origin-authentication)
@@ -17,7 +17,7 @@
 4. [浏览器兼容性](#browser-compatibility)
 5. [问题报告](#issue-reporting)
 6. [作者](#author)
-7. [License](#license)
+7. [许可](#license)
 
 ## 安装
 
@@ -169,11 +169,11 @@ Lock will emit events during its lifecycle.
 
 ### show(options)
 
-Displays the widget, allowing you to override some options.
+显示控件, 可以覆盖一些选项.
 
-- **options {Object}**: Allows you to customize some aspect of the dialog's appearance and behavior. The options allowed in here are a subset of the options allowed in the constructor and will override them: `allowedConnections`, `auth.params`, `allowLogin`, `allowSignUp`, `allowForgotPassword`, `initialScreen`, `rememberLastLogin`, `flashMessage` and `languageDictionary`. See [below](#customization) for the details. Keep in mind that `auth.params` will be fully replaced and not merged.
+- **options {Object}**: 可以自定义对话框的一些显示和行为. 这里可覆盖选项为构造函数选项的子集，包括: `allowedConnections`, `auth.params`, `allowLogin`, `allowSignUp`, `allowForgotPassword`, `initialScreen`, `rememberLastLogin`, `flashMessage` and `languageDictionary`. See [below](#customization) for the details. `auth.params` 会被全替换，不会被合并.
 
-#### Example
+#### 例子
 
 ```js
 // without options
@@ -206,11 +206,11 @@ lock.resumeAuth(hash, function (error, authResult) {
 
 ### logout(options)
 
-Logs out the user.
+退登用户.
 
-- **options {Object}**: This is optional and follows the same rules as [this](https://authok.cn/docs/libraries/authok-js#logout).
+- **options {Object}**: 可选，具体参考 [这里](https://authok.cn/docs/libraries/authok-js#logout).
 
-#### Example
+#### 例子
 
 ```js
 lock.logout({ returnTo: 'https://myapp.com/bye-bye' });
@@ -218,12 +218,12 @@ lock.logout({ returnTo: 'https://myapp.com/bye-bye' });
 
 ### checkSession(params, callback)
 
-The checkSession method allows you to acquire a new token from Authok for a user who is already authenticated against the universal login page for your domain. The method accepts any valid OAuth2 parameters that would normally be sent to authorize. In order to use this method, you have to enable Web Origins for your application. For more information, see [Using checkSession to acquire new tokens](https://authok.cn/docs/libraries/authok-js#using-checksession-to-acquire-new-tokens).
+checkSession方法从authok获取一个新令牌, 前提是用户已经在对应域名的统一登录页面进行过认证. 该方法接受任何合法的 OAuth2 参数 并被发送到 authorize 端点. 使用该方法需要应用开启 Web Origins. 更多信息请参考 [使用 checkSession 获取新令牌](https://authok.cn/docs/libraries/authok-js#using-checksession-to-acquire-new-tokens).
 
-- **params {Object}**: OAuth2 params object to send to Authok's servers.
-- **callback {Function}**: Will be invoked after the response from the server is returned. Has an error (if any) as the first argument and the authentication result as the second one.
+- **params {Object}**: 发送给 Authok 服务器的的 OAuth2 参数.
+- **callback {Function}**: 服务器返回响应后进行回调. 第一个参数为 error 对象 (没有错误则为null), 第二个参数为认证结果.
 
-#### Example
+#### 例子
 
 ```js
 lock.checkSession({}, function (error, authResult) {
@@ -238,14 +238,14 @@ lock.checkSession({}, function (error, authResult) {
 });
 ```
 
-### Customization
+### 自定义
 
-The appearance of the widget and the mechanics of authentication can be customized with an `options` object which has one or more of the following properties. Each method that opens the dialog can take an `options` object as its first argument.
+控件外观 和 认证机制 可通过 `options` 进行定制 . 每个打开对话框的的方法的第一个参数都是 `options` 对象.
 
-#### UI options
+#### UI 选项
 
-- **allowedConnections {Array}**: List of connection that will be available to perform the authentication. It defaults to all enabled connections.
-- **autoclose {Boolean}**: Determines whether or not the Lock will be closed automatically after a successful sign in. If the Lock is not `closable` it won't be closed even if this option is set to `true`. Defaults to `false`.
+- **allowedConnections {Array}**: 可用于认证的 连接 列表. 默认为全部开启的 连接.
+- **autoclose {Boolean}**: 决定在认证成功后是否自动关闭 Lock. 如果 Lock 不可 `closable`, 即便此选项设置为 `true` 也没用. 默认值为 `false`.
 - **autofocus {Boolean}**: Determines whether or not the first input on the screen, that is the email or phone number input, should have focus when the Lock is displayed. Defaults to `false` when a `container` option is provided or the Lock is being rendered on a mobile device. Otherwise, it defaults to `true`.
 - **avatar {Object}**: Determines whether or not an avatar and a username should be displayed on the Lock's header once an email or username has been entered and how to obtain it. By default avatars are fetched from [Gravatar](https://gravatar.com/). Supplying `null` will disable the functionality. To fetch avatar from other provider see [below](#avatar-provider).
 - **container {String}**: The `id` of the HTML element where the Lock will be rendered. This makes the Lock appear inline instead of in a modal window.
@@ -360,7 +360,7 @@ var options = {
 
 - **defaultEnterpriseConnection {String}**: Specifies the enterprise connection which allows you to log in using a username and a password that will be used when there is more than one available or there is a database connection. If a `defaultDatabaseConnection` is provided the database connection will be used and this option will be ignored.
 
-#### Example
+#### 例子
 
 ```js
 var options = {
@@ -688,7 +688,7 @@ If you have found a bug or if you have a feature request, please report them at 
 
 [Authok](https://authok.cn)
 
-## License
+## 许可
 
 This project is licensed under the MIT license. See the [LICENSE](LICENSE) file for more info.
 

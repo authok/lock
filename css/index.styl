@@ -1,3 +1,48 @@
+--primary-color = #1890ff
+
+.btn
+  line-height 1.5715
+  position relative
+  display inline-block
+  font-weight 400
+  white-space nowrap
+  text-align center
+  background-image none
+  border 1px solid transparent
+  box-shadow 0 2px #00000004
+  cursor pointer
+  transition all .3s cubic-bezier(.645,.045,.355,1)
+  -webkit-user-select none
+  -moz-user-select none
+  -ms-user-select none
+  user-select none
+  touch-action manipulation
+  height 32px
+  padding 4px 15px
+  font-size 14px
+  border-radius 2px
+  color #000000d9
+  border-color #d9d9d9
+  background #fff
+
+.btn, .btn:active, .btn:focus
+  outline 0
+
+.btn-lg {
+  height: 40px;
+  padding: 6.4px 15px;
+  font-size: 16px;
+  border-radius: 2px;
+}
+
+.btn-primary
+  color #fff
+  border-color var(--primary-color)
+  background var(--primary-color)
+  text-shadow 0 -1px 0 rgb(0 0 0 / 12%)
+  box-shadow 0 2px #0000000b
+
+
 .authok-lock
   @require "_normalize"
 
@@ -116,7 +161,7 @@ loadingSize = 30px
       display flex
 
   .authok-lock-widget
-    width 300px
+    width 400px
     opacity 0
     -webkit-transform translateY(100%) scale(.8)
     transform translateY(100%) scale(.8)
@@ -161,7 +206,6 @@ loadingSize = 30px
 
   // Lock header content
   .authok-lock-header
-    text-align center
     padding 11px
     color #333
     position relative
@@ -185,6 +229,10 @@ loadingSize = 30px
     overflow-x auto
     +breakpoint("mobile")
       overflow-x inherit
+
+  .authok-lock-content-body-wrapper
+    padding-left 16px
+    padding-right 16px
 
   .authok-lock-close-button, .authok-lock-back-button
     -webkit-box-sizing content-box !important
@@ -254,14 +302,14 @@ loadingSize = 30px
       width 100%
       border-top-left-radius 5px
       border-top-right-radius 5px
-      -webkit-filter blur(40px) grayscale(1)
+      webkit-filter blur(40px) grayscale(1)
       -ms-filter blur(40px) grayscale(1)
       filter blur(40px) grayscale(1)
       -webkit-backdrop-filter: blur(0)
       background-color #fff
       background-position center
       background-repeat no-repeat
-      background-size 300px
+      background-size 400px
       opacity 0
       -webkit-transition 0s ease 0s
       transition 0s ease 0s
@@ -286,6 +334,7 @@ loadingSize = 30px
   .authok-lock-header-welcome
     font-size 18px
     position relative
+    padding 16px
 
   .authok-lock-header-logo
     width auto
@@ -630,6 +679,11 @@ loadingSize = 30px
 
   //Lock submit content
 
+  .authok-lock-submit-wrapper
+    overflow: hidden
+    padding 16px
+    display flex
+    flex-direction column
 
   .authok-lock-submit
     border 0
@@ -638,7 +692,6 @@ loadingSize = 30px
     -webkit-box-sizing border-box
     box-sizing border-box
     width 100%
-    overflow hidden
     border-radius 0 0 5px 5px
     -webkit-transition .2s ease-in-out
     transition .2s ease-in-out
@@ -714,7 +767,6 @@ loadingSize = 30px
       -webkit-animation rotate 1s linear infinite
       animation rotate 1s linear infinite
 
-
   // Content mode loading
 
 
@@ -765,6 +817,11 @@ loadingSize = 30px
       -webkit-transition .25s
       transition .25s
 
+
+  .authok-lock-social-login
+    padding-left 16px
+    padding-right 16px
+    padding-bottom 16px
 
   // Lock country numbers
 

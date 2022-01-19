@@ -1,21 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <title>Dev</title>
+  <title>开发</title>
   <meta charset="utf-8" />
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"
   />
-  <link rel="stylesheet" href="https://cdn.auth0.com/styleguide/core/2.0.5/core.min.css" />
-  <link
-    rel="stylesheet"
-    href="https://cdn.auth0.com/styleguide/components/2.0.0/components.min.css"
-  />
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism-okaidia.min.css"
   />
+  <link
+    rel="stylesheet"
+    href="https://cdn.bootcdn.net/ajax/libs/antd/4.18.4/antd.css"
+  />
+  <style>
+    .main-container {
+      position: relative;
+      min-height: 500px;
+      padding: 0 170px 32px 64px;
+      background: #fff;
+    }
 
+    .navbar-header {
+      padding-left: 32px;
+    }
+  </style>
   <body>
     <header class="site-header">
       <nav class="navbar navbar-default" role="navigation">
@@ -30,12 +40,12 @@
         </div>
       </nav>
     </header>
-    <main class="container">
+    <main class="main-container">
       <div class="row">
         <div class="col-sm-12">
-          <div id="btn-show-lock" class="btn btn-default">显示Lock</div>
-          <div id="btn-show-passwordless" class="btn btn-default">显示 Lock(免密登录)</div>
-          <div id="btn-logout" class="btn btn-default">退登</div>
+          <button id="btn-show-lock" class="ant-btn ant-btn-primary">显示Lock</button>
+          <button id="btn-show-passwordless" class="ant-btn ant-btn-primary">显示 Lock(免密登录)</button>
+          <button id="btn-logout" class="ant-btn ant-btn-primary">退登</button>
         </div>
       </div>
       <hr />
@@ -219,7 +229,7 @@
           var lockPasswordless = initPasswordless();
           lockPasswordless.show({
             languageDictionary: {
-              title: 'Passwordless'
+              title: '免密模式'
             }
           });
         });

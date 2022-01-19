@@ -122,6 +122,8 @@ export default class Base extends EventEmitter {
           closeHandler: l.ui.closable(m) ? (...args) => closeLock(l.id(m), ...args) : undefined,
           contentComponent: screen.render(),
           contentProps: { i18n: i18nProp, model: m },
+          extraComponent: screen.renderExtra(),
+          extraProps: { i18n: i18nProp, model: m },
           disableSubmitButton: disableSubmitButton,
           error: l.globalError(m),
           info: l.globalInfo(m),

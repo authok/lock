@@ -59,6 +59,10 @@ export default class Screen {
     return null;
   }
 
+  renderExtra() {
+    return null;
+  }
+
   renderTabs() {
     return false;
   }

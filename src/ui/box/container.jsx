@@ -140,6 +140,8 @@ export default class Container extends React.Component {
       closeHandler,
       contentComponent,
       contentProps,
+      extraComponent,
+      extraProps,
       disableSubmitButton,
       disallowClose,
       error,
@@ -226,6 +228,8 @@ export default class Container extends React.Component {
                 backHandler={backHandler}
                 contentComponent={contentComponent}
                 contentProps={contentProps}
+                extraComponent={extraComponent}
+                extraProps={extraProps}
                 disableSubmitButton={disableSubmitButton}
                 error={error}
                 info={info}
@@ -260,6 +264,8 @@ Container.propTypes = {
   closeHandler: PropTypes.func,
   contentComponent: PropTypes.func.isRequired, // TODO: it also can be a class component
   contentProps: PropTypes.object.isRequired,
+  extraComponent: PropTypes.func, // TODO: it also can be a class component
+  extraProps: PropTypes.object,
   disableSubmitButton: PropTypes.bool.isRequired,
   error: PropTypes.node,
   info: PropTypes.node,
@@ -300,7 +306,7 @@ export const defaultProps = (Container.defaultProps = {
   language: 'en',
   logo: `${
     isFileProtocol ? 'https:' : ''
-  }//cdn.auth0.com/styleguide/components/1.0.8/media/logos/img/badge.png`,
+  }//s0.lucfish.com/authok/authok-badge.png`,
   primaryColor: 'rgb(82, 196, 26)',
   showBadge: true,
   scrollGlobalMessagesIntoView: true

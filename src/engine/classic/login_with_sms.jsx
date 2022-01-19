@@ -24,6 +24,8 @@ import {
 import SingleSignOnNotice from '../../connection/enterprise/single_sign_on_notice';
 import { hasOnlyClassicConnections, isSSOEnabled } from '../classic';
 import * as i18n from '../../i18n';
+import SocialOrEmailLoginScreen from '../passwordless/social_or_email_login_screen';
+import SocialLogin from './social_login';
 
 function shouldRenderTabs(m) {
   if (isSSOEnabled(m)) return false;
@@ -146,5 +148,9 @@ export default class LoginWithSms extends Screen {
 
   render() {
     return LoginWithSmsComponent;
+  }
+
+  renderExtra() {
+    return SocialLogin;
   }
 }
