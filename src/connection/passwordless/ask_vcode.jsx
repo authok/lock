@@ -17,7 +17,6 @@ const Component = ({ i18n, model }) => {
       instructions={instructions}
       lock={model}
       placeholder={i18n.str('codeInputPlaceholder')}
-      resendLabel={i18n.str('resendCodeAction')}
       onRestart={restart}
     />
   );

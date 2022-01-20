@@ -1,15 +1,12 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import EmailPane from '../../../field/email/email_pane';
-import PasswordPane from '../../../field/password/password_pane';
 import { showResetPasswordActivity, showSignUpWithSmsActivity } from '../../database/actions';
-import { swapCaptcha } from '../../captcha';
 import { hasScreen, forgotPasswordLink, signUpLink } from '../../database/index';
 import * as l from '../../../core/index';
-import CaptchaPane from '../../../field/captcha/captcha_pane';
 import { isSSOEnabled } from '../../../engine/classic';
-import { isHRDDomain } from '../../enterprise';
-import { databaseUsernameValue } from '../../database';
+import PhoneNumberPane from '../../../field/phone-number/phone_number_pane';
+import VcodePane from '../../../field/vcode/vcode_pane';
+import { restart } from '../actions';
 
 export default class SmsLoginPane extends React.Component {
   handleDontRememberPasswordClick = e => {
@@ -24,40 +21,23 @@ export default class SmsLoginPane extends React.Component {
 
   render() {
     const {
-      phoneInputPlaceholder,
-      forgotPasswordAction,
-      signupAction,
       i18n,
       instructions,
       lock,
-      passwordInputPlaceholder,
       showForgotPasswordLink,
-      showPassword,
     } = this.props;
 
     const headerText = instructions || null;
     const header = headerText && <p>{headerText}</p>;
     const sso = isSSOEnabled(lock);
-
-    // Should never validate format on login because of custom db connection and import mode.
-    // If a custom resolver is in use, always use UsernamePane without validating format,
-    // as the target connection (and this validation rules) could change by time the user hits 'submit'.
-    const fieldPane = (
-      <EmailPane
-        i18n={i18n}
+    
+    const phoneNumber = l.hasSomeConnections(lock, 'passwordless', 'sms') ? (
+      <PhoneNumberPane
         lock={lock}
-        forceInvalidVisibility={!showPassword}
-        placeholder={phoneInputPlaceholder}
-        strictValidation={false}
+        placeholder={i18n.str('phoneNumberInputPlaceholder')}
+        invalidHint={i18n.str('phoneNumberInputInvalidHint')}
       />
-    );
-
-    const captchaPane =
-      l.captcha(lock) &&
-      l.captcha(lock).get('required') &&
-      (isHRDDomain(lock, databaseUsernameValue(lock)) || !sso) ? (
-        <CaptchaPane i18n={i18n} lock={lock} onReload={() => swapCaptcha(l.id(lock), false)} />
-      ) : null;
+    ) : null;
 
     const dontRememberPassword =
       showForgotPasswordLink && hasScreen(lock, 'forgotPassword') ? (
@@ -67,7 +47,7 @@ export default class SmsLoginPane extends React.Component {
             href={forgotPasswordLink(lock, '#')}
             onClick={forgotPasswordLink(lock) ? undefined : this.handleDontRememberPasswordClick}
           >
-            {forgotPasswordAction}
+            {i18n.str('forgotPasswordAction')}
           </a>
 
           <a
@@ -75,22 +55,24 @@ export default class SmsLoginPane extends React.Component {
             href={signUpLink(lock, '#')}
             onClick={signUpLink(lock) ? undefined : this.handleSignupClick}
           >
-            {signupAction}
+            {i18n.str('signupAction')}
           </a>
         </p>
       ) : null;
 
+    const vcode = <VcodePane
+      instructions={instructions}
+      lock={lock}
+      placeholder={i18n.str('codeInputPlaceholder')}
+      resendLabel={i18n.str('resendLabel')}
+      onRestart={restart}
+    />
+
     return (
       <div>
         {header}
-        {fieldPane}
-        <PasswordPane
-          i18n={i18n}
-          lock={lock}
-          placeholder={passwordInputPlaceholder}
-          hidden={!showPassword}
-        />
-        {captchaPane}
+        {phoneNumber}
+        {vcode}
         {dontRememberPassword}
       </div>
     );
@@ -98,12 +80,8 @@ export default class SmsLoginPane extends React.Component {
 }
 
 SmsLoginPane.propTypes = {
-  phoneInputPlaceholder: PropTypes.string.isRequired,
-  forgotPasswordAction: PropTypes.string.isRequired,
   i18n: PropTypes.object.isRequired,
   instructions: PropTypes.any,
   lock: PropTypes.object.isRequired,
-  passwordInputPlaceholder: PropTypes.string.isRequired,
   showForgotPasswordLink: PropTypes.bool.isRequired,
-  showPassword: PropTypes.bool.isRequired,
 };

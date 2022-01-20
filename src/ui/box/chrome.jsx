@@ -112,7 +112,7 @@ class SubmitButton extends React.Component {
     return (
       <button
         id={`${l.id(model)}-submit`}
-        className="btn btn-primary"
+        className="ant-btn ant-btn-lg ant-btn-primary"
         disabled={disabled}
         style={{ display }}
         onClick={::this.handleSubmit}

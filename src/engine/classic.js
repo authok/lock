@@ -125,6 +125,17 @@ const setPrefill = m => {
   return m;
 };
 
+const setPrefillPasswordless = m => {
+  const { email, phoneNumber } = l.prefill(m).toJS();
+  if (typeof email === 'string') {
+    m = setEmail(m, email);
+  }
+  if (typeof phoneNumber === 'string') {
+    m = setPhoneNumber(m, phoneNumber);
+  }
+  return m;
+};
+
 function createErrorScreen(m, stopError) {
   setTimeout(() => {
     swap(updateEntity, 'lock', l.id(m), l.stop, stopError);
@@ -154,6 +165,19 @@ class Classic {
   didReceiveClientSettings(m) {
     m = validateAllowedConnections(m);
     m = setPrefill(m);
+
+    const anySocialConnection = l.hasSomeConnections(m, 'social');
+    const anyPasswordlessConnection = l.hasSomeConnections(m, 'passwordless');
+
+    if (!anySocialConnection && !anyPasswordlessConnection) {
+      const error = new Error(
+        'At least one email, sms or social connection needs to be available.'
+      );
+      error.code = 'no_connection';
+      m = l.stop(m, error);
+    }
+    m = setPrefillPasswordless(m);
+
     return m;
   }
 
@@ -204,6 +228,29 @@ class Classic {
 
       if (isHRDActive(m)) {
         return new HRDScreen();
+      }
+    }
+
+    // 免密登录模式
+    if (hasScreen(m, 'loginWithSms') || hasScreen(m, 'loginWithEmail')) {
+      if (!hasSkippedQuickAuth(m)) {
+        if (l.ui.rememberLastLogin(m)) {
+          const lastUsedConnection = sso.lastUsedConnection(m);
+          if (
+            lastUsedConnection &&
+            isSuccess(m, 'sso') &&
+            l.hasConnection(m, lastUsedConnection.get('name')) &&
+            ['passwordless', 'social'].indexOf(
+              l.findConnection(m, lastUsedConnection.get('name')).get('type')
+            ) >= 0 //if connection.type is either passwordless or social
+          ) {
+            const conn = l.findConnection(m, lastUsedConnection.get('name'));
+            const connectionType = conn.get('type');
+            if (connectionType === 'passwordless' || connectionType === 'social') {
+              return new LastLoginScreen();
+            }
+          }
+        }
       }
     }
 

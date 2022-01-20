@@ -35,7 +35,8 @@ export default {
     passwordless: {
       'bad.email': '邮箱错误',
       'bad.phone_number': '手机号码格式不正确。',
-      'lock.fallback': '对不起，出现错误。'
+      'invalid.vcode': '验证码错误',
+      'lock.fallback': '对不起，出现错误。',
     },
     signUp: {
       invalid_password: '密码错误',
@@ -61,7 +62,7 @@ export default {
   blankEmailErrorHint: '不能为空',
   blankUsernameErrorHint: '不能为空',
   blankCaptchaErrorHint: '不能为空',
-  codeInputPlaceholder: '您的代码',
+  codeInputPlaceholder: '请输入验证码',
   databaseEnterpriseLoginInstructions: '',
   databaseEnterpriseAlternativeLoginInstructions: '或',
   databaseSignUpInstructions: '',
@@ -103,8 +104,8 @@ export default {
   passwordlessSMSAlternativeInstructions: '您还可以通过手机号码登录<br/>或者创建账号。',
   passwordlessSMSCodeInstructions: '代码已通过短信发送到 %s。',
   passwordlessSMSInstructions: '输入手机号码登录<br/>或者创建账号',
-  phoneNumberInputPlaceholder: '您的手机号码',
-  resendCodeAction: '没有收到号码?',
+  phoneNumberInputPlaceholder: '请输入手机号码',
+  resendCodeAction: '没有收到验证码?',
   resendLabel: '重新发送',
   resendingLabel: '重新发送中...',
   retryLabel: '重试',

@@ -70,6 +70,7 @@ export function resendAvailable(m) {
 export function restartPasswordless(m) {
   // TODO: maybe we can take advantage of the transient fields
   m = tremove(m, 'passwordlessStarted');
+  m = tremove(m, 'passwordlessStrategy');
   m = tremove(m, 'resendStatus'); // only for link
   m = clearFields(m, ['vcode']); // only for code
 
@@ -92,6 +93,14 @@ export function passwordlessStarted(m) {
   return tget(m, 'passwordlessStarted', false);
 }
 
+export function setPasswordlessStrategy(m, strategy) {
+  return tset(m, 'passwordlessStrategy', strategy);
+}
+
+export function passwordlessStrategy(m) {
+  return tget(m, 'passwordlessStrategy', 'sms');
+}
+
 export function passwordlessConnection(m) {
   return (
     l.connections(m, 'passwordless', 'email').get(0) ||
@@ -102,7 +111,7 @@ export function passwordlessConnection(m) {
 
 export function isEmail(m) {
   const c = passwordlessConnection(m);
-  return c.isEmpty() ? undefined : c.get('strategy') === 'email';
+  return c.isEmpty() ? undefined : passwordlessStrategy(m) === 'email';
 }
 
 export function showTerms(m) {

@@ -17,6 +17,7 @@ import {
 } from './index';
 import { phoneNumberWithDiallingCode } from '../../field/phone_number';
 import * as i18n from '../../i18n';
+import { setPasswordlessStrategy as internalSetPasswordlessStrategy } from './index';
 
 function getErrorMessage(m, error) {
   let key = error.error;
@@ -57,6 +58,10 @@ export function resendEmail(id) {
   swap(updateEntity, 'lock', id, resend);
   const m = read(getEntity, 'lock', id);
   sendEmail(m, resendEmailSuccess, resendEmailError);
+}
+
+export function setPasswordlessStrategy(id, strategy) {
+  swap(updateEntity, 'lock', id, (m) => internalSetPasswordlessStrategy(m, strategy));
 }
 
 function resendEmailSuccess(id) {
@@ -133,11 +138,13 @@ function sendSMSError(id, error) {
 
 export function logIn(id) {
   const m = read(getEntity, 'lock', id);
+
   const authParams = l.auth.params(m).toJS();
   const params = {
     verificationCode: c.getFieldValue(m, 'vcode'),
     ...authParams
   };
+
   if (isEmail(m)) {
     params.connection = 'email';
     params.email = c.getFieldValue(m, 'email');

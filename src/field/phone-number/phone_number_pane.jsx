@@ -43,13 +43,10 @@ export default class PhoneNumberPane extends React.Component {
   }
 
   render() {
-    const { instructions, lock, placeholder, invalidHint } = this.props;
-    const headerText = instructions || null;
-    const header = headerText && <p>{headerText}</p>;
+    const { lock, placeholder, invalidHint } = this.props;
 
     return (
       <React.Fragment>
-        {header}
         <SelectInput
           icon={IconSvg}
           isValid={!c.isFieldVisiblyInvalid(lock, 'location')}
@@ -72,7 +69,6 @@ export default class PhoneNumberPane extends React.Component {
 }
 
 PhoneNumberPane.propTypes = {
-  instructions: PropTypes.element,
   lock: PropTypes.object.isRequired,
   placeholder: PropTypes.string.isRequired,
   invalidHint: PropTypes.string
