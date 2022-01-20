@@ -114,7 +114,7 @@ class SubmitButton extends React.Component {
         id={`${l.id(model)}-submit`}
         className="btn btn-primary"
         disabled={disabled}
-        style={{ backgroundColor: color, display }}
+        style={{ display }}
         onClick={::this.handleSubmit}
         name="submit"
         type="submit"

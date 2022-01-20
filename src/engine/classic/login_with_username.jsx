@@ -109,9 +109,9 @@ const LoginComponent = ({ i18n, model }) => {
   );
 };
 
-export default class Login extends Screen {
+export default class LoginWithUsername extends Screen {
   constructor() {
-    super('main.login');
+    super('main.loginWithUsername');
   }
 
   renderAuxiliaryPane(lock) {

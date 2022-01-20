@@ -101,14 +101,14 @@ describe('SignUpScreen', () => {
   });
   it('renders SingleSignOnNotice when SSO is enabled and has screen login', () => {
     require('engine/classic').isSSOEnabled = () => true;
-    require('connection/database/index').hasScreen = (m, screenName) => screenName === 'login';
+    require('connection/database/index').hasScreen = (m, screenName) => screenName === 'loginWithUsername';
 
     const Component = getComponent();
 
     expectComponent(<Component {...defaultProps} />).toMatchSnapshot();
   });
   it('renders LoginTabs SSO is disabled and has screen login', () => {
-    require('connection/database/index').hasScreen = (m, screenName) => screenName === 'login';
+    require('connection/database/index').hasScreen = (m, screenName) => screenName === 'loginWithUsername';
     const Component = getComponent();
 
     expectComponent(<Component {...defaultProps} />).toMatchSnapshot();

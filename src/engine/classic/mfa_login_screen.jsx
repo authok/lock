@@ -40,6 +40,6 @@ export default class MFALoginScreen extends Screen {
   }
 
   backHandler(m) {
-    return hasScreen(m, 'login') ? cancelMFALogin : undefined;
+    return (hasScreen(m, 'loginWithUsername') || hasScreen(m, 'loginWithSms')) ? cancelMFALogin : undefined;
   }
 }

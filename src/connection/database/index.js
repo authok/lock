@@ -274,23 +274,24 @@ function processDatabaseOptions(opts) {
 function processScreenOptions(
   opts,
   defaults = {
-    allowLogin: true,
+    allowLoginWithUsername: true,
     allowLoginWithSms: true,
-    allowSignUp: true,
+    allowSignUpWithEmail: true,
+    allowSignUpWithSms: true,
     allowForgotPassword: true,
     initialScreen: undefined
   }
 ) {
-  let { allowForgotPassword, allowLogin, allowLoginWithSms, allowSignUp, initialScreen } = opts;
+  let { allowForgotPassword, allowLoginWithUsername, allowLoginWithSms, allowSignUpWithEmail, allowSignUpWithSms, initialScreen } = opts;
 
   const screens = [];
 
   if (
-    allowLogin === true ||
-    (!assertMaybeBoolean(opts, 'allowLogin') && defaults.allowLogin) ||
-    (allowLogin === undefined && defaults.allowLogin)
+    allowLoginWithUsername === true ||
+    (!assertMaybeBoolean(opts, 'allowLoginWithUsername') && defaults.allowLoginWithUsername) ||
+    (allowLoginWithUsername === undefined && defaults.allowLoginWithUsername)
   ) {
-    screens.push('login');
+    screens.push('loginWithUsername');
   }
 
   if (
@@ -302,17 +303,17 @@ function processScreenOptions(
   }
 
   if (
-    allowLoginWithSms === true ||
-    (!assertMaybeBoolean(opts, 'allowSignUpWithSms') && defaults.allowLoginWithSms) ||
-    (allowLoginWithSms === undefined && defaults.allowLoginWithSms)
+    allowSignUpWithSms === true ||
+    (!assertMaybeBoolean(opts, 'allowSignUpWithSms') && defaults.allowSignUpWithSms) ||
+    (allowSignUpWithSms === undefined && defaults.allowSignUpWithSms)
   ) {
     screens.push('signUpWithSms');
   }
 
   if (
-    allowSignUp === true ||
-    (!assertMaybeBoolean(opts, 'allowSignUp') && defaults.allowSignUp) ||
-    (allowSignUp === undefined && defaults.allowSignUp)
+    allowSignUpWithEmail === true ||
+    (!assertMaybeBoolean(opts, 'allowSignUp') && defaults.allowSignUpWithEmail) ||
+    (allowSignUpWithEmail === undefined && defaults.allowSignUpWithEmail)
   ) {
     screens.push('signUpWithEmail');
   }
@@ -340,9 +341,9 @@ function processScreenOptions(
 
 export function overrideDatabaseOptions(m, opts) {
   const { initialScreen, screens } = processScreenOptions(opts, {
-    allowLogin: availableScreens(m).contains('login'),
+    allowLoginWithUsername: availableScreens(m).contains('loginWithUsername'),
     allowLoginWithSms: availableScreens(m).contains('loginWithSms'),
-    allowSignUp: availableScreens(m).contains('signUpWithEmail'),
+    allowSignUpWithEmail: availableScreens(m).contains('signUpWithEmail'),
     allowSignUpWithSms: availableScreens(m).contains('signUpWithSms'),
     allowForgotPassword: availableScreens(m).contains('forgotPassword'),
     initialScreen: get(m, 'initialScreen')
@@ -386,6 +387,7 @@ export function setScreen(m, name, fields = []) {
   // TODO: the lock/index module should provide a way to clear
   // everything that needs the be cleared when changing screens, other
   // modules should not care.
+
   m = l.clearGlobalError(m);
   m = l.clearGlobalSuccess(m);
   m = hideInvalidFields(m, fields);
@@ -400,7 +402,7 @@ export function getScreen(m) {
   const screens = [
     screen, 
     initialScreen, 
-    'login', 
+    'loginWithUsername', 
     'loginWithSms', 
     'signUpWithEmail', 
     'signUpWithSms',
@@ -461,11 +463,12 @@ export function authWithUsername(m) {
 }
 
 export function hasScreen(m, s) {
-  const { allowForgot, allowSignup } = (databaseConnection(m) || Map()).toJS();
+  const { allowForgot, allowSignUpWithEmail, allowSignUpWithSms } = (databaseConnection(m) || Map()).toJS();
 
   return (
     !(allowForgot === false && s === 'forgotPassword') &&
-    !(allowSignup === false && s === 'signUpWithSms') &&
+    !(allowSignUpWithEmail === false && s === 'signUpWithEmail') &&
+    !(allowSignUpWithSms === false && s === 'signUpWithSms') &&
     availableScreens(m).contains(s)
   );
 }

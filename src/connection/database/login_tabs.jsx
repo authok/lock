@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { showLoginActivity, showLoginWithSmsActivity } from './actions';
+import { showLoginWithUsernameActivity, showLoginWithSmsActivity } from './actions';
 import * as l from '../../core/index';
 import { getScreen } from './index';
 
@@ -14,8 +14,8 @@ export default class LoginTabs extends React.Component {
         <ul className="authok-lock-tabs">
           <LoginTab
             label={loginLabel}
-            current={screen === 'login'}
-            clickHandler={::this.handleLoginClick}
+            current={screen === 'loginWithUsername'}
+            clickHandler={::this.handleLoginWithUsernameClick}
           />
           <LoginTab
             label={loginWithSmsLabel}
@@ -27,8 +27,8 @@ export default class LoginTabs extends React.Component {
     );
   }
 
-  handleLoginClick() {
-    showLoginActivity(l.id(this.props.lock));
+  handleLoginWithUsernameClick() {
+    showLoginWithUsernameActivity(l.id(this.props.lock));
   }
 
   handleLoginWithSmsClick() {

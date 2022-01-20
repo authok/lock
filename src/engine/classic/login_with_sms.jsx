@@ -103,7 +103,7 @@ const LoginWithSmsComponent = ({ i18n, model }) => {
 
 export default class LoginWithSms extends Screen {
   constructor() {
-    super('main.login_with_sms');
+    super('main.loginWithSms');
   }
 
   renderAuxiliaryPane(lock) {

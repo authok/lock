@@ -1,6 +1,6 @@
 import Base from '../index';
-import Login from './classic/login';
-import SignUpEmail from './classic/sign_up_email_screen';
+import LoginWithUsername from './classic/login_with_username';
+import SignUpEmail from './classic/sign_up_with_email_screen';
 import MFALoginScreen from './classic/mfa_login_screen';
 import ResetPassword from '../connection/database/reset_password';
 import { renderSSOScreens } from '../core/sso/index';
@@ -48,7 +48,7 @@ import LoginWithSms from './classic/login_with_sms';
 import {
   initPasswordless,
 } from '../connection/passwordless/index';
-import SignUpSms from './classic/sign_up_sms_screen';
+import SignUpWithSms from './classic/sign_up_with_sms_screen';
 
 
 export function isSSOEnabled(m, options) {
@@ -135,11 +135,11 @@ function createErrorScreen(m, stopError) {
 
 class Classic {
   static SCREENS = {
-    login: Login,
+    loginWithUsername: LoginWithUsername,
     loginWithSms: LoginWithSms,
     forgotPassword: ResetPassword,
     signUpWithEmail: SignUpEmail,
-    signUpWithSms: SignUpSms,
+    signUpWithSms: SignUpWithSms,
     mfaLogin: MFALoginScreen
   };
 
@@ -178,8 +178,8 @@ class Classic {
       return new LoadingScreen();
     }
 
-    if (hasScreen(m, 'login')) {
-      if (!hasSkippedQuickAuth(m) && hasInitialScreen(m, 'login')) {
+    if (hasScreen(m, 'loginWithUsername')) {
+      if (!hasSkippedQuickAuth(m) && hasInitialScreen(m, 'loginWithUsername')) {
         if (isInCorpNetwork(m)) {
           return new KerberosScreen();
         }
@@ -207,10 +207,10 @@ class Classic {
       }
     }
 
-    if (!hasScreen(m, 'login') 
+    if (!hasScreen(m, 'loginWithUsername') 
       && !hasScreen(m, 'loginWithSms')
       && !hasScreen(m, 'signUpWithEmail') 
-      && !hasScreen(m, 'signUpSms')
+      && !hasScreen(m, 'signUpWithSms')
       && !hasScreen(m, 'forgotPassword')) {
       const errorMessage =
         'No available Screen. You have to allow at least one of those screens: `login`, `signUp`or `forgotPassword`.';

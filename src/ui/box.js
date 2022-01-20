@@ -35,6 +35,11 @@ class Renderer {
     if (isModal && !this.modals[containerId]) {
       CSSCore.addClass(window.document.getElementsByTagName('html')[0], 'authok-lock-html');
     }
+
+    // TODO
+    // if (props.primaryColor) document.documentElement.style.setProperty('--primary-color', props.primaryColor);
+
+
     // eslint-disable-next-line
     const component = ReactDOM.render(<Container {...props} />, container);
 

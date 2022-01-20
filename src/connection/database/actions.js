@@ -227,8 +227,8 @@ export function signUpError(id, error) {
 function autoLogInError(id, error) {
   swap(updateEntity, 'lock', id, m => {
     const errorMessage = l.loginErrorMessage(m, error);
-    if (hasScreen(m, 'login')) {
-      return l.setSubmitting(setScreen(m, 'login'), false, errorMessage);
+    if (hasScreen(m, 'loginWithUsername')) {
+      return l.setSubmitting(setScreen(m, 'loginWithUsername'), false, errorMessage);
     } else {
       return l.setSubmitting(m, false, errorMessage);
     }
@@ -254,12 +254,12 @@ export function resetPassword(id) {
 
 function resetPasswordSuccess(id) {
   const m = read(getEntity, 'lock', id);
-  if (hasScreen(m, 'login')) {
+  if (hasScreen(m, 'loginWithUsername')) {
     swap(
       updateEntity,
       'lock',
       id,
-      m => setScreen(l.setSubmitting(m, false), 'login', ['']) // array with one empty string tells the function to not clear any field
+      m => setScreen(l.setSubmitting(m, false), 'loginWithUsername', ['']) // array with one empty string tells the function to not clear any field
     );
 
     // TODO: should be handled by box
@@ -286,8 +286,8 @@ function resetPasswordError(id, error) {
   swap(updateEntity, 'lock', id, l.setSubmitting, false, errorMessage);
 }
 
-export function showLoginActivity(id, fields = ['password']) {
-  swap(updateEntity, 'lock', id, setScreen, 'login', fields);
+export function showLoginWithUsernameActivity(id, fields = ['password']) {
+  swap(updateEntity, 'lock', id, setScreen, 'loginWithUsername', fields);
 }
 
 export function showLoginWithSmsActivity(id, fields = ['password']) {
@@ -307,15 +307,15 @@ export function showResetPasswordActivity(id, fields = ['password']) {
 }
 
 export function cancelResetPassword(id) {
-  return showLoginActivity(id);
+  return showLoginWithUsernameActivity(id);
 }
 
 export function cancelSignUp(id) {
-  return showLoginActivity(id);
+  return showLoginWithUsernameActivity(id);
 }
 
 export function cancelMFALogin(id) {
-  return showLoginActivity(id);
+  return showLoginWithUsernameActivity(id);
 }
 
 export function toggleTermsAcceptance(id) {

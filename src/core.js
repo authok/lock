@@ -95,7 +95,6 @@ export default class Base extends EventEmitter {
 
       if (l.rendering(m)) {
         const screen = this.engine.render(m);
-
         const title = avatar
           ? i18n.str(m, 'welcome', m.getIn(['avatar', 'transient', 'displayName']))
           : screen.getTitle(m);

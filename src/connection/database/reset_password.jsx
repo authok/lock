@@ -43,7 +43,7 @@ export default class ResetPassword extends Screen {
   }
 
   backHandler(m) {
-    return hasScreen(m, 'login') ? cancelResetPassword : undefined;
+    return hasScreen(m, 'loginWithUsername') ? cancelResetPassword : undefined;
   }
 
   submitButtonLabel(m) {

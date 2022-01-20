@@ -7,23 +7,17 @@ import {
   mustAcceptTerms,
   termsAccepted
 } from '../../connection/database/index';
-import { signUp, toggleTermsAcceptance, cancelSignUp } from '../../connection/database/actions';
-import { hasOnlyClassicConnections, isSSOEnabled } from '../classic';
+import { toggleTermsAcceptance, cancelSignUp, signUpWithSms } from '../../connection/database/actions';
 import { renderSignedInConfirmation } from '../../core/signed_in_confirmation';
 import { renderSignedUpConfirmation } from '../../connection/database/signed_up_confirmation';
 import { renderOptionSelection } from '../../field/index';
-import { logIn as enterpriseLogIn, startHRD } from '../../connection/enterprise/actions';
-import { databaseUsernameValue } from '../../connection/database/index';
-import { isHRDDomain } from '../../connection/enterprise';
 import * as l from '../../core/index';
 import * as i18n from '../../i18n';
 
-import SignUpWithEmailPane from './sign_up_email_pane';
-import PaneSeparator from '../../core/pane_separator';
 import SignUpTerms from '../../connection/database/sign_up_terms';
-import SocialButtonsPane from '../../field/social/social_buttons_pane';
-import SingleSignOnNotice from '../../connection/enterprise/single_sign_on_notice';
+import SignUpWithSmsPane from './sign_up_sms_pane';
 import SignUpTabs from '../../connection/database/signup_tabs';
+import { isSSOEnabled } from '../classic';
 
 function shouldRenderTabs(m) {
   if (isSSOEnabled(m)) return false;
@@ -32,10 +26,7 @@ function shouldRenderTabs(m) {
     return hasScreen(m, 'signUpWithEmail') || hasScreen(m, 'signUpWithSms');
 }
 
-const SignUpWithEmailComponent = ({ i18n, model }) => {
-  const sso = isSSOEnabled(model, { emailFirst: true }) && hasScreen(model, 'login');
-  const ssoNotice = sso && <SingleSignOnNotice>{i18n.str('ssoEnabled')}</SingleSignOnNotice>;
-
+const SignUpWithSmsComponent = ({ i18n, model}) => {
   const tabs = shouldRenderTabs(model) && (
     <SignUpTabs
       key="signup"
@@ -44,52 +35,26 @@ const SignUpWithEmailComponent = ({ i18n, model }) => {
       signUpWithEmailLabel={i18n.str('signUpWithEmail')}
     />
   );
-
-  const social = l.hasSomeConnections(model, 'social') && (
-    <SocialButtonsPane
-      instructions={i18n.html('socialSignUpInstructions')}
-      labelFn={i18n.str}
-      lock={model}
-      signUp={true}
-    />
-  );
-
-  const signUpInstructionsKey = social
-    ? 'databaseAlternativeSignUpInstructions'
-    : 'databaseSignUpInstructions';
-
-  const db = (l.hasSomeConnections(model, 'database') ||
-    l.hasSomeConnections(model, 'enterprise')) && (
-    <SignUpWithEmailPane
-      emailInputPlaceholder={i18n.str('emailInputPlaceholder')}
+  
+  const signUp = (
+    <SignUpWithSmsPane 
+      phoneInputPlaceholder={i18n.str('phoneInputPlaceholder')}
       i18n={i18n}
-      instructions={i18n.html(signUpInstructionsKey)}
-      model={model}
-      onlyEmail={sso}
-      passwordInputPlaceholder={i18n.str('passwordInputPlaceholder')}
-      passwordStrengthMessages={i18n.group('passwordStrength')}
-      usernameInputPlaceholder={i18n.str('usernameInputPlaceholder')}
-    />
-  );
-
-  const separator = social && db && <PaneSeparator />;
+      model={model} />);
 
   return (
     <div>
-      {ssoNotice}
       {tabs}
       <div>
-        {separator}
-        {db}
-        {social}
+        {signUp}
       </div>
     </div>
   );
-};
+}
 
-export default class SignUpEmail extends Screen {
+export default class SignUpWithSms extends Screen {
   constructor() {
-    super('main.signUpWithEmail');
+    super('main.signUpWithSms');
   }
 
   submitButtonLabel(m) {
@@ -97,17 +62,11 @@ export default class SignUpEmail extends Screen {
   }
 
   backHandler(m) {
-    return hasScreen(m, 'login') ? cancelSignUp : undefined;
+    return (hasScreen(m, 'loginWithUsername') || hasScreen(m, 'loginWithSms')) ? cancelSignUp : undefined;
   }
 
   submitHandler(m) {
-    if (hasOnlyClassicConnections(m, 'social')) return null;
-    const username = databaseUsernameValue(m, { emailFirst: true });
-    if (isHRDDomain(m, username)) {
-      return id => startHRD(id, username);
-    }
-    if (isSSOEnabled(m, { emailFirst: true })) return enterpriseLogIn;
-    return signUp;
+    return signUpWithSms;
   }
 
   isSubmitDisabled(m) {
@@ -147,6 +106,6 @@ export default class SignUpEmail extends Screen {
   }
 
   render() {
-    return SignUpWithEmailComponent;
+    return SignUpWithSmsComponent;
   }
 }

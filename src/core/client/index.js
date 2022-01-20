@@ -122,7 +122,9 @@ function formatClientConnection(connectionType, strategyName, connection) {
     ) {
       result.passwordPolicy.length.minLength = connection.password_complexity_options.min_length;
     }
-    result.allowSignup = typeof connection.showSignup === 'boolean' ? connection.showSignup : true;
+    result.allowSignUpWithEmail = typeof connection.showSignupWithEmail === 'boolean' ? connection.showSignupWithEmail : true;
+    result.allowSignUpWithSms = typeof connection.showSignupWithSms === 'boolean' ? connection.showSignupWithSms : true;
+
     result.allowForgot = typeof connection.showForgot === 'boolean' ? connection.showForgot : true;
     result.requireUsername =
       typeof connection.requires_username === 'boolean' ? connection.requires_username : false;
