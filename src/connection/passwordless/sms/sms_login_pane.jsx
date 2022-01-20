@@ -65,7 +65,6 @@ export default class SmsLoginPane extends React.Component {
       lock={lock}
       placeholder={i18n.str('codeInputPlaceholder')}
       resendLabel={i18n.str('resendLabel')}
-      onRestart={restart}
     />
 
     return (

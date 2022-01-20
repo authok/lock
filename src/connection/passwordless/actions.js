@@ -61,7 +61,7 @@ export function resendEmail(id) {
 }
 
 export function setPasswordlessStrategy(id, strategy) {
-  swap(updateEntity, 'lock', id, (m) => internalSetPasswordlessStrategy(m, strategy));
+  swap(updateEntity, 'lock', id, internalSetPasswordlessStrategy, strategy);
 }
 
 function resendEmailSuccess(id) {

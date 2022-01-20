@@ -40,7 +40,6 @@ VcodePane.propTypes = {
   lock: PropTypes.object.isRequired,
   placeholder: PropTypes.string.isRequired,
   resendLabel: PropTypes.string.isRequired,
-  onRestart: PropTypes.func.isRequired
 };
 
 
