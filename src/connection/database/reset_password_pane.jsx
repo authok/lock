@@ -5,12 +5,11 @@ import * as l from '../../core/index';
 
 export default class ResetPasswordPane extends React.Component {
   static propTypes = {
-    emailInputPlaceholder: PropTypes.string.isRequired,
     lock: PropTypes.object.isRequired
   };
 
   render() {
-    const { emailInputPlaceholder, header, i18n, lock } = this.props;
+    const { header, i18n, lock } = this.props;
 
     return (
       <div>
@@ -18,7 +17,7 @@ export default class ResetPasswordPane extends React.Component {
         <EmailPane
           i18n={i18n}
           lock={lock}
-          placeholder={emailInputPlaceholder}
+          placeholder={i18n.str('phoneInputPlaceholder')}
           strictValidation={false}
         />
       </div>

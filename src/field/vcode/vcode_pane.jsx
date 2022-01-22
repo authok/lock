@@ -7,6 +7,7 @@ import { swap, updateEntity } from '../../store/index';
 import { setVcode } from '../vcode';
 import { sendSMS } from '../../connection/passwordless/actions';
 import useCountDown from '../../hooks/useCountDown';
+import InputWrap from '../../ui/input/input_wrap';
 
 export default function VcodePane({ lock, placeholder, resendLabel }) {
   const [targetDate, setTargetDate] = useState();
@@ -33,7 +34,7 @@ export default function VcodePane({ lock, placeholder, resendLabel }) {
   });
 
   return (
-    <div className="ant-row ant-row-middle ant-row-space-between">
+    <div className="authok-lock-input-block ant-row ant-row-middle ant-row-space-between">
       <div className="ant-col ant-col-15">
         <VcodeInput
           lockId={l.id(lock)}
@@ -49,7 +50,7 @@ export default function VcodePane({ lock, placeholder, resendLabel }) {
           disabled={countdown !== 0}
           className="ant-btn authok-lock-resend-code" 
           onClick={handleSendVCode}>
-           {countdown === 0 ? resendLabel : `${Math.round(countdown / 1000)}秒`}
+          {countdown === 0 ? resendLabel : `${Math.round(countdown / 1000)}秒`}
         </button>
       </div>
     </div>

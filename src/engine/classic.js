@@ -49,6 +49,7 @@ import {
   initPasswordless,
 } from '../connection/passwordless/index';
 import SignUpWithSms from './classic/sign_up_with_sms_screen';
+import ResetPasswordBySms from '../connection/database/reset_password_by_sms';
 
 
 export function isSSOEnabled(m, options) {
@@ -148,7 +149,7 @@ class Classic {
   static SCREENS = {
     loginWithUsername: LoginWithUsername,
     loginWithSms: LoginWithSms,
-    forgotPassword: ResetPassword,
+    forgotPassword: ResetPasswordBySms,
     signUpWithEmail: SignUpEmail,
     signUpWithSms: SignUpWithSms,
     mfaLogin: MFALoginScreen

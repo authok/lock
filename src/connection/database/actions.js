@@ -252,6 +252,24 @@ export function resetPassword(id) {
   });
 }
 
+export function resetPasswordBySms(id) {
+  validateAndSubmit(id, ['phoneNumber', 'vcode', 'password'], m => {
+    const params = {
+      connection: databaseConnectionName(m),
+      phoneNumber: c.getFieldValue(m, 'phoneNumber'),
+      password: c.getFieldValue(m, 'password'),
+    };
+
+    webApi.resetPassword(id, params, (error, ...args) => {
+      if (error) {
+        setTimeout(() => resetPasswordError(id, error), 250);
+      } else {
+        resetPasswordSuccess(id);
+      }
+    });
+  });
+}
+
 function resetPasswordSuccess(id) {
   const m = read(getEntity, 'lock', id);
   if (hasScreen(m, 'loginWithUsername')) {

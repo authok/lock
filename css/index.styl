@@ -550,7 +550,7 @@ loadingSize = 30px
     p
       font-size 14px
       line-height 1.8
-      text-align center
+      /*text-align center*/
       margin-top 0
       margin-bottom 15px
       color rgba(0,0,0,.54)
@@ -558,10 +558,11 @@ loadingSize = 30px
     .authok-lock-alternative
       margin-top 20px
       margin-bottom 0
+      display: flex;
 
       .authok-lock-alternative-link
         font-size 14px
-        color rgba(0,0,0,.87)
+        color var(--primary-color)
         cursor pointer
         margin-bottom 0
         &:focus

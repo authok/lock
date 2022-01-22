@@ -76,6 +76,7 @@ export default {
   forgotPasswordAction: '忘记密码？',
   forgotPasswordInstructions: '请输入您的邮箱，我们将为您发送重置密码的邮件。',
   forgotPasswordSubmitLabel: '发电子邮件',
+  resetPasswordBySmsSubmitLabel: '重置密码',
   invalidErrorHint: '',
   invalidPasswordErrorHint: '错误',
   invalidEmailErrorHint: '错误',

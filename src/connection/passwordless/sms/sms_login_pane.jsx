@@ -3,10 +3,8 @@ import React from 'react';
 import { showResetPasswordActivity, showSignUpWithSmsActivity } from '../../database/actions';
 import { hasScreen, forgotPasswordLink, signUpLink } from '../../database/index';
 import * as l from '../../../core/index';
-import { isSSOEnabled } from '../../../engine/classic';
 import PhoneNumberPane from '../../../field/phone-number/phone_number_pane';
 import VcodePane from '../../../field/vcode/vcode_pane';
-import { restart } from '../actions';
 
 export default class SmsLoginPane extends React.Component {
   handleDontRememberPasswordClick = e => {
@@ -22,15 +20,10 @@ export default class SmsLoginPane extends React.Component {
   render() {
     const {
       i18n,
-      instructions,
       lock,
       showForgotPasswordLink,
     } = this.props;
 
-    const headerText = instructions || null;
-    const header = headerText && <p>{headerText}</p>;
-    const sso = isSSOEnabled(lock);
-    
     const phoneNumber = l.hasSomeConnections(lock, 'passwordless', 'sms') ? (
       <PhoneNumberPane
         lock={lock}
@@ -61,7 +54,6 @@ export default class SmsLoginPane extends React.Component {
       ) : null;
 
     const vcode = <VcodePane
-      instructions={instructions}
       lock={lock}
       placeholder={i18n.str('codeInputPlaceholder')}
       resendLabel={i18n.str('resendLabel')}
@@ -69,7 +61,6 @@ export default class SmsLoginPane extends React.Component {
 
     return (
       <div>
-        {header}
         {phoneNumber}
         {vcode}
         {dontRememberPassword}
@@ -80,7 +71,6 @@ export default class SmsLoginPane extends React.Component {
 
 SmsLoginPane.propTypes = {
   i18n: PropTypes.object.isRequired,
-  instructions: PropTypes.any,
   lock: PropTypes.object.isRequired,
   showForgotPasswordLink: PropTypes.bool.isRequired,
 };

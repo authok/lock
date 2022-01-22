@@ -74,25 +74,26 @@ export default class LoginPane extends React.Component {
       ) : null;
 
     const dontRememberPassword =
-      showForgotPasswordLink && hasScreen(lock, 'forgotPassword') ? (
         <p className="authok-lock-alternative">
+          {
+            showForgotPasswordLink && hasScreen(lock, 'forgotPassword') ? (
+              <a
+              className="authok-lock-alternative-link"
+              href={forgotPasswordLink(lock, '#')}
+              onClick={forgotPasswordLink(lock) ? undefined : this.handleDontRememberPasswordClick}
+            >
+              {forgotPasswordAction}
+            </a>) : null
+          }
           <a
             className="authok-lock-alternative-link"
-            href={forgotPasswordLink(lock, '#')}
-            onClick={forgotPasswordLink(lock) ? undefined : this.handleDontRememberPasswordClick}
-          >
-            {forgotPasswordAction}
-          </a>
-
-          <a
-            className="authok-lock-alternative-link"
+            style={{ marginLeft: 'auto' }}
             href={signUpLink(lock, '#')}
             onClick={signUpLink(lock) ? undefined : this.handleSignupClick}
           >
             {signupAction}
           </a>
-        </p>
-      ) : null;
+        </p>;
 
     return (
       <div>
