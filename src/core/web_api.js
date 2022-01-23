@@ -32,8 +32,12 @@ class AuthokWebAPI {
     this.clients[lockID].signUp(options, cb);
   }
 
-  resetPassword(lockID, options, cb) {
-    this.clients[lockID].resetPassword(options, cb);
+  resetPasswordByEmail(lockID, options, cb) {
+    this.clients[lockID].resetPasswordByEmail(options, cb);
+  }
+
+  resetPasswordDirectly(lockID, options, cb) {
+    this.clients[lockID].resetPasswordDirectly(options, cb);
   }
 
   startPasswordless(lockID, options, cb) {

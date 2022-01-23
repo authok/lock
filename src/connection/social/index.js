@@ -44,6 +44,9 @@ export const STRATEGIES = {
   yahoo: 'Yahoo!',
   yammer: 'Yammer',
   yandex: 'Yandex',
+  tiktok: 'tiktok',
+  douyin: '抖音',
+  wechat: '微信',
   weibo: '新浪微博',
   line: 'Line'
 };

@@ -45,6 +45,7 @@ export default class SmsLoginPane extends React.Component {
 
           <a
             className="authok-lock-alternative-link"
+            style={{ marginLeft: 'auto' }}
             href={signUpLink(lock, '#')}
             onClick={signUpLink(lock) ? undefined : this.handleSignupClick}
           >
@@ -55,8 +56,9 @@ export default class SmsLoginPane extends React.Component {
 
     const vcode = <VcodePane
       lock={lock}
+      scene="login"
       placeholder={i18n.str('codeInputPlaceholder')}
-      resendLabel={i18n.str('resendLabel')}
+      resendLabel={i18n.str('sendVcode')}
     />
 
     return (

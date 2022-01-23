@@ -2,7 +2,7 @@ import React from 'react';
 import Screen from '../../core/screen';
 import ResetPasswordPane from './reset_password_pane';
 import { hasScreen } from './index';
-import { cancelResetPassword, resetPassword } from './actions';
+import { cancelResetPassword, resetPasswordByEmail } from './actions';
 import { renderPasswordResetConfirmation } from './password_reset_confirmation';
 import { databaseUsernameValue } from '../../connection/database/index';
 import { isEnterpriseDomain } from '../../connection/enterprise';
@@ -75,7 +75,7 @@ export default class ResetPassword extends Screen {
   }
 
   submitHandler() {
-    return resetPassword;
+    return resetPasswordByEmail;
   }
 
   renderAuxiliaryPane(m) {

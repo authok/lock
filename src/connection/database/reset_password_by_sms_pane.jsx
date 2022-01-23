@@ -23,8 +23,9 @@ export default class ResetPasswordBySmsPane extends React.Component {
 
     const vcode = <VcodePane
       lock={lock}
+      scene="reset_pwd"
       placeholder={i18n.str('codeInputPlaceholder')}
-      resendLabel={i18n.str('resendLabel')}
+      resendLabel={i18n.str('sendVcode')}
     />
     const password = <PasswordPane
       i18n={i18n}

@@ -7,9 +7,8 @@ import { swap, updateEntity } from '../../store/index';
 import { setVcode } from '../vcode';
 import { sendSMS } from '../../connection/passwordless/actions';
 import useCountDown from '../../hooks/useCountDown';
-import InputWrap from '../../ui/input/input_wrap';
 
-export default function VcodePane({ lock, placeholder, resendLabel }) {
+export default function VcodePane({ lock, placeholder, resendLabel, scene }) {
   const [targetDate, setTargetDate] = useState();
 
   const handleVcodeChange = useCallback(e => {
@@ -21,7 +20,7 @@ export default function VcodePane({ lock, placeholder, resendLabel }) {
     e.preventDefault();
     const send = l.hasSomeConnections(lock, 'passwordless', 'sms') ? sendSMS : null;
     if (send) {
-      send(l.id(lock));
+      send(l.id(lock), scene);
 
       setTargetDate(Date.now() + 60000);
     };
@@ -58,6 +57,7 @@ export default function VcodePane({ lock, placeholder, resendLabel }) {
 }
 
 VcodePane.propTypes = {
+  scene: PropTypes.string, 
   lock: PropTypes.object.isRequired,
   placeholder: PropTypes.string.isRequired,
   resendLabel: PropTypes.string.isRequired,

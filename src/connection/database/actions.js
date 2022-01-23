@@ -235,14 +235,14 @@ function autoLogInError(id, error) {
   });
 }
 
-export function resetPassword(id) {
+export function resetPasswordByEmail(id) {
   validateAndSubmit(id, ['email'], m => {
     const params = {
       connection: databaseConnectionName(m),
       email: c.getFieldValue(m, 'email')
     };
 
-    webApi.resetPassword(id, params, (error, ...args) => {
+    webApi.resetPasswordByEmail(id, params, (error, ...args) => {
       if (error) {
         setTimeout(() => resetPasswordError(id, error), 250);
       } else {
@@ -255,12 +255,14 @@ export function resetPassword(id) {
 export function resetPasswordBySms(id) {
   validateAndSubmit(id, ['phoneNumber', 'vcode', 'password'], m => {
     const params = {
+      realm: 'sms',
       connection: databaseConnectionName(m),
-      phoneNumber: c.getFieldValue(m, 'phoneNumber'),
+      vcode: c.getFieldValue(m, 'vcode'),
+      username: c.getFieldValue(m, 'phoneNumber'),
       password: c.getFieldValue(m, 'password'),
     };
 
-    webApi.resetPassword(id, params, (error, ...args) => {
+    webApi.resetPasswordDirectly(id, params, (error, ...args) => {
       if (error) {
         setTimeout(() => resetPasswordError(id, error), 250);
       } else {

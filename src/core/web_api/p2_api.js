@@ -108,6 +108,7 @@ class AuthokAPIClient {
   logIn(options, authParams, cb) {
     // TODO: for passwordless only, try to clean in authok.js
     // client._shouldRedirect = redirect || responseType === "code" || !!redirectUrl;
+
     const f = loginCallback(false, this.domain, cb);
     const loginOptions = trimAuthParams(
       normalizeAuthParams({
@@ -150,8 +151,12 @@ class AuthokAPIClient {
     this.client.signup(trimAuthParams(options), (err, result) => cb(err, result));
   }
 
-  resetPassword(options, cb) {
-    this.client.changePassword(trimAuthParams(options), cb);
+  resetPasswordByEmail(options, cb) {
+    this.client.changePasswordByEmail(trimAuthParams(options), cb);
+  }
+
+  resetPasswordDirectly(options, cb) {
+    this.client.changePasswordDirectly(trimAuthParams(options), cb);
   }
 
   passwordlessStart(options, cb) {

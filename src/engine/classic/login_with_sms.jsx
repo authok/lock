@@ -14,6 +14,7 @@ import * as i18n from '../../i18n';
 import SocialLogin from './social_login';
 import { logIn } from '../../connection/passwordless/actions';
 import { setPasswordlessStrategy } from '../../connection/passwordless/actions';
+import { renderOptionSelection } from '../../field';
 
 function shouldRenderTabs(m) {
   if (isSSOEnabled(m)) return false;
@@ -72,7 +73,10 @@ export default class LoginWithSms extends Screen {
   }
 
   renderAuxiliaryPane(lock) {
-    return renderSignedInConfirmation(lock);
+    return (
+      renderSignedInConfirmation(lock) || 
+      renderOptionSelection(lock)
+    );
   }
 
   renderTabs(model) {

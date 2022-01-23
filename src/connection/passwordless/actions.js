@@ -98,7 +98,7 @@ function sendEmail(m, successFn, errorFn) {
   });
 }
 
-export function sendSMS(id) {
+export function sendSMS(id, scene = 'login') {
   validateAndSubmit(id, ['phoneNumber'], m => {
     const connections = l.connections(m, 'passwordless', 'sms');
     const connectionName =
@@ -109,7 +109,8 @@ export function sendSMS(id) {
     const params = {
       connection: connectionName,
       phoneNumber: phoneNumberWithDiallingCode(m),
-      send: send(m)
+      send: send(m),
+      scene,
     };
     webApi.startPasswordless(id, params, error => {
       if (error) {

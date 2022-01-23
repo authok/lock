@@ -1,8 +1,6 @@
 import React from 'react';
 import Screen from '../../core/screen';
-import SocialButtonsPane from '../../field/social/social_buttons_pane';
 import LoginPane from '../../connection/database/login_pane';
-import PaneSeparator from '../../core/pane_separator';
 import {
   databaseConnection,
   databaseUsernameStyle,
@@ -25,6 +23,7 @@ import {
 import SingleSignOnNotice from '../../connection/enterprise/single_sign_on_notice';
 import { hasOnlyClassicConnections, isSSOEnabled } from '../classic';
 import * as i18n from '../../i18n';
+import SocialLogin from './social_login';
 
 function shouldRenderTabs(m) {
   if (isSSOEnabled(m)) return false;
@@ -35,7 +34,6 @@ function shouldRenderTabs(m) {
 
 const LoginComponent = ({ i18n, model }) => {
   const sso = isSSOEnabled(model);
-  const onlySocial = hasOnlyClassicConnections(model, 'social');
 
   const tabs = shouldRenderTabs(model) && (
     <LoginTabs
@@ -48,24 +46,10 @@ const LoginComponent = ({ i18n, model }) => {
     />
   );
 
-  const social = l.hasSomeConnections(model, 'social') && (
-    <SocialButtonsPane
-      instructions={i18n.html('socialLoginInstructions')}
-      labelFn={i18n.str}
-      lock={model}
-      showLoading={onlySocial}
-      signUp={false}
-    />
-  );
-
   const showPassword =
     !sso && (l.hasSomeConnections(model, 'database') || !!findADConnectionWithoutDomain(model));
 
   const showForgotPasswordLink = showPassword && l.hasSomeConnections(model, 'database');
-
-  const loginInstructionsKey = social
-    ? 'databaseEnterpriseAlternativeLoginInstructions'
-    : 'databaseEnterpriseLoginInstructions';
 
   const usernameInputPlaceholderKey =
     databaseUsernameStyle(model) === 'any' || l.countConnections(model, 'enterprise') > 1
@@ -82,7 +66,6 @@ const LoginComponent = ({ i18n, model }) => {
       forgotPasswordAction={i18n.str('forgotPasswordAction')}
       signupAction={i18n.str('signupAction')}
       i18n={i18n}
-      instructions={i18n.html(loginInstructionsKey)}
       lock={model}
       passwordInputPlaceholder={i18n.str('passwordInputPlaceholder')}
       showForgotPasswordLink={showForgotPasswordLink}
@@ -94,15 +77,11 @@ const LoginComponent = ({ i18n, model }) => {
 
   const ssoNotice = sso && <SingleSignOnNotice>{i18n.str('ssoEnabled')}</SingleSignOnNotice>;
 
-  const separator = social && login && <PaneSeparator />;
-
   return (
     <div>
       {ssoNotice}
       {tabs}
       <div>
-        {social}
-        {separator}
         {login}
       </div>
     </div>
@@ -152,6 +131,10 @@ export default class LoginWithUsername extends Screen {
       (defaultDatabaseConnection(model) || !defaultEnterpriseConnection(model));
 
     return useDatabaseConnection ? databaseLogIn : enterpriseLogIn;
+  }
+
+  renderExtra() {
+    return SocialLogin;
   }
 
   render() {

@@ -139,6 +139,11 @@ function formatClientConnection(connectionType, strategyName, connection) {
     result.domains = domains;
   }
 
+  // edison add it
+  if (connectionType === 'social') {
+    result.scope = connection.scope;
+  }
+
   return result;
 }
 

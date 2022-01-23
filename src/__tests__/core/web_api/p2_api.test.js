@@ -440,7 +440,7 @@ describe('AuthokAPIClient', () => {
         callback = jest.fn();
       });
       it('the username', () => {
-        client.resetPassword(
+        client.resetPasswordByEmail(
           {
             username: ' foo '
           },
@@ -449,7 +449,7 @@ describe('AuthokAPIClient', () => {
         assertCallWithCallback(getMock(), callback);
       });
       it('the username with a space', () => {
-        client.resetPassword(
+        client.resetPasswordByEmail(
           {
             username: ' foo bar '
           },
@@ -458,7 +458,7 @@ describe('AuthokAPIClient', () => {
         assertCallWithCallback(getMock(), callback);
       });
       it('the email', () => {
-        client.resetPassword(
+        client.resetPasswordByEmail(
           {
             email: ' foo@example.com '
           },

@@ -51,7 +51,7 @@ export default {
   },
   success: {
     logIn: '登录成功',
-    forgotPassword: '重置密码的邮件已发送',
+    forgotPassword: '密码重置成功',
     magicLink: '已向您发送链接<br/>到 %s 登录',
     signUp: '感谢您的注册。'
   },
@@ -107,6 +107,7 @@ export default {
   passwordlessSMSInstructions: '输入手机号码登录<br/>或者创建账号',
   phoneNumberInputPlaceholder: '请输入手机号码',
   resendCodeAction: '没有收到验证码?',
+  sendVcode: '发送验证码',
   resendLabel: '重新发送',
   resendingLabel: '重新发送中...',
   retryLabel: '重试',

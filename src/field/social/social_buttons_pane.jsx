@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import AuthButton from '../../ui/button/auth_button';
+import SocialButton from '../../ui/button/social_button';
 import * as l from '../../core/index';
 import { logIn } from '../../quick-auth/actions';
 import { displayName, socialConnections, authButtonsTheme } from '../../connection/social/index';
@@ -13,6 +13,7 @@ export default class SocialButtonsPane extends React.Component {
     if (isSignUp && !termsAccepted(lock)) {
       return signUpError(lock.get('id'), { code: 'social_signup_needs_terms_acception' });
     }
+
     emitFederatedLoginEvent(this.props.lock, provider, isSignUp);
     return logIn(l.id(this.props.lock), provider);
   }
@@ -35,7 +36,7 @@ export default class SocialButtonsPane extends React.Component {
       const icon = buttonTheme && buttonTheme.get('icon');
 
       return (
-        <AuthButton
+        <SocialButton
           key={x.get('name')}
           label={labelFn(
             signUp ? 'signUpWithLabel' : 'loginWithLabel',

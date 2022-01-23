@@ -101,18 +101,18 @@ exports[`The quick auth screen renders the connection using the display name whe
   className="authok-lock-last-login-pane"
 >
   <a
-    className="authok-lock-social-button authok-lock-social-big-button"
+    className="authok-lock-auth-button authok-lock-auth-big-button"
     data-provider="authok"
     onClick={[Function]}
     style={Object {}}
     type="button"
   >
     <div
-      className="authok-lock-social-button-icon"
+      className="authok-lock-auth-button-icon"
       style={Object {}}
     />
     <div
-      className="authok-lock-social-button-text"
+      className="authok-lock-auth-button-text"
       style={Object {}}
     >
       loginAtLabel,My Connection

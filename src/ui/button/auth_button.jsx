@@ -9,15 +9,24 @@ const AuthButton = props => {
   const iconStyle = icon ? { backgroundImage: `url('${icon}')` } : {};
 
   return (
-    <a
-      className="authok-lock-social-button authok-lock-social-big-button"
+    <div
+      className="ant-row authok-lock-auth-button authok-lock-auth-big-button"
       data-provider={strategy}
       onClick={onClick}
       style={backgroundStyle}
       type="button"
     >
-      <div className="authok-lock-social-button-icon" style={iconStyle} />
-    </a>
+      <a
+        className="authok-lock-social-button authok-lock-social-big-button"
+        data-provider={strategy}
+        style={{ position: 'absolute' }}
+      >
+        <div className="authok-lock-social-button-icon" style={iconStyle} />
+      </a>
+      <div className="authok-lock-auth-button-text" style={foregroundStyle}>
+        {label}
+      </div>
+    </div>
   );
 };
 

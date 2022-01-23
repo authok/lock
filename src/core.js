@@ -147,9 +147,9 @@ export default class Base extends EventEmitter {
         render(l.ui.containerID(m), props);
 
         if (!this.oldScreenName || this.oldScreenName != screen.name) {
-          if (screen.name === 'main.login') {
+          if (screen.name === 'main.loginWithUsername' || screen.name === 'main.loginWithSms') {
             l.emitEvent(m, 'signin ready');
-          } else if (screen.name === 'main.signUp') {
+          } else if (screen.name === 'main.signUpWithEmail' || screen.name === 'main.signUpWithSms') {
             l.emitEvent(m, 'signup ready');
           } else if (screen.name === 'forgotPassword') {
             l.emitEvent(m, 'forgot_password ready');

@@ -33,8 +33,8 @@ const Component = ({ i18n, model }) => {
       checkSession(l.id(model), lastUsedConnection(model), lastUsedUsername(model));
     }
   };
-  const buttonLabel =
-    lastUsedUsername(model) || SOCIAL_STRATEGIES[connectionName] || connectionName;
+
+  const buttonLabel = lastUsedUsername(model) || SOCIAL_STRATEGIES[connectionName] || connectionName;
 
   return (
     <QuickAuthPane
