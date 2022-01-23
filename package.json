@@ -104,7 +104,7 @@
     "webpack-dev-server": "^2.3.0"
   },
   "dependencies": {
-    "@authok/authok-js": "^9.18.13",
+    "@authok/authok-js": "^9.18.15",
     "@authok/authok-password-policies": "^1.0.2",
     "blueimp-md5": "^2.19.0",
     "classnames": "^2.3.1",

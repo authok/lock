@@ -19,7 +19,7 @@ const AuthButton = props => {
       <a
         className="authok-lock-social-button authok-lock-social-big-button"
         data-provider={strategy}
-        style={{ position: 'absolute' }}
+        style={{ position: 'absolute', background: 'transparent' }}
       >
         <div className="authok-lock-social-button-icon" style={iconStyle} />
       </a>
