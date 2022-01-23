@@ -7,7 +7,6 @@ export default function SocialLogin({ i18n, model }) {
   const onlySocial = hasOnlyClassicConnections(model, 'social');
   const social = l.hasSomeConnections(model, 'social') && (
     <SocialButtonsPane
-      className="authok-lock-social-login"
       instructions={i18n.html('socialLoginInstructions')}
       labelFn={i18n.str}
       lock={model}

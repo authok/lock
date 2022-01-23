@@ -711,6 +711,10 @@ loadingSize = 30px
       display block
       margin-left 20px
 
+
+  .authok-lock-extra
+    padding: 16px;
+
   // Social
 
   .auth-lock-social-buttons-pane, .authok-lock-last-login-pane
@@ -733,26 +737,45 @@ loadingSize = 30px
         left 0
         opacity 1
 
+    .authok-lock-social-login-title
+      text-align: center;
+      font-size: 14px;
+      color: #c8c9cc;
+      margin-bottom: 12px;
+
+      &:before, &:after
+        content: "——";
+        color: #eee;
+        margin: 0 11px;
+
   .authok-lock-social-buttons-container
     text-align center
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 
   .authok-lock-social-button
     border 0
     padding 0
-    display inline-block
+    display inline-flex
     -webkit-box-sizing border-box
     box-sizing border-box
     overflow hidden
     border-radius 3px
-    margin 4px
+    margin 8px
     position relative
-    width 40px
-    height 40px
+    width 48px
+    height 48px
     -webkit-transition background-color .2s ease-in-out
     transition background-color .2s ease-in-out
     cursor: pointer
     -webkit-appearance: none !important;
     appearance: none !important;
+    background: #f5f6f7;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    -webkit-user-select: none;
 
     &[data-provider^=google]
       .authok-lock-social-button-text
@@ -773,16 +796,12 @@ loadingSize = 30px
 
     .authok-lock-social-button-icon
       box-sizing: content-box
-      width 40px
-      height 40px
-      position absolute
+      width 36px
+      height 36px
       top 0
       left 0
       transition background-color 0.3s, border .2s ease-in-out
       -webkit-transition background-color 0.3s, border .2s ease-in-out
-
-    .authok-lock-social-button-text
-      display none
 
     &.authok-lock-social-big-button
       margin 10px 0 0
@@ -822,12 +841,10 @@ loadingSize = 30px
           font-weight: 600
 
       &:hover:not([disabled]), &:focus:not([disabled])
-        .authok-lock-social-button-text
-          background-color rgba(0, 0, 0, .3)
+        background-color rgba(0, 0, 0, .3)
 
     &[disabled]
       background-color #9b9b9b !important
-
 
   // lock auth button
   .authok-lock-auth-button
@@ -872,7 +889,6 @@ loadingSize = 30px
       box-sizing: content-box
       width 40px
       height 40px
-      position absolute
       top 0
       left 0
       transition background-color 0.3s, border .2s ease-in-out
@@ -1085,14 +1101,7 @@ loadingSize = 30px
       -webkit-transition .25s
       transition .25s
 
-
-  .authok-lock-social-login
-    padding-left 16px
-    padding-right 16px
-    padding-bottom 16px
-
   // Lock country numbers
-
 
   .authok-lock-select-country
     background-color white

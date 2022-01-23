@@ -24,7 +24,7 @@ export default class SocialButtonsPane extends React.Component {
     const { instructions, labelFn, lock, showLoading, signUp } = this.props;
 
     const headerText = instructions || null;
-    const header = headerText && <p>{headerText}</p>;
+    const header = headerText && <div className="authok-lock-social-login-title">{headerText}</div>;
 
     const themes = authButtonsTheme(lock);
 

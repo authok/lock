@@ -118,7 +118,7 @@ export default {
   signUpWithSms: '手机号',
   signUpWithEmail: '邮箱',
   signUpWithLabel: '通过 %s 注册',
-  socialLoginInstructions: '',
+  socialLoginInstructions: '第三方账号登录',
   socialSignUpInstructions: '',
   ssoEnabled: '单点登录已激活',
   submitLabel: '提交',
