@@ -9,6 +9,7 @@ import { isEnterpriseDomain } from '../enterprise';
 import * as i18n from '../../i18n';
 import * as l from '../../core/index';
 import { swap, updateEntity } from '../../store/index';
+import { renderOptionSelection } from '../../field';
 
 const Component = ({ i18n, model }) => {
   return (
@@ -61,7 +62,7 @@ export default class ResetPasswordBySms extends Screen {
   }
 
   renderAuxiliaryPane(m) {
-    return renderPasswordResetConfirmation(m);
+    return renderPasswordResetConfirmation(m) || renderOptionSelection(m);  
   }
 
   render() {

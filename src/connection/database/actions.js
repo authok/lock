@@ -7,7 +7,7 @@ import * as c from '../../field/index';
 import {
   databaseConnection,
   databaseConnectionName,
-  databaseConnectionRequiresUsername,
+  databaseConnectionUsernameStyle,
   databaseLogInWithEmail,
   hasScreen,
   setScreen,
@@ -75,7 +75,8 @@ export function signUp(id) {
 
   // Skip the username validation if signUpHideUsernameField option is enabled.
   // We will generate a random username to avoid name collusion before we make the signup API call.
-  if (databaseConnectionRequiresUsername(m) && !signUpHideUsernameField(m)) fields.push('username');
+  const usernameStyle = databaseConnectionUsernameStyle(m);
+  if (usernameStyle === 'username' && !signUpHideUsernameField(m)) fields.push('username');
 
   additionalSignUpFields(m).forEach(x => fields.push(x.get('name')));
 
@@ -92,7 +93,8 @@ export function signUp(id) {
       return showMissingCaptcha(m, id);
     }
 
-    if (databaseConnectionRequiresUsername(m)) {
+    const usernameStyle = databaseConnectionUsernameStyle(m);
+    if (usernameStyle == 'username') {
       if (signUpHideUsernameField(m)) {
         const usernameValidation = databaseConnection(m).getIn(['validation', 'username']);
         const range = usernameValidation ? usernameValidation.toJS() : { max: 15 };
@@ -247,6 +249,12 @@ export function resetPasswordByEmail(id) {
         setTimeout(() => resetPasswordError(id, error), 250);
       } else {
         resetPasswordSuccess(id);
+
+        // 如果登录模式为混合， 则设置 email 到 username
+        const usernameStyle = databaseConnectionUsernameStyle(m);
+        if (usernameStyle === 'any') {
+          swap(updateEntity, 'lock', id, m => c.setField(m, 'username', c.getFieldValue(m, 'email')));
+        }
       }
     });
   });
@@ -267,6 +275,12 @@ export function resetPasswordBySms(id) {
         setTimeout(() => resetPasswordError(id, error), 250);
       } else {
         resetPasswordSuccess(id);
+
+        // 如果登录模式为混合， 则设置 phoneNumber 到 username
+        const usernameStyle = databaseConnectionUsernameStyle(m);
+        if (usernameStyle === 'any') {
+          swap(updateEntity, 'lock', id, m => c.setField(m, 'username', c.getFieldValue(m, 'phoneNumber')));
+        }
       }
     });
   });

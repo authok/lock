@@ -122,7 +122,7 @@ export default {
   unrecoverableError: 'خطایی رخ داده است.<br />با پشتیبانی تماس بگیرید.',
   usernameFormatErrorHint: '%d-%d حروف، اعداد و کاراکترهای زیر را استفاده کنید: "_"، "."، "+"، "-"',
   usernameInputPlaceholder: 'نام کاربری شما',
-  usernameOrEmailInputPlaceholder: 'نام کاربری/ایمیل',
+  usernameOrEmailOrPhoneNumberInputPlaceholder: 'نام کاربری/ایمیل',
   title: 'Authok',
   welcome: '%s خوش آمدید!',
   windowsAuthInstructions: 'شما از شبکه شرکتتان متصل شده اید&hellip;',

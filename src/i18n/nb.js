@@ -124,7 +124,7 @@ export default {
   unrecoverableError: 'Noe gikk galt.<br />Ta kontakt med teknisk support.',
   usernameFormatErrorHint: 'Bruk %d-%d bokstaver, tall og følgende tegn: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'ditt brukernavn',
-  usernameOrEmailInputPlaceholder: 'brukernavn/epost',
+  usernameOrEmailOrPhoneNumberInputPlaceholder: 'brukernavn/epost',
   title: 'Authok',
   welcome: 'Velkommen %s!',
   windowsAuthInstructions: 'Du er tilkoblet via ditt bedrifts-nettverk;',

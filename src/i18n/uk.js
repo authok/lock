@@ -133,7 +133,7 @@ export default {
   usernameFormatErrorHint:
     'Використайте %d-%d літер, цифр та наступних символів: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'ваше ім’я користувача',
-  usernameOrEmailInputPlaceholder: 'ім’я користувача/адреса електронної пошти',
+  usernameOrEmailOrPhoneNumberInputPlaceholder: 'ім’я користувача/адреса електронної пошти',
   title: 'Authok',
   welcome: 'Ласкаво просимо %s!',
   windowsAuthInstructions: 'Ви з’єднані з корпоративною мережею network&hellip;',

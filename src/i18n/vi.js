@@ -125,7 +125,7 @@ export default {
   usernameFormatErrorHint:
     'Sử dụng các ký tự %d____%d, các con số và các ký tự sau: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'Tên tài khoản',
-  usernameOrEmailInputPlaceholder: 'Tên tài khoản/Email',
+  usernameOrEmailOrPhoneNumberInputPlaceholder: 'Tên tài khoản/Email',
   title: 'Authok',
   welcome: 'Xin chào, %s!',
   windowsAuthInstructions: 'Đã đã được kết nối tự mạng của công ty&hellip;',

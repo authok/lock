@@ -90,8 +90,7 @@ function formatTenantConnection(connectionType, connection) {
     result.allowForgot =
       typeof connection.allowForgot === 'boolean' ? connection.allowForgot : true;
 
-    result.requireUsername =
-      typeof connection.requiresUsername === 'boolean' ? connection.requiresUsername : false;
+    result.usernameStyle = connection.usernameStyle || 'any';
 
     result.validation = formatConnectionValidation(connection.validation);
   }

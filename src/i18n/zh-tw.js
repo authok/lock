@@ -115,7 +115,7 @@ export default {
   unrecoverableError: '發生錯誤。<br />請聯絡技術人員。',
   usernameFormatErrorHint: '使用 %d-%d 字母，數字和以下字符：“_”，“。”，“+”，“ - ”',
   usernameInputPlaceholder: '您的帳號',
-  usernameOrEmailInputPlaceholder: '帳號 / 電子郵件信箱',
+  usernameOrEmailOrPhoneNumberInputPlaceholder: '帳號 / 電子郵件信箱',
   title: 'Authok',
   welcome: '歡迎 %s ！',
   windowsAuthInstructions: '您已連接到公司網路&hellip;',

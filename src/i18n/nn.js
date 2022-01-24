@@ -130,7 +130,7 @@ export default {
   unrecoverableError: 'Noko gjekk galt.<br/> Ver venleg og kontakt teknisk support.',
   usernameFormatErrorHint: 'Bruk %d-%d bokstavar, tal og følgande spesialteikn: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'ditt brukarnamn',
-  usernameOrEmailInputPlaceholder: 'brukarnamn/e-post',
+  usernameOrEmailOrPhoneNumberInputPlaceholder: 'brukarnamn/e-post',
   title: 'Authok',
   welcome: 'Velkomen %s!',
   windowsAuthInstructions: 'Du er tilkopla via ditt offisielle nettverk;',

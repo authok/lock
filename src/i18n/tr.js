@@ -128,7 +128,7 @@ export default {
   usernameFormatErrorHint:
     '%d-%d harf, sayı ve aşağıdaki karakterleri kullanın: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'kullanıcı adınız',
-  usernameOrEmailInputPlaceholder: 'kullanıcı adı/e-posta',
+  usernameOrEmailOrPhoneNumberInputPlaceholder: 'kullanıcı adı/e-posta',
   title: 'Authok',
   welcome: 'Hoşgeldin %s!',
   windowsAuthInstructions: 'İş ağınızdan bağlandınız&hellip;',

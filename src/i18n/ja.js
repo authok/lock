@@ -131,7 +131,7 @@ export default {
   usernameFormatErrorHint:
     '%d-%d個の文字、数字、および以下の文字が使用可能です: "_"、 "."、 "+"、 "-"',
   usernameInputPlaceholder: 'ユーザー名',
-  usernameOrEmailInputPlaceholder: 'ユーザー名/メールアドレス',
+  usernameOrEmailOrPhoneNumberInputPlaceholder: 'ユーザー名/メールアドレス',
   title: 'Authok',
   welcome: 'ようこそ%sさん',
   windowsAuthInstructions: '企業ネットワークから接続されています;',

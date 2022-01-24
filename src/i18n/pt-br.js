@@ -122,7 +122,7 @@ export default {
   usernameFormatErrorHint:
     'Use %d-%d letras, números e os seguintes caracteres: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'seu nome de usuário',
-  usernameOrEmailInputPlaceholder: 'usuário/email',
+  usernameOrEmailOrPhoneNumberInputPlaceholder: 'usuário/email',
   title: 'Authok',
   welcome: 'Bem-vindo %s!',
   windowsAuthInstructions: 'Você está conectado da sua rede corporativa&hellip;',

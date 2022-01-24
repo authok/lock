@@ -129,7 +129,7 @@ export default {
   unrecoverableError: 'Ocorreu um erro.<br />Contacte a assistência técnica.',
   usernameFormatErrorHint: '_", ".", "+", "-"',
   usernameInputPlaceholder: 'o seu nome de utilizador',
-  usernameOrEmailInputPlaceholder: 'nome de utilizador/endereço de correio eletrónico',
+  usernameOrEmailOrPhoneNumberInputPlaceholder: 'nome de utilizador/endereço de correio eletrónico',
   title: 'Authok',
   welcome: 'Bem-vindo(a) %s!',
   windowsAuthInstructions: 'Ligou-se a partir da sua rede empresarial&hellip;',

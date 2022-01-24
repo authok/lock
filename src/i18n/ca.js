@@ -129,7 +129,7 @@ export default {
   usernameFormatErrorHint:
     'Utilitzeu %d-%d lletres, números i els següents caràcters: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'el seu usuari',
-  usernameOrEmailInputPlaceholder: 'usuari/email',
+  usernameOrEmailOrPhoneNumberInputPlaceholder: 'usuari/email',
   title: 'Authok',
   welcome: 'Benvingut/da %s',
   windowsAuthInstructions: 'Esteu connectat des de la vostra xarxa corporativa&hellip;',

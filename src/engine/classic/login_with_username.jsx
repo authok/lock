@@ -53,7 +53,7 @@ const LoginComponent = ({ i18n, model }) => {
 
   const usernameInputPlaceholderKey =
     databaseUsernameStyle(model) === 'any' || l.countConnections(model, 'enterprise') > 1
-      ? 'usernameOrEmailInputPlaceholder'
+      ? 'usernameOrEmailOrPhoneNumberInputPlaceholder'
       : 'usernameInputPlaceholder';
 
   const usernameStyle = databaseUsernameStyle(model);
@@ -63,14 +63,14 @@ const LoginComponent = ({ i18n, model }) => {
     l.hasSomeConnections(model, 'enterprise')) && (
     <LoginPane
       emailInputPlaceholder={i18n.str('emailInputPlaceholder')}
+      usernameInputPlaceholder={i18n.str(usernameInputPlaceholderKey)}
+      passwordInputPlaceholder={i18n.str('passwordInputPlaceholder')}
       forgotPasswordAction={i18n.str('forgotPasswordAction')}
       signupAction={i18n.str('signupAction')}
       i18n={i18n}
       lock={model}
-      passwordInputPlaceholder={i18n.str('passwordInputPlaceholder')}
       showForgotPasswordLink={showForgotPasswordLink}
       showPassword={showPassword}
-      usernameInputPlaceholder={i18n.str(usernameInputPlaceholderKey)}
       usernameStyle={usernameStyle}
     />
   );

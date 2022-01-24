@@ -132,7 +132,7 @@ export default {
   unrecoverableError: 'Sesuatu berlaku.<br />Sila hubungi sokongan teknikal.',
   usernameFormatErrorHint: 'Gunakan %d-%d huruf, angka dan aksara berikut: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'nama pengguna anda',
-  usernameOrEmailInputPlaceholder: 'nama pengguna/e-mel',
+  usernameOrEmailOrPhoneNumberInputPlaceholder: 'nama pengguna/e-mel',
   title: 'Authok',
   welcome: 'Selamat datang %s!',
   windowsAuthInstructions: 'Anda bersambung dari rangkaian korporat anda&hellip;',

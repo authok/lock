@@ -7,7 +7,7 @@ import {
 
 describe('database/index.js', () => {
   describe('databaseUsernameValue', () => {
-    const getModel = (email, username, usernameRequired) =>
+    const getModel = (email, username, usernameStyle) =>
       Immutable.fromJS({
         field: {
           email: {
@@ -22,7 +22,7 @@ describe('database/index.js', () => {
             connections: {
               database: [
                 {
-                  requireUsername: usernameRequired
+                  usernameStyle,
                 }
               ]
             }
@@ -35,7 +35,7 @@ describe('database/index.js', () => {
     });
 
     describe('for database connection without username required', () => {
-      const model = getModel('user@authok.cn', null, false);
+      const model = getModel('user@authok.cn', null, 'username');
 
       it('should get the email', () => {
         expect(databaseUsernameValue(model)).toEqual('user@authok.cn');
@@ -78,7 +78,7 @@ describe('database/index.js', () => {
             connections: {
               database: [
                 {
-                  requireUsername: false
+                  usernameStyle: 'any'
                 }
               ]
             }

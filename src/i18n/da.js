@@ -126,7 +126,7 @@ export default {
   unrecoverableError: 'Der skete en fejl.<br />Kontakt venligst den tekniske support.',
   usernameFormatErrorHint: 'Brug %d-%d bogstaver, tal og følgende tegn: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'dit brugernavn',
-  usernameOrEmailInputPlaceholder: 'brugernavn/e-mail',
+  usernameOrEmailOrPhoneNumberInputPlaceholder: 'brugernavn/e-mail',
   title: 'Authok',
   welcome: 'Velkommen %s!',
   windowsAuthInstructions: 'Du er forbundet fra din virksomheds netværk&hellip;',

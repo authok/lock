@@ -131,7 +131,7 @@ export default {
   usernameFormatErrorHint:
     'Izmantojiet burtus %d–%d, ciparus un tālāk norādītās rakstzīmes: “_”, “.”, “+”, “-”',
   usernameInputPlaceholder: 'jūsu lietotājvārds',
-  usernameOrEmailInputPlaceholder: 'lietotājvārds/e-pasta adrese',
+  usernameOrEmailOrPhoneNumberInputPlaceholder: 'lietotājvārds/e-pasta adrese',
   title: 'Authok',
   welcome: 'Laipni lūdzam, %s!',
   windowsAuthInstructions: 'Jūs izveidojāt savienojumu, izmantojot uzņēmuma tīklu&hellip;',

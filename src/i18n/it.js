@@ -124,7 +124,7 @@ export default {
   unrecoverableError: 'Qualcosa è andato storto.<br />Si prega di contattare il supporto tecnico.',
   usernameFormatErrorHint: 'Usa %d-%d lettere, numeri e i seguenti caratteri: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'Nome utente',
-  usernameOrEmailInputPlaceholder: 'Nome utente o email',
+  usernameOrEmailOrPhoneNumberInputPlaceholder: 'Nome utente o email',
   title: 'Authok',
   welcome: 'Benvenuto %s!',
   windowsAuthInstructions: 'Si è connessi dalla rete aziendale&hellip;',

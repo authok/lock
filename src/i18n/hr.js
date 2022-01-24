@@ -133,7 +133,7 @@ export default {
   usernameFormatErrorHint:
     'Upotrijebite %d-%d slova, brojeve i sljedeće znakove: „_", ".", "+", "-"',
   usernameInputPlaceholder: 'vaše korisničko ime',
-  usernameOrEmailInputPlaceholder: 'korisničko ime/adresa elektroničke pošte',
+  usernameOrEmailOrPhoneNumberInputPlaceholder: 'korisničko ime/adresa elektroničke pošte',
   title: 'Authok',
   welcome: 'Dobro došli %s!',
   windowsAuthInstructions: 'Povezani ste preko poslovne mreže&hellip;',

@@ -125,7 +125,7 @@ export default {
   unrecoverableError: 'حصل خطأ ما.<br/>رجاءً اتصل بالدعم الفني.',
   usernameFormatErrorHint: 'استخدم %d-%d، أرقام، والمحارف التالية: "_"، "."، "+"، "-"',
   usernameInputPlaceholder: 'اسم المستخدم',
-  usernameOrEmailInputPlaceholder: 'اسم المستخدم/البريد الإلكتروني',
+  usernameOrEmailOrPhoneNumberInputPlaceholder: 'اسم المستخدم/البريد الإلكتروني',
   title: 'Authok',
   welcome: 'مرحباً %s!',
   windowsAuthInstructions: 'أنت متصل من الشبكة الخاصة بمؤسستك...',

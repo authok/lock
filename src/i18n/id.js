@@ -130,7 +130,7 @@ export default {
   unrecoverableError: 'Terjadi kesalahan.<br />Harap hubungi staf teknis.',
   usernameFormatErrorHint: 'Gunakan huruf %d-%d, angka, dan karakter berikut: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'nama pengguna Anda',
-  usernameOrEmailInputPlaceholder: 'nama pengguna/email',
+  usernameOrEmailOrPhoneNumberInputPlaceholder: 'nama pengguna/email',
   title: 'Authok',
   welcome: 'Selamat datang %s!',
   windowsAuthInstructions: 'Anda terhubung dari jaringan &hellip; perusahaan Anda',

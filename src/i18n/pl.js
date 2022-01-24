@@ -125,7 +125,7 @@ export default {
   unrecoverableError: 'Coś poszło nie tak.<br />Skontaktuj się z pomocą techniczną.',
   usernameFormatErrorHint: 'Użyj liter %d-%d, cyfr i następujących znaków: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'Twoja nazwa użytkownika',
-  usernameOrEmailInputPlaceholder: 'nazwa użytkownika/email',
+  usernameOrEmailOrPhoneNumberInputPlaceholder: 'nazwa użytkownika/email',
   title: 'Authok',
   welcome: 'Witaj %s!',
   windowsAuthInstructions: 'Jesteś połączony z sieci firmowej&hellip;',

@@ -127,7 +127,7 @@ export default {
   usernameFormatErrorHint:
     'Use %d-%d letters, numbers and the following characters: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'your username',
-  usernameOrEmailInputPlaceholder: 'username/email',
+  usernameOrEmailOrPhoneNumberInputPlaceholder: 'username/email',
   title: 'Authok',
   welcome: 'Welcome %s!',
   windowsAuthInstructions: 'You are connected from your corporate network&hellip;',

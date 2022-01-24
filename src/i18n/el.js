@@ -136,7 +136,7 @@ export default {
   usernameFormatErrorHint:
     'Επιλέξτε: 1) αριθμούς 2) από τα γράμματα %d-%d 3) από τους ακόλουθους χαρακτήρες: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'όνομα χρήστη',
-  usernameOrEmailInputPlaceholder: 'όνομα χρήστη ή email',
+  usernameOrEmailOrPhoneNumberInputPlaceholder: 'όνομα χρήστη ή email',
   title: 'Authok',
   welcome: 'Kαλωσήρθατε %s!',
   windowsAuthInstructions: 'Είστε συνδεδεμένοι από το εταιρικό σας δίκτυο &hellip;',

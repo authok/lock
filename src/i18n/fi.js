@@ -128,7 +128,7 @@ export default {
   usernameFormatErrorHint:
     'Käytä %d-%d kirjaimia, numeroita ja seuraavia merkkejä: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'käyttäjätunnuksesi',
-  usernameOrEmailInputPlaceholder: 'käyttäjätunnus/sähköposti',
+  usernameOrEmailOrPhoneNumberInputPlaceholder: 'käyttäjätunnus/sähköposti',
   title: 'Authok',
   welcome: 'Tervetuloa %s!',
   windowsAuthInstructions: 'Olet yhteydessä yritysverkostasi&hellip;',

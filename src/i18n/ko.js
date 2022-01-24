@@ -127,7 +127,7 @@ export default {
   unrecoverableError: '오류가 발생하였습니다.<br />고객센터로 연락하여 주시기 바랍니다.',
   usernameFormatErrorHint: '%d-%d 문자, 숫자 및 다음 문자를 사용하십시오 : "_", ".", "+", "-"',
   usernameInputPlaceholder: '사용자명',
-  usernameOrEmailInputPlaceholder: '사용자명/이메일 주소',
+  usernameOrEmailOrPhoneNumberInputPlaceholder: '사용자명/이메일 주소',
   title: 'Authok',
   welcome: '환영합니다, %s!',
   windowsAuthInstructions: '기업 네트워크로 접속되어 있습니다&hellip;',

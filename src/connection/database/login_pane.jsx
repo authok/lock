@@ -46,8 +46,10 @@ export default class LoginPane extends React.Component {
     // Should never validate format on login because of custom db connection and import mode.
     // If a custom resolver is in use, always use UsernamePane without validating format,
     // as the target connection (and this validation rules) could change by time the user hits 'submit'.
-    const fieldPane =
-      usernameStyle === 'email' && resolver === undefined ? (
+    let fieldPane;
+
+    if (usernameStyle === 'email' && resolver === undefined) {
+      fieldPane = (
         <EmailPane
           i18n={i18n}
           lock={lock}
@@ -55,7 +57,9 @@ export default class LoginPane extends React.Component {
           placeholder={emailInputPlaceholder}
           strictValidation={false}
         />
-      ) : (
+      );
+    } else /* if (usernameStyle === 'username')*/ {
+      fieldPane = (
         <UsernamePane
           i18n={i18n}
           lock={lock}
@@ -65,6 +69,7 @@ export default class LoginPane extends React.Component {
           strictValidation={false}
         />
       );
+    }
 
     const captchaPane =
       l.captcha(lock) &&
@@ -113,6 +118,7 @@ export default class LoginPane extends React.Component {
 }
 
 LoginPane.propTypes = {
+  signupAction: PropTypes.string,
   emailInputPlaceholder: PropTypes.string.isRequired,
   forgotPasswordAction: PropTypes.string.isRequired,
   i18n: PropTypes.object.isRequired,

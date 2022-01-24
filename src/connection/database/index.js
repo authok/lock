@@ -425,8 +425,8 @@ export function hasInitialScreen(m, str) {
   return getInitialScreen(m) === str;
 }
 
-export function databaseConnectionRequiresUsername(m) {
-  return (databaseConnection(m) || Map()).toJS().requireUsername;
+export function databaseConnectionUsernameStyle(m) {
+  return (databaseConnection(m) || Map()).toJS().usernameStyle;
 }
 
 export function databaseUsernameStyle(m) {
@@ -435,7 +435,7 @@ export function databaseUsernameStyle(m) {
       return 'username';
     }
 
-    return databaseConnectionRequiresUsername(m) ? get(m, 'usernameStyle', 'any') : 'email';
+    return databaseConnectionUsernameStyle(m) || get(m, 'usernameStyle', 'any') || 'any';
   }
 
   return l.hasSomeConnections(m, 'enterprise') && findADConnectionWithoutDomain(m)
@@ -459,7 +459,7 @@ export function databaseUsernameValue(m, options = {}) {
 }
 
 export function authWithUsername(m) {
-  return databaseConnectionRequiresUsername(m) || get(m, 'usernameStyle', 'email') === 'username';
+  return databaseConnectionUsernameStyle(m) === 'username' || get(m, 'usernameStyle', 'email') === 'username';
 }
 
 export function hasScreen(m, s) {

@@ -122,7 +122,7 @@ export default {
   usernameFormatErrorHint:
     'Gebruik %d-%d letters, nommers en die volgende karakters: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'jou gebruikersnaam',
-  usernameOrEmailInputPlaceholder: 'gebruikersnaam en e-pos',
+  usernameOrEmailOrPhoneNumberInputPlaceholder: 'gebruikersnaam en e-pos',
   title: 'Authok',
   welcome: 'Welkom %s!',
   windowsAuthInstructions: 'Jy konnekteer van jou korporatiewe netwerk&hellip;',

@@ -13,7 +13,7 @@ Object {
             "minLength": 1,
           },
         },
-        "requireUsername": false,
+        "usernameStyle": 'any',
         "strategy": "authok",
         "type": "database",
         "validation": null,
@@ -41,7 +41,7 @@ Object {
             "minLength": 1,
           },
         },
-        "requireUsername": true,
+        "usernameStyle": 'any',
         "strategy": "authok",
         "type": "database",
         "validation": Object {
@@ -74,7 +74,7 @@ Object {
             "minLength": 1,
           },
         },
-        "requireUsername": true,
+        "usernameStyle": 'any',
         "strategy": "authok",
         "type": "database",
         "validation": Object {
@@ -107,7 +107,7 @@ Object {
             "minLength": 1,
           },
         },
-        "requireUsername": true,
+        "usernameStyle": "email",
         "strategy": "authok",
         "type": "database",
         "validation": Object {
@@ -140,7 +140,7 @@ Object {
             "minLength": 1,
           },
         },
-        "requireUsername": false,
+        "usernameStyle": "email",
         "strategy": "authok",
         "type": "database",
         "validation": null,
@@ -168,7 +168,7 @@ Object {
             "minLength": 6,
           },
         },
-        "requireUsername": true,
+        "usernameStyle": "username",
         "strategy": "authok",
         "type": "database",
         "validation": Object {

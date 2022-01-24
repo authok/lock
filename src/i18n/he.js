@@ -122,7 +122,7 @@ export default {
   unrecoverableError: 'משהו השתבש.<br />אנא צור קשר עם התמיכה הטכנית.',
   usernameFormatErrorHint: 'השתמש ב%d-%d אותיות, ספרות והתווים הבאים: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'שם המשתמש שלך',
-  usernameOrEmailInputPlaceholder: 'שם משתמש/כתובת מייל',
+  usernameOrEmailOrPhoneNumberInputPlaceholder: 'שם משתמש/כתובת מייל',
   title: 'Authok',
   welcome: 'ברוך הבא %s!',
   windowsAuthInstructions: '&hellip;אתה מחובר מהרשת הארגונית שלך',

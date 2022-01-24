@@ -129,7 +129,7 @@ export default {
   unrecoverableError: 'Došlo je do greške.<br />Obratite se tehničkoj podršci.',
   usernameFormatErrorHint: 'Koristite %d-%d slova, brojeve i sledeće znakove: „_“, „.“, „+“, „-“',
   usernameInputPlaceholder: 'vaše korisničko ime',
-  usernameOrEmailInputPlaceholder: 'korisničko ime/adresa e-pošte',
+  usernameOrEmailOrPhoneNumberInputPlaceholder: 'korisničko ime/adresa e-pošte',
   title: 'Authok',
   welcome: 'Dobro došli %s!',
   windowsAuthInstructions: 'Povezani ste sa kompanijske mreže&hellip;',

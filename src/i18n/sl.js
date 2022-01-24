@@ -128,7 +128,7 @@ export default {
   usernameFormatErrorHint:
     'Uporabite lahko črke %d-%d, števila in naslednje znake: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'vaše uporabniško ime',
-  usernameOrEmailInputPlaceholder: 'uporabniško ime/e-pošta',
+  usernameOrEmailOrPhoneNumberInputPlaceholder: 'uporabniško ime/e-pošta',
   title: 'Authok',
   welcome: 'Dobrodošli, %s!',
   windowsAuthInstructions: 'Povezani ste iz svojega službenega omrežja&hellip;',

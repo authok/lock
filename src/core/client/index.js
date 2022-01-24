@@ -126,8 +126,8 @@ function formatClientConnection(connectionType, strategyName, connection) {
     result.allowSignUpWithSms = typeof connection.showSignupWithSms === 'boolean' ? connection.showSignupWithSms : true;
 
     result.allowForgot = typeof connection.showForgot === 'boolean' ? connection.showForgot : true;
-    result.requireUsername =
-      typeof connection.requires_username === 'boolean' ? connection.requires_username : false;
+    result.usernameStyle = connection.usernameStyle || 'any'
+
     result.validation = formatConnectionValidation(connection.validation);
   }
 

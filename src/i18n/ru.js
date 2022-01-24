@@ -133,7 +133,7 @@ export default {
     'Произошла непредвиденная ошибка.<br />Пожалуйста, обратитесь в службу технической поддержки.',
   usernameFormatErrorHint: 'Используйте %d-%d буквы, цифры и следующие символы: «_», «.», «+», «-»',
   usernameInputPlaceholder: 'Ваше имя пользователя',
-  usernameOrEmailInputPlaceholder: 'электронной почты/пользователя',
+  usernameOrEmailOrPhoneNumberInputPlaceholder: 'электронной почты/пользователя',
   title: 'Authok',
   welcome: 'Добро пожаловать, %s!',
   windowsAuthInstructions: 'Вы подключены через корпоративную сеть&hellip;',

@@ -125,7 +125,7 @@ export default {
   unrecoverableError: '出现错误。<br/>请联系技术人员。',
   usernameFormatErrorHint: '使用 %d-%d 字母，数字和以下字符：“_”，“。”，“+”，“ - ”',
   usernameInputPlaceholder: '您的用户名',
-  usernameOrEmailInputPlaceholder: '用户名/邮箱',
+  usernameOrEmailOrPhoneNumberInputPlaceholder: '用户名/邮箱/手机号',
   title: 'Authok',
   welcome: '欢迎 %s!',
   windowsAuthInstructions: '您已连接到组织网络&hellip;',

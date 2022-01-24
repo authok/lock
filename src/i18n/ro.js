@@ -131,7 +131,7 @@ export default {
   usernameFormatErrorHint:
     'Folosește %d-%d litere, cifre și următoarele caractere speciale: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'numele tău de utilizator',
-  usernameOrEmailInputPlaceholder: 'utilizator/email',
+  usernameOrEmailOrPhoneNumberInputPlaceholder: 'utilizator/email',
   title: 'Authok',
   welcome: 'Bine ai venit %s!',
   windowsAuthInstructions: 'Ești conectat de pe serverul tău corporate',

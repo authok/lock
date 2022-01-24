@@ -127,7 +127,7 @@ export default {
   unrecoverableError: 'Niečo sa pokazilo.<br />Prosím kontaktujte technickú podporu.',
   usernameFormatErrorHint: 'Použite %d-%d písmená, čísla a nasledujúce znaky: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'Vaše užívateľské meno',
-  usernameOrEmailInputPlaceholder: 'užívateľské meno/e-mail',
+  usernameOrEmailOrPhoneNumberInputPlaceholder: 'užívateľské meno/e-mail',
   title: 'Authok',
   welcome: 'Vitajte %s!',
   windowsAuthInstructions: 'Ste pripojený z Vašej firemnej siete&hellip;',

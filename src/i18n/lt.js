@@ -126,7 +126,7 @@ export default {
   unrecoverableError: 'Įvyko netikėta klaida.<br />Prašome susisiekti su technine pagalba.',
   usernameFormatErrorHint: 'Naudokite %d-%d raides, skaičiai ir šie simboliai: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'Jūsų vartotojo vardas',
-  usernameOrEmailInputPlaceholder: 'el.pašto adresas / vartotojo vardas',
+  usernameOrEmailOrPhoneNumberInputPlaceholder: 'el.pašto adresas / vartotojo vardas',
   title: 'Authok',
   welcome: 'Sveiki %s!',
   windowsAuthInstructions: 'Jūs esate prijungtas iš jūsų įmonių tinklo&hellip;',

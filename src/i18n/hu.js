@@ -133,7 +133,7 @@ export default {
   usernameFormatErrorHint:
     'Használj %d-%d betűt, számot és a következő karaktereket: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'felhasználóneved',
-  usernameOrEmailInputPlaceholder: 'felhasználónév/e-mail',
+  usernameOrEmailOrPhoneNumberInputPlaceholder: 'felhasználónév/e-mail',
   title: 'Authok',
   welcome: 'Üdv %s!',
   windowsAuthInstructions: 'Céges hálózatról kapcsolódsz&hellip;',

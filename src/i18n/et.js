@@ -127,7 +127,7 @@ export default {
   usernameFormatErrorHint:
     'Kasuta %d-%d tähti, numbreid ja järgnevaid sümboleid: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'sinu kasutajanimi',
-  usernameOrEmailInputPlaceholder: 'kasutajanimi/e-mail',
+  usernameOrEmailOrPhoneNumberInputPlaceholder: 'kasutajanimi/e-mail',
   title: 'Authok',
   welcome: 'Tere Tulemast %s!',
   windowsAuthInstructions: 'Sa oled ühendatud ettevõtte võrgust&hellip;',

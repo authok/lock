@@ -132,7 +132,7 @@ export default {
   usernameFormatErrorHint:
     'Použijte písmena %d-%d, číslice a následující znaky: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'vaše uživatelské jméno',
-  usernameOrEmailInputPlaceholder: 'uživatelské jméno/e-mail',
+  usernameOrEmailOrPhoneNumberInputPlaceholder: 'uživatelské jméno/e-mail',
   title: 'Authok',
   welcome: 'Vítejte, %s!',
   windowsAuthInstructions: 'Jste připojeni z vaší firemní sítě&hellip;',

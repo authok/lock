@@ -134,7 +134,7 @@ export default {
   unrecoverableError: 'Грешка.<br />Моля свържете се с техническия екип.',
   usernameFormatErrorHint: 'Използвайте %d-%d букви, цивфри и следните символи: "_", ".", "+", "-"',
   usernameInputPlaceholder: 'вашето потребителско име',
-  usernameOrEmailInputPlaceholder: 'потребителско име/имейл',
+  usernameOrEmailOrPhoneNumberInputPlaceholder: 'потребителско име/имейл',
   title: 'Authok',
   welcome: 'Добре дошли, %s!',
   windowsAuthInstructions: 'Вие се свързахте чрез мрежата на Вашата фирма...',
