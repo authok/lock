@@ -1,6 +1,6 @@
 {
   "name": "@authok/authok-lock",
-  "version": "11.32.0",
+  "version": "11.32.1",
   "description": "Authok Lock",
   "author": "Authok <support@authok.cn> (http://authok.cn)",
   "license": "MIT",
