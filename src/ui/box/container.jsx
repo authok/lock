@@ -303,7 +303,7 @@ export const defaultProps = (Container.defaultProps = {
   disableSubmitButton: false,
   isMobile: false,
   isSubmitting: false,
-  language: 'en',
+  language: 'zh',
   logo: `${
     isFileProtocol ? 'https:' : ''
   }//s0.lucfish.com/authok/authok-badge.png`,
