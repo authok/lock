@@ -19,9 +19,7 @@ import * as l from '../../core/index';
 import * as i18n from '../../i18n';
 
 import SignUpWithEmailPane from './sign_up_email_pane';
-import PaneSeparator from '../../core/pane_separator';
 import SignUpTerms from '../../connection/database/sign_up_terms';
-import SocialButtonsPane from '../../field/social/social_buttons_pane';
 import SingleSignOnNotice from '../../connection/enterprise/single_sign_on_notice';
 import SignUpTabs from '../../connection/database/signup_tabs';
 
@@ -45,25 +43,12 @@ const SignUpWithEmailComponent = ({ i18n, model }) => {
     />
   );
 
-  const social = l.hasSomeConnections(model, 'social') && (
-    <SocialButtonsPane
-      instructions={i18n.html('socialSignUpInstructions')}
-      labelFn={i18n.str}
-      lock={model}
-      signUp={true}
-    />
-  );
-
-  const signUpInstructionsKey = social
-    ? 'databaseAlternativeSignUpInstructions'
-    : 'databaseSignUpInstructions';
-
   const db = (l.hasSomeConnections(model, 'database') ||
     l.hasSomeConnections(model, 'enterprise')) && (
     <SignUpWithEmailPane
       emailInputPlaceholder={i18n.str('emailInputPlaceholder')}
       i18n={i18n}
-      instructions={i18n.html(signUpInstructionsKey)}
+      instructions={i18n.html('databaseSignUpInstructions')}
       model={model}
       onlyEmail={sso}
       passwordInputPlaceholder={i18n.str('passwordInputPlaceholder')}
@@ -72,16 +57,12 @@ const SignUpWithEmailComponent = ({ i18n, model }) => {
     />
   );
 
-  const separator = social && db && <PaneSeparator />;
-
   return (
     <div>
       {ssoNotice}
       {tabs}
       <div>
-        {separator}
         {db}
-        {social}
       </div>
     </div>
   );
