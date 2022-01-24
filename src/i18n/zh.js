@@ -72,7 +72,6 @@ export default {
   enterpriseLoginIntructions: '请用您的企业账号登录',
   enterpriseActiveLoginInstructions: '请输入您的企业账号 %s。',
   failedLabel: '失败!',
-  signupAction: '注册',
   forgotPasswordAction: '忘记密码？',
   forgotPasswordInstructions: '请输入您的邮箱，我们将为您发送重置密码的邮件。',
   forgotPasswordSubmitLabel: '发电子邮件',

@@ -66,7 +66,7 @@ const LoginComponent = ({ i18n, model }) => {
       usernameInputPlaceholder={i18n.str(usernameInputPlaceholderKey)}
       passwordInputPlaceholder={i18n.str('passwordInputPlaceholder')}
       forgotPasswordAction={i18n.str('forgotPasswordAction')}
-      signupAction={i18n.str('signupAction')}
+      signupAction={i18n.str('signUpSubmitLabel')}
       i18n={i18n}
       lock={model}
       showForgotPasswordLink={showForgotPasswordLink}
