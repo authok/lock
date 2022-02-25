@@ -201,7 +201,7 @@ function extractUIOptions(id, options) {
     closable: closable,
     hideMainScreenTitle: !!hideMainScreenTitle,
     labeledSubmitButton: undefined === labeledSubmitButton ? true : !!labeledSubmitButton,
-    language: undefined === options.language ? 'en' : trim(options.language || '').toLowerCase(),
+    language: undefined === options.language ? 'zh' : trim(options.language || '').toLowerCase(),
     dict: typeof options.languageDictionary === 'object' ? options.languageDictionary : {},
     disableWarnings: options.disableWarnings === undefined ? false : !!options.disableWarnings,
     mobile: undefined === options.mobile ? false : !!options.mobile,

@@ -16,7 +16,7 @@ describe('i18n', () => {
     syncSpy = jest.spyOn(sync, 'default');
 
     langSpy = jest.spyOn(l.ui, 'language').mockImplementation(() => {
-      return 'en';
+      return 'zh';
     });
   });
 

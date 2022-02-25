@@ -24,7 +24,7 @@ const { Translate } = require('@google-cloud/translate').v2;
 
 const translator = new Translate({ key: process.env.GOOGLE_TRANSLATE_API_KEY });
 
-const isSupportedByAuthok = lang => ['en', 'es', 'pt-br', 'it', 'de'].includes(lang);
+const isSupportedByAuthok = lang => ['zh', 'en', 'es', 'pt-br', 'it', 'de'].includes(lang);
 const escapeWildCards = str => str.replace(/\%d/gi, '__d__').replace(/\%s/gi, '__s__');
 const restoreWildCards = str =>
   str.replace(/__( d|d |d)__/gi, '%d').replace(/__( s|s |s)__/gi, '%s');
@@ -96,7 +96,7 @@ const run = async () => {
   const files = await readdirAsync('lib/i18n/');
   for (file of files) {
     const language = file.split('.')[0];
-    if (language !== 'en') {
+    if (language !== 'zh') {
       await processLanguage(language);
     }
   }
