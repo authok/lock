@@ -154,6 +154,7 @@ export function logIn(id) {
     params.phoneNumber = phoneNumberWithDiallingCode(m);
   }
   swap(updateEntity, 'lock', id, l.setSubmitting, true);
+
   webApi.passwordlessVerify(id, params, (error, result) => {
     let errorMessage;
     if (error) {

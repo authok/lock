@@ -103,7 +103,7 @@ module.exports = function(grunt) {
       },
       dev: {
         hot: true,
-        port: 3000,
+        port: 3030,
         https: getDevCerts() || true,
         webpack: {
           devtool: 'source-map'
