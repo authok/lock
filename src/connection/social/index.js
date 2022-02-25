@@ -46,9 +46,15 @@ export const STRATEGIES = {
   yandex: 'Yandex',
   tiktok: 'tiktok',
   douyin: '抖音',
-  wechat: '微信',
   weibo: '新浪微博',
-  line: 'Line'
+  line: 'Line',
+  'wechat:mp:qrconnect': '微信公众号扫码关注登录',
+  'wechat:miniprogram:qrconnect': '小程序扫码登录',
+  'wechat:miniprogram:default': '小程序内登录',
+  'wechat:webpage-authorization': '微信网页授权登录',
+  'wechat:pc': '微信PC登录',
+  'wechat:mobile': '微信手机端登录',
+  'wechat:miniprogram:app-launch': 'APP拉起小程序登录',
 };
 
 export function displayName(connection) {
