@@ -1811,30 +1811,3 @@ This version introduces `languageBaseUrl` and `clientBaseUrl` in replacement of 
   username.
 
 ## [v10.0.0-beta.2](https://github.com/authok/lock/tree/v10.0.0-beta.2) (2016-04-25)
-
-[Full Changelog](https://github.com/authok/lock/compare/v10.0.0-beta.1...v10.0.0-beta.2)
-
-### Fixed
-
-- Fetch bigger gravatars, so they look better on high-density screens.
-- Don't fetch SSO data when SSO is disabled.
-- Bunch of small UI issues.
-- NPM package require. Now `require('authok-lock')` will work (previously you had to do `require('authok-lock/lib/classic')`).
-
-### Changed
-
-- Renamed `close` method to `hide`.
-- Renamed `connections` option to `allowedConnections`.
-- Renamed `signUp.footerText` dict key to `signUp.terms`.
-
-### Added
-
-- Support for enterprise connections.
-- Allow to specify the the default datbase connection via the
-  `defaultDatabaseConnection` option.
-- Optionally request users to agree to terms and conditions before
-  signing up via the `mustAcceptTerms` option.
-
-## [v10.0.0-beta.1](https://github.com/authok/lock/tree/v10.0.0-beta.1) (2016-03-23)
-
-First preview release, see [https://authok.cn/docs/libraries/lock/v10](https://authok.cn/docs/libraries/lock/v10) for details.
