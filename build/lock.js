@@ -2,7 +2,7 @@
  * lock v11.32.2
  * 
  * Author: Authok <support@authok.cn> (http://authok.cn)
- * Date: 2022/2/25 下午3:15:26
+ * Date: 2022/3/3 下午4:15:03
  * License: MIT
  * 
  *//******/ (function(modules) { // webpackBootstrap
@@ -8394,11 +8394,6 @@ var Classic = function () {
     var anySocialConnection = __WEBPACK_IMPORTED_MODULE_12__core_index__["hasSomeConnections"](m, 'social');
     var anyPasswordlessConnection = __WEBPACK_IMPORTED_MODULE_12__core_index__["hasSomeConnections"](m, 'passwordless');
 
-    if (!anySocialConnection && !anyPasswordlessConnection) {
-      var error = new Error('At least one email, sms or social connection needs to be available.');
-      error.code = 'no_connection';
-      m = __WEBPACK_IMPORTED_MODULE_12__core_index__["stop"](m, error);
-    }
     m = setPrefillPasswordless(m);
 
     return m;
