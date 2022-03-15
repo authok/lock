@@ -1,6 +1,6 @@
 {
   "name": "@authok/authok-lock",
-  "version": "11.32.2",
+  "version": "11.32.5",
   "description": "Authok Lock",
   "author": "Authok <support@authok.cn> (http://authok.cn)",
   "license": "MIT",
@@ -104,7 +104,7 @@
     "webpack-dev-server": "^2.3.0"
   },
   "dependencies": {
-    "@authok/authok-js": "^9.18.16",
+    "@authok/authok-js": "^9.18.18",
     "@authok/authok-password-policies": "^1.0.2",
     "blueimp-md5": "^2.19.0",
     "classnames": "^2.3.1",
@@ -131,7 +131,7 @@
     "name": "lock",
     "cdn": "https://cdn.authok.cn",
     "mainBundleFile": "lock.min.js",
-    "bucket": "assets.us.authok.cn",
+    "bucket": "assets.cn.authok.cn",
     "localPath": "build",
     "digest": {
       "hashes": [

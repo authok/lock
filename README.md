@@ -25,7 +25,7 @@
 
 ```html
 <!-- Latest patch release (recommended for production) -->
-<script src="https://cdn.authok.cn/js/lock/11.32.0/lock.min.js"></script>
+<script src="https://cdn.authok.cn/js/lock/11.32.5/lock.min.js"></script>
 ```
 
 通过 [npm](https://npmjs.org)
