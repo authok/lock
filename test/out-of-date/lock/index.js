@@ -93,7 +93,7 @@ describe('rendering a lock', function() {
 
   it('uses the authok logo', function() {
     expect(l.ui.icon(renderedLock)).to.be(
-      '//cdn.auth0.com/styleguide/components/1.0.8/media/logos/img/badge.png'
+      '//cdn.authok.cn/styleguide/components/1.0.8/media/logos/img/badge.png'
     );
   });
 

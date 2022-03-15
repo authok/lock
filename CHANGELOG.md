@@ -1172,7 +1172,6 @@ In the meantime, react@16 works just fine with this codebase. You'll just have t
 - Adding prettier and a precommit script to format the code :tada: :lipstick: [\#977](https://github.com/authok/lock/pull/977) ([luisrudge](https://github.com/luisrudge))
 - Upgrading usage of prop-types to new package [\#971](https://github.com/authok/lock/pull/971) ([luisrudge](https://github.com/luisrudge))
 - Use replaceState for better browser history experience [\#967](https://github.com/authok/lock/pull/967) ([selaux](https://github.com/selaux))
-- Renaming internal `signOut` methods with `logout` to keep it consistent [\#966](https://github.com/authok/lock/pull/966) ([luisrudge](https://github.com/luisrudge))
 - Improve error handling of sync with better errors [\#961](https://github.com/authok/lock/pull/961) ([luisrudge](https://github.com/luisrudge))
 - Adding `key` to the error "An error occurred when fetching data" [\#956](https://github.com/authok/lock/pull/956) ([luisrudge](https://github.com/luisrudge))
 
