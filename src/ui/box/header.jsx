@@ -108,6 +108,7 @@ class Background extends React.Component {
       props.className += ' authok-lock-blur-support';
     }
 
+    /*
     const blurProps = {
       className: 'authok-lock-header-bg-blur',
       style: { backgroundImage: `url('${imageUrl}')` }
@@ -116,6 +117,7 @@ class Background extends React.Component {
     if (grayScale) {
       blurProps.className += ' authok-lock-no-grayscale';
     }
+    */
 
     const solidProps = {
       className: 'authok-lock-header-bg-solid',
@@ -124,7 +126,7 @@ class Background extends React.Component {
 
     return (
       <div {...props}>
-        <div {...blurProps} />
+        <div />
         <div {...solidProps} />
       </div>
     );

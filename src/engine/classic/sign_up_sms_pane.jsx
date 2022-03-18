@@ -10,6 +10,7 @@ import { isHRDDomain } from '../../connection/enterprise';
 import { databaseUsernameValue } from '../../connection/database/index';
 import { isSSOEnabled } from '../classic';
 import PhoneNumberPane from '../../field/phone-number/phone_number_pane';
+import VcodePane from '../../field/vcode/vcode_pane';
 
 const SignUpWithSmsPane = (props) => {
   const { i18n, model } = props;
@@ -40,6 +41,13 @@ const SignUpWithSmsPane = (props) => {
       />
     ));
 
+  const vcode = <VcodePane
+    lock={model}
+    scene="login"
+    placeholder={i18n.str('codeInputPlaceholder')}
+    resendLabel={i18n.str('sendVcode')}
+  />
+
   const captchaPane =
     l.captcha(model) &&
     l.captcha(model).get('required') &&
@@ -50,6 +58,7 @@ const SignUpWithSmsPane = (props) => {
   return (
     <div>
       {phonePane}
+      {vcode}
       {captchaPane}
       {fields}
     </div>

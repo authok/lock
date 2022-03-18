@@ -263,6 +263,7 @@ export default class Chrome extends React.Component {
       isSubmitting,
       logo,
       primaryColor,
+      backgroundColor,
       screenName,
       showSubmitButton,
       submitButtonLabel,
@@ -344,7 +345,7 @@ export default class Chrome extends React.Component {
               name={name}
               backHandler={backHandler && ::this.handleBack}
               backgroundUrl={backgroundUrl}
-              backgroundColor={primaryColor}
+              backgroundColor={backgroundColor}
               logoUrl={logo}
             />
 
@@ -453,6 +454,7 @@ Chrome.propTypes = {
   isSubmitting: PropTypes.bool.isRequired,
   logo: PropTypes.string.isRequired,
   primaryColor: PropTypes.string.isRequired,
+  backgroundColor: PropTypes.string,
   screenName: PropTypes.string.isRequired,
   showSubmitButton: PropTypes.bool.isRequired,
   submitButtonLabel: PropTypes.string,
@@ -467,5 +469,6 @@ Chrome.defaultProps = {
   autofocus: false,
   disableSubmitButton: false,
   showSubmitButton: true,
-  scrollGlobalMessagesIntoView: true
+  scrollGlobalMessagesIntoView: true,
+  backgroundColor: '#ffffff',
 };

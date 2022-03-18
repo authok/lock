@@ -151,6 +151,7 @@ export default class Container extends React.Component {
       isSubmitting,
       logo,
       primaryColor,
+      backgroundColor,
       screenName,
       showBadge,
       submitButtonLabel,
@@ -237,6 +238,7 @@ export default class Container extends React.Component {
                 logo={logo}
                 screenName={screenName}
                 primaryColor={primaryColor}
+                backgroundColor={backgroundColor}
                 ref="chrome"
                 showSubmitButton={!!submitHandler}
                 submitButtonLabel={submitButtonLabel}
@@ -275,6 +277,7 @@ Container.propTypes = {
   language: PropTypes.string,
   logo: PropTypes.string.isRequired,
   primaryColor: PropTypes.string.isRequired,
+  backgroundColor: PropTypes.string,
   screenName: PropTypes.string.isRequired,
   showBadge: PropTypes.bool.isRequired,
   submitButtonLabel: PropTypes.string,
@@ -306,8 +309,9 @@ export const defaultProps = (Container.defaultProps = {
   language: 'zh',
   logo: `${
     isFileProtocol ? 'https:' : ''
-  }//s0.lucfish.com/authok/authok-badge.png`,
-  primaryColor: 'rgb(82, 196, 26)',
+  }//cdn.authok.cn/assets/authok-badge.png`,
+  primaryColor: '#1890ff',
+  backgroundColor: '#ffffff',
   showBadge: true,
   scrollGlobalMessagesIntoView: true
 });
