@@ -1,8 +1,8 @@
 /*!
- * lock v11.32.12
+ * lock v11.32.13
  * 
  * Author: Authok <support@authok.cn> (http://authok.cn)
- * Date: 2022/12/31 05:21:19
+ * Date: 2022/12/31 05:25:41
  * License: MIT
  * 
  *//******/ (function(modules) { // webpackBootstrap
@@ -2026,7 +2026,7 @@ function assertLanguage(m, language, base) {
 function syncLang(m, language, _cb) {
   __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__utils_cdn_utils__["a" /* load */])({
     method: 'registerLanguageDictionary',
-    url: __WEBPACK_IMPORTED_MODULE_5__core_index__["languageBaseUrl"](m) + '/js/lock/' + '11.32.12' + '/' + language + '.js',
+    url: __WEBPACK_IMPORTED_MODULE_5__core_index__["languageBaseUrl"](m) + '/js/lock/' + '11.32.13' + '/' + language + '.js',
     check: function check(str) {
       return str && str === language;
     },
@@ -14508,7 +14508,7 @@ var AuthokLockPasswordless = function (_Core) {
 /* harmony default export */ __webpack_exports__["a"] = (AuthokLockPasswordless);
 
 
-AuthokLockPasswordless.version = '11.32.12';
+AuthokLockPasswordless.version = '11.32.13';
 
 /***/ }),
 /* 64 */
@@ -19465,7 +19465,7 @@ function trimAuthParams() {
 }
 
 function getVersion() {
-  return '11.32.12';
+  return '11.32.13';
 }
 
 /***/ }),
@@ -21664,7 +21664,7 @@ var AuthokLock = function (_Core) {
 
 
 /* harmony default export */ __webpack_exports__["a"] = (AuthokLock);
-AuthokLock.version = '11.32.12';
+AuthokLock.version = '11.32.13';
 
 // TODO: should we have different telemetry for classic/passwordless?
 // TODO: should we set telemetry info before each request?
@@ -21765,8 +21765,11 @@ var Renderer = function () {
     // if (props.primaryColor) document.documentElement.style.setProperty('--primary-color', props.primaryColor);
 
     // eslint-disable-next-line
-    var component = component = __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.createRoot(container).render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__box_container__["b" /* default */], props));
-    // let component = ReactDOM.render(<Container {...props} />, container);
+    if (!this.root) {
+      this.root = __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.createRoot(container);
+    }
+    var component = this.root.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__box_container__["b" /* default */], props));
+    // const component = ReactDOM.render(<Container {...props} />, container);
 
     if (isModal) {
       this.modals[containerId] = component;

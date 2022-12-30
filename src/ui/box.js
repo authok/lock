@@ -40,8 +40,11 @@ class Renderer {
     // if (props.primaryColor) document.documentElement.style.setProperty('--primary-color', props.primaryColor);
 
     // eslint-disable-next-line
-    let component = component = ReactDOM.createRoot(container).render(<Container {...props} />);
-    // let component = ReactDOM.render(<Container {...props} />, container);
+    if (!this.root) {
+      this.root = ReactDOM.createRoot(container);
+    }
+    const component = this.root.render(<Container {...props} />);
+    // const component = ReactDOM.render(<Container {...props} />, container);
 
     if (isModal) {
       this.modals[containerId] = component;
