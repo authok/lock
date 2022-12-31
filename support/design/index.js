@@ -267,6 +267,6 @@ ClientSettings.fetchClientSettings = function(clientID, clientBaseUrl, cb) {
   setTimeout(() => cb(null, settings), 180);
 }
 
+// ReactDOM.createRoot(document.getElementById("control-container").render(React.createElement(Control)));
 // eslint-disable-next-line
-ReactDOM.createRoot(document.getElementById("control-container").render(React.createElement(Control)));
-// ReactDOM.render(React.createElement(Control), document.getElementById("control-container"));
+ReactDOM.render(React.createElement(Control), document.getElementById("control-container"));
